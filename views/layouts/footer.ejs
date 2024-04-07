@@ -1,0 +1,197 @@
+
+<!-- CSS -->
+<style>
+  footer {
+    background-color: #1b1c1a;
+    color: #ebeeec;
+    padding-top: 20px;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  footer.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .footer-content1, .footer-content2, .footer-content3 {
+    flex: 1;
+    margin: 0 40px;
+    text-align: center;
+  }
+
+  .footer-content1 h3 {
+    color: #ebeeec;
+    margin-bottom: 20px;
+    text-align: start;
+    text-decoration:wavy;
+  }
+
+  .footer-content2 h3 {
+    color: #ebeeec;
+    margin-bottom: 20px;
+  }
+
+  .footer-content3 h3 {
+    color: #ebeeec;
+    margin-bottom: 20px;
+    text-align: end;
+  }
+
+  .footer-content1 h3:hover,
+  .footer-content2 h3:hover,
+  .footer-content3 h3:hover {
+    color: #8fae51;
+    cursor: pointer;
+  }
+
+  .footer-content1 p {
+    margin: 20px 0;
+    text-align: start;
+  }
+
+  .footer-content2 p {
+    margin: 20px 0;
+    text-align: center;
+  }
+
+  .footer-content3 p {
+    margin: 20px 0;
+    text-align: end;
+  }
+
+  .footer-content1 a,
+  .footer-content2 a,
+  .footer-content3 a {
+    color: #ebeeec;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .footer-content1 a:after,
+  .footer-content2 a:after,
+  .footer-content3 a:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #ebeeec;
+    bottom: 0;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .footer-content1 a:hover:after,
+  .footer-content2 a:hover:after,
+  .footer-content3 a:hover:after {
+    text-decoration: underline;
+    width: 100%;
+  }
+
+  .copyright {
+    text-align: center;
+    margin-top: 20px;
+    color: #ebeeec;
+  }
+
+
+  /* RESPONSIVE */
+  /*
+
+      MEDIA IF 768 PX
+
+  */
+
+  @media (max-width: 768px) {
+    /* FOOTER */
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-column {
+        margin-bottom: 20px;
+    }
+  }
+
+  /*
+
+    MEDIA IF 640 PX
+
+  */
+
+  @media (max-width: 640px) {
+    /* FOOTER */
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-column {
+        margin-bottom: 20px;
+    }
+  }
+
+  /*
+
+    MEDIA IF 480 PX
+
+  */
+
+  @media (max-width: 480px) {
+    /* FOOTER */
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-column {
+        margin-bottom: 15px;
+    }
+  }
+
+  /*
+
+    MEDIA IF 360 PX (SMARTPHONE)
+
+  */
+
+  @media (max-width: 360px) {
+    /* FOOTER */
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-column {
+        margin-bottom: 10px;
+    }
+  }
+</style>
+
+<!-- HTML -->
+<footer id="contact">
+    <div class="footer-container">
+      <div class="footer-content1">
+        <h3>Address</h3>
+        <p>Jakarta Barat, DKI Jakarta, Indonesia</p>
+      </div>
+      <div class="footer-content2">
+        <h3>Follow Us</h3>
+        <p><a href="#">Facebook</a></p>
+        <p><a href="#">Twitter</a></p>
+        <p><a href="#">Instagram</a></p>
+        <p><a href="#">Gmail</a></p>
+        <p><a href="#">Telp</a></p>
+      </div>
+      <div class="footer-content3">
+        <p>Send your best cooking recipes to our <a href="/Insight">here!</a></p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; SPICITE 2024</p>
+    </div>
+  </footer>
+  <script src="JS\Homepage.js"></script>

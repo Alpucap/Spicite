@@ -1,0 +1,340 @@
+
+<style>
+  /* SHOP */
+  .Shop {
+      position: relative;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .Shop .Title{
+      text-align: center;
+      color: 	#8fae51;
+      transition: letter-spacing 0.3s ease-in-out;
+  }
+  .Shop .Title:hover{
+      letter-spacing: 5px;
+  }
+
+  .Shop-Items {
+      display: flex;
+      gap: 100px;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+  }
+  
+  .Shop-Items.visible {
+      opacity: 1;
+      transform: translateY(0);
+  }
+
+  .Shop-Items-1,
+  .Shop-Items-2,
+  .Shop-Items-3 {
+      width: auto;
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+      margin: 5px;
+  }
+
+  .Shop-Items-1 img,
+  .Shop-Items-2 img,
+  .Shop-Items-3 img {
+      width: 300px;
+      height: 200px;
+      display: block;
+      border-radius: 5px;
+  }
+
+  .Shop-Items-1 h3,
+  .Shop-Items-2 h3,
+  .Shop-Items-3 h3 {
+  text-align: center;
+  margin-top: 10px; 
+  }
+
+  .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #2d3230e0; 
+      opacity: 0; 
+      border-radius: 5px;
+      transition: opacity 0.3s ease; 
+      display: flexbox;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  .text {
+      color: #ebeeec;
+      font-size: 18px;
+      text-align: center;
+      padding: 10px;
+  }
+
+  .price {
+      color: #ebeeec;
+      font-size: 16px;
+      text-align: center;
+      text-decoration: none;
+  }
+
+  .Shop-Items-1:after,
+  .Shop-Items-2:after,
+  .Shop-Items-3:after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      height: 0;
+      background-image: linear-gradient(#8fae51, #ebeeec);
+      bottom: 0;
+      left: 0;
+      transition: height 0.5s ease-in-out;
+  }
+
+  .Shop-Items-1:hover:after,
+  .Shop-Items-2:hover:after,
+  .Shop-Items-3:hover:after {
+      text-decoration: underline;
+      height: 100%;
+  }
+
+  .Shop-Items-1:hover .overlay,
+  .Shop-Items-2:hover .overlay,
+  .Shop-Items-3:hover .overlay {
+      opacity: 1; 
+      border: 2px solid #ebeeec;
+      border-radius: 2px;
+  }
+  .Lainnya {
+    position: absolute;
+    width: 100px;
+    top: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 40px;
+    border-radius: 5px;
+    border: 2px solid #ebeeec;
+    background-color: transparent;
+    color: #ebeeec;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, background-color 0.5s ease-in-out, color 0.5s ease-in-out; 
+    z-index: 1;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+}
+  
+.Lainnya::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ebeeec;
+    transition: width 0.5s ease-in-out;
+    z-index: -1;
+    color: #2d3230;
+    cursor: pointer;
+}
+  
+.Lainnya:hover::before {
+    width: 100%;
+    z-index: -1;
+    color: #2d3230;
+}
+  
+.Lainnya:hover {
+    border: 2px solid #ebeeec;
+    color: #2d3230;
+}
+
+  /*RESPONSIVE*/
+  /*
+
+    MEDIA IF 768 PX
+
+  */
+
+  @media (max-width: 768px) {
+    /* SHOP */
+    .Shop-Items{
+        display:grid;
+    }
+    /* BUTTON */
+    .Lainnya{
+        width: 80px;
+        border-radius: 8px;
+    }
+  }
+
+  /*
+
+    MEDIA IF 640 PX
+
+  */
+
+  @media (max-width: 640px) {
+    /* SHOP */
+    .Shop-Items{
+        display:grid;
+    }
+    /* BUTTON */
+    .Lainnya{
+        width: 60px;
+        border-radius: 5px;
+    }
+  }
+
+  /*
+
+    MEDIA IF 480 PX
+
+  */
+
+  @media (max-width: 480px) {
+    /* SHOP */
+    .Shop-Items{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    /* BUTTON */
+    .Lainnya{
+        width: 50px;
+        border-radius: 4px;
+    }
+  }
+
+  /*
+
+    MEDIA IF 360 PX (SMARTPHONE)
+
+  */
+
+  @media (max-width: 360px) {
+    /* SHOP */
+    .Shop-Items{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 8px;
+    }
+    /* BUTTON */
+    .Lainnya{
+        width: 40px;
+        border-radius: 3px;
+    }
+  }
+</style>
+<div class="Shop" id="shop">
+    <h2 class="Title">SHOP</h2>
+    <div class="Shop-Items">
+      <div class="Shop-Items-1">
+        <img src="src\Shop\ShopRB\ChiliRB.png" alt="">
+        <h3>Chili Powder</h3>
+        <div class="overlay">
+          <p class="text">a spice blend typically made from dried and ground chili peppers along with other ingredients like cumin, oregano, and garlic.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+      <div class="Shop-Items-2">
+        <img src="src\Shop\ShopRB\BasilRB.png" alt="">
+        <h3>Basil</h3>
+        <div class="overlay">
+          <p class="text">a fragrant herb known for its bright green leaves and distinctive aroma.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+      <div class="Shop-Items-3">
+        <img src="src\Shop\ShopRB\CinnamonRB.png" alt="">
+        <h3>Cinnamon</h3>
+        <div class="overlay">
+          <p class="text">a sweet and warm spice obtained from the bark of cinnamon trees.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+    </div>
+    <div class="Shop-Items">
+      <div class="Shop-Items-1">
+        <img src="src\Shop\ShopRB\GarlicRB.png" alt="">
+        <h3>Garlic</h3>
+        <div class="overlay">
+          <p class="text"> a pungent bulb widely used in cooking for its strong flavor and aromatic qualities.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+      <div class="Shop-Items-2">
+        <img src="src\Shop\ShopRB\CuminRB.png" alt="">
+        <h3>Cumin</h3>
+        <div class="overlay">
+          <p class="text">a spice with a warm and earthy flavor, commonly used in Indian, Middle Eastern, and Mexican cuisines.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+      <div class="Shop-Items-3">
+        <img src="src\Shop\ShopRB\GingerRB.png" alt="">
+        <h3>Ginger</h3>
+        <div class="overlay">
+          <p class="text">a root with a zesty and slightly spicy flavor.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+    </div>
+    <div class="Shop-Items">
+      <div class="Shop-Items-1">
+        <img src="src\Shop\ShopRB\OreganoRB.png" alt="">
+        <h3>Oregano</h3>
+        <div class="overlay">
+          <p class="text">a fragrant herb with a robust flavor, often associated with Italian and Mediterranean cuisines.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+      <div class="Shop-Items-2">
+        <img src="src\Shop\ShopRB\BlackpepperRB.png" alt="">
+        <h3>Black Pepper</h3>
+        <div class="overlay">
+          <p class="text">a versatile spice that adds heat and depth to a variety of dishes.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+      <div class="Shop-Items-3">
+        <img src="src\Shop\ShopRB\SaltRB.png" alt="">
+        <h3>Salt</h3>
+        <div class="overlay">
+          <p class="text">a fundamental seasoning that enhances the natural flavors of food.</p>
+          <p class="price">Rp5000/Btl</p>
+        </div>
+      </div>
+    </div>
+    <a href="/Shop"><button class="Lainnya"><p> Find More... </p></button></a>
+  </div>
+
+<script>
+    // SHOP ANIMATION
+    document.addEventListener("DOMContentLoaded", function () {
+        const shopItems = document.querySelectorAll('.Shop-Items');
+    
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.5 });
+    
+        shopItems.forEach(item => {
+            observer.observe(item);
+        });
+    });
+</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Insight.css">
+    <script src="JS\Insight.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- FORM -->
+    <div class="forms">
+        <h2>Please Write Down Your <a href="https://en.wikipedia.org/wiki/Thought"><span>Thoughts!</span></a></h2>
+        <form id="contact-form">
+            <div class="form-group">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+            <label for="message">Pesan:</label>
+            <textarea id="message" name="message" required></textarea>
+            </div>
+            <div class="form-group">
+            <input type="submit" value="Kirim Pesan">
+            </div>
+        </form>
+    </div>
+    <script src="JS\Insight.js"></script>
+    
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+</body>

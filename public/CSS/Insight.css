@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+    color: #ebeeec;
+    background-color: #140a0a;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+a{
+    color: #ebeeec;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* SCROLL BAR */
+::-webkit-scrollbar {
+    width: 7px; 
+    transition: width 0.2s linear; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #8fae51; 
+    border-radius: 2px;
+    transition: background-color 0.2s linear; 
+}
+
+::-webkit-scrollbar-track {
+    background-color: #140a0a;
+    transition: background-color 0.2s linear; 
+}
+
+body.no-scroll ::-webkit-scrollbar {
+    width: 0;
+}
+
+/* FORM */
+span{
+    color:#8fae51;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: larger;
+    margin-left: 5px;
+    cursor: pointer;
+}
+span:hover{
+    color:#7b9546;
+}
+.forms a{
+    text-decoration: none;
+}
+.forms h2{
+    text-align: center;
+}
+.forms{
+    align-items: center;
+    width: 100%;
+    height: 500px;
+    margin-top: 250px;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+}
+form {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin: 2px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ebeeec;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #8fae51;
+    color: #ebeeec;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #839f4b;  
+}

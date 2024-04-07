@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Shop.css">
+    <script src="JS\Shop.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- SHOP -->
+    <div class="container">
+        <h2>SPICE SHOP</h2>
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="Search products...">
+            <button id="search-button">Search</button>
+        </div>
+        <div class="sort-options">
+            <button id="sort-alpha">Sort Alphabetically</button>
+            <button id="sort-original">Sort Original</button>
+            <button id="sort-price">Sort by Price</button>
+            <button id="sort-ongkir">Sort by Free Ongkir</button>
+        </div>
+        <div class="shop-card">
+            <!--PRODUCT1-->
+            <div class="product">
+                <img src="src/Shop/Blackpepper.png" alt="Black Pepper">
+                <h3>Black Pepper</h3>
+                <p class="desc">A spice known for its strong flavor and aroma.</p>
+                <p>$3.69/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT2-->
+            <div class="product">
+                <img src="src/Shop/Basil.png" alt="Basil">
+                <h3>Basil</h3>
+                <p class="desc">A fragrant herb commonly used in cooking.</p>
+                <p>$3.39/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT3-->
+            <div class="product">
+                <div class="bannerbest">Best Product</div>
+                <img src="src/Shop/Garlic.png" alt="Garlic">
+                <h3>Garlic</h3>
+                <p class="desc">A pungent bulb used to enhance flavor in dishes.</p>
+                <p>$2.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT4-->
+            <div class="product">
+                <div class="banner">Free Ongkir</div>
+                <img src="src/Shop/Oregano.png" alt="Oregano">
+                <h3>Oregano</h3>
+                <p class="desc">An aromatic herb often used in Italian cuisine.</p>
+                <p>$5.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT5-->
+            <div class="product">
+                <img src="src/Shop/Cumin.png" alt="Cumin">
+                <h3>Cumin</h3>
+                <p class="desc">A spice with a warm, earthy flavor.</p>
+                <p>$1.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT6-->
+            <div class="product">
+                <img src="src/Shop/Chili.png" alt="Chili">
+                <h3>Chili</h3>
+                <p class="desc">A spicy pepper used to add heat to dishes.</p>
+                <p>$2.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT7-->
+            <div class="product">
+                <div class="banner">Free Ongkir</div>
+                <img src="src/Shop/Cinnamon.png" alt="Cinnamon">
+                <h3>Cinnamon</h3>
+                <p class="desc">A sweet spice commonly used in baking.</p>
+                <p>$3.69/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT8-->
+            <div class="product">
+                <img src="src/Shop/Salt.png" alt="Salt">
+                <h3>Salt</h3>
+                <p class="desc">A common mineral used to season food.</p>
+                <p>$5.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT9-->
+            <div class="product">
+                <img src="src/Shop/Ginger.png" alt="Ginger">
+                <h3>Ginger</h3>
+                <p class="desc">A pungent root used in cooking and traditional medicine.</p>
+                <p>$2.69/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT10-->
+            <div class="product">
+                <div class="banner">Free Ongkir</div>
+                <img src="src/Bottle.png" alt="Bottle">
+                <h3>Bottle</h3>
+                <p class="desc">A container used for storing liquids.</p>
+                <p>$0.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT11-->
+            <div class="product">
+                <img src="src/Shop/mace.png" alt="Mace">
+                <h3>Mace</h3>
+                <p class="desc">A spice made from the outer covering of nutmeg seeds.</p>
+                <p>$7.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT12-->
+            <div class="product">
+                <div class="banner">Free Ongkir</div>
+                <img src="src/Shop/fenugreek.jpg" alt="Fenugreek">
+                <h3>Fenugreek</h3>
+                <p class="desc">A plant with small, golden seeds used as a spice.</p>
+                <p>$8.69/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT13-->
+            <div class="product">
+                <img src="src/Shop/Cloves.png" alt="Cloves">
+                <h3>Cloves</h3>
+                <p class="desc">Aromatic flower buds used as a spice.</p>
+                <p>$2.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT14-->
+            <div class="product">
+                <img src="src/Shop/Coriander.jpg" alt="Coriander">
+                <h3>Coriander</h3>
+                <p class="desc">An herb with citrusy, earthy flavor.</p>
+                <p>$2.69/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!--PRODUCT15-->
+            <div class="product">
+                <div class="banner">Free Ongkir</div>
+                <img src="src/Shop/Golpar.jpg" alt="Golpar">
+                <h3>Golpar</h3>
+                <p class="desc">A spice made from the dried fruit of a plant native to Iran.</p>
+                <p>$6.99/Bottle</p>
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <!-- Add more product cards here -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="JS/Shop.js"></script>
+    
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+</body>

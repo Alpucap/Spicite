@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Homepage.css">
+    <script src="JS\Homepage.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+  
+    <!-- PREVIEW -->
+    <div class="carousel" id="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item">
+          <img src="src\Carousel1.png" alt="Image 1">
+        </div>
+        <div class="carousel-item">
+          <img src="src\Carousel2.png" alt="Image 2">
+        </div>
+        <div class="carousel-item">
+          <img src="src\Carousel3.png" alt="Image 3">
+        </div>
+      </div>
+    </div>
+    <script src="JS\Homepage.js"></script>
+
+    <!-- INTRO -->
+    <div class="Intro" id="intro">
+      <div class="Intro-items">
+        <img src="src\Shop\ShopRB\OreganoRB.png">
+        <div class="Point">
+          <h1>SPI<span>CITE</span></h1>
+          <p>Memberikan kemudahan kepada pembeli dalam mencari spices-spices berkualitas terbaik yang diinginkan. 
+            Dengan <span>SPICITE</span>, penjual dapat dengan mudah menjangkau pelanggan mereka, sementara pembeli dapat dengan cepat 
+            menemukan dan membeli spices yang berkualitas tinggi. Dengan fitur-fitur yang lengkap dan intuitif, <span>SPICITE</span> menyediakan 
+            pengalaman belanja online yang menyenangkan serta memastikan kepuasan baik bagi penjual maupun pembeli.</p>
+          <button>Selengkapnya</button>
+        </div>
+      </div>
+    </div>
+    <script src="JS\Homepage.js"></script>
+    
+    <!-- SHOP PREVIEW -->
+    <%- include('layouts/previewshop.ejs') %>
+
+    <!-- NEWS -->
+    <div class="News" id="news">
+      <h2 class="Title">NEWS</h2>
+      <button class="Lainnya"><p> Find More... </p></button>
+      <div class="News-Items">
+        <a href="https://blog.google/around-the-globe/google-asia/how-indonesia-helped-spice-world/">
+          <div class="News-Items-1">
+            <img src="src\News\News1.jpg" alt="">
+            <h3>How Indonesia Helped Spice up the World?</h3> 
+            <p>More than half of the world's spices originated from Indonesia. These spices not only flavor one of the world's most diverse cuisines — 
+              they also influenced the culinary world as we know it, changing tastes around the globe</p>
+            <h5>~ Google-asia</h5>
+          </div>
+        </a>
+        <a href="https://www.kompas.id/baca/english/2023/09/30/en-dari-nusantara-membumbui-dunia">
+          <div class="News-Items-2">
+            <img src="src\News\News2.jpg" alt="">
+            <h3>From the Archipelago to Spice Up the World</h3> 
+            <p>It is believed that the strategy of flooding the global market with Indonesian spices can accelerate 
+              efforts to introduce Indonesian culinary delights to the world.</p>
+            <h5>~ Kompas.id</h5>
+          </div>
+        </a>
+        <a href="https://en.antaranews.com/news/307251/spice-products-have-potential-to-boost-indonesia-new-zealand-trade-vp">
+          <div class="News-Items-2">
+            <img src="src\News\News3.jpg" alt="">
+            <h3>Spice products have potential to boost Indonesia-New Zealand trade: VP</h3> 
+            <p>Auckland, New Zealand (ANTARA) - Vice President Ma'ruf Amin, on Thursday, highlighted that animal and spice products 
+              have the potential to bolster bilateral trade between Indonesia and New Zealand.</p>
+            <h5>~ antaranews.com</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+    <script src="JS\Homepage.js"></script>
+    
+    <!-- QUOTES -->
+      <div class="Quotes" id="quotes">
+        <h2>QUOTES</h2>
+        <div class="Quotes-Items">
+          <div class="Quote-Item">
+            <img src="src\Shop\Cumin.png" alt="">
+            <div class="Quote-Content">
+              <p>"They'll say you are bad or perhaps you are mad or at least you should stay undercover. 
+                Your mind must be bare if you would dare to think you can love more than one lover."</p>
+              <p class="author">~ Author</p>
+            </div>
+          </div>
+          <div class="Quote-Item">
+            <img src="src\Shop\Cumin.png" alt="">
+            <div class="Quote-Content">
+              <p>"I'm unpredictable, I never know where I'm going until I get there, I'm so random, I'm always growing, learning, changing, 
+                I'm never the same person twice. But one thing you can be sure of about me; is I will always do exactly what I want to do."</p>
+              <p class="author">~ Joybell C.</p>
+            </div>
+          </div>
+          <div class="Quote-Item">
+            <img src="src\Shop\Cumin.png" alt="">
+            <div class="Quote-Content">
+              <p>"Meetings should be like salt - a spice sprinkled carefully to enhance a dish, not poured recklessly over every forkful."</p>
+              <p class="author">~ Idk</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+</body>
+</html>

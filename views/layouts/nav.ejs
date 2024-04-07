@@ -1,0 +1,196 @@
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .navbar {
+    background-color: #1b1c1a;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+
+  .menu-toggle {
+    display: none;
+    cursor: pointer;
+  }
+
+  .hamburger {
+    width: 25px;
+    height: 3px;
+    background-color: #ebeeec;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu-item {
+    margin: 0 15px;
+    color: #ebeeec;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .menu-item:hover {
+    color: #fff;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+  }
+
+  .search-bar input[type="text"] {
+    width: 150px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    background-color: #140a0a;
+    color: #ebeeec;
+    outline: none;
+  }
+
+  .search-bar input[type="text"]::placeholder {
+    color: #262825;
+  }
+
+  #searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  #searchButton img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%);
+  }
+
+  .cart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #1b1c1a;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cart-icon img {
+    width: 26px;
+    height: 24px;
+  }
+
+  .cart-icon:hover {
+    background-color: #252623;
+  }
+
+  @media (max-width: 768px) {
+    .menu-item {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .menu.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #1b1c1a;
+    }
+
+    .menu.active .menu-item {
+      display: block;
+      padding: 10px 20px;
+      border-bottom: 1px solid #252623;
+    }
+
+    .hamburger.active .line1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active .line2 {
+      opacity: 0;
+    }
+
+    .hamburger.active .line3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+</style>
+
+<div class="navbar">
+  <div class="menu">
+    <a href="/Homepage" class="menu-item">HOME</a>
+    <a href="/Recipe" class="menu-item">RECIPE</a>
+    <a href="/Shop" class="menu-item">SHOP</a>
+    <a href="/News" class="menu-item">NEWS</a>
+    <a href="/Insight" class="menu-item">INSIGHT</a>
+  </div>
+
+  <a href="/Signup" class="logo">
+    <img src="src\Logo.png" alt="Logo">
+  </a>
+  
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Search..." onkeypress="search(event)">
+    <button type="button" id="searchButton">
+      <img src="src\Search.png" alt="Search">
+    </button>
+  </div>
+
+  <div class="cart-icon" onclick="toggleCart()">
+    <img src="src\Cart.png" alt="">
+  </div>
+  
+  <div class="menu-toggle">
+    <div class="hamburger"></div>
+  </div>
+</div>
+
+<script>
+  function toggleCart() {
+    var cartIcon = document.querySelector('.cart-icon');
+    cartIcon.classList.toggle('active');
+  }
+
+  document.querySelector('.menu-toggle').addEventListener('click', function () {
+    document.querySelector('.menu').classList.toggle('active');
+    document.querySelector('.hamburger').classList.toggle('active');
+  });
+
+  function search(event) {
+    if (event.key === 'Enter') {
+      var searchValue = document.getElementById("searchInput").value.toLowerCase().trim();
+      var element = document.getElementById(searchValue);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        alert("No matching ID found.");
+      }
+      document.getElementById("searchInput").value = "";
+    }
+  }
+</script>
