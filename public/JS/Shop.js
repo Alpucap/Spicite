@@ -22,9 +22,16 @@ $(document).ready(function(){
 
     function sortByPrice() {
         var sortedProducts = sortProducts(function(a, b) {
-            var priceA = getPrice(a);
-            var priceB = getPrice(b);
-            return priceA - priceB;
+            var priceTextA = $(a).find("p").text().match(/\d+\.\d+/); 
+            var priceTextB = $(b).find("p").text().match(/\d+\.\d+/); 
+    
+            if (priceTextA && priceTextB) {
+                var priceA = parseFloat(priceTextA[0]); 
+                var priceB = parseFloat(priceTextB[0]); 
+                return priceA - priceB; 
+            } else {
+                return 0; 
+            }
         });
         $(".shop-card").empty().append(sortedProducts);
     }
@@ -42,6 +49,21 @@ $(document).ready(function(){
         $(".shop-card").empty().append(originalOrder);
     }
 
+    function sortNewest() {
+        var sortedProducts = originalOrder.slice().reverse();
+        
+        // Memindahkan best product ke urutan pertama jika ada
+        var bestProductIndex = sortedProducts.findIndex(function(product) {
+            return $(product).find(".bannerbest").length > 0;
+        });
+        if (bestProductIndex !== -1) {
+            var bestProduct = sortedProducts.splice(bestProductIndex, 1);
+            sortedProducts.unshift(bestProduct[0]);
+        }
+    
+        $(".shop-card").empty().append(sortedProducts);
+    }
+
     $("#sort-alpha").on("click", function() {
         sortAlphabetically();
     });
@@ -56,6 +78,10 @@ $(document).ready(function(){
 
     $("#sort-original").on("click", function() {
         sortOriginal();
+    });
+    
+    $("#sort-newest").on("click", function() {
+        sortNewest();
     });
 
     $("#search-bar").on("keyup", function() {

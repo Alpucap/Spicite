@@ -9,7 +9,7 @@
     padding: 10px 20px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Meletakkan semua elemen di tengah */
   }
 
   .logo img {
@@ -35,6 +35,7 @@
   .menu {
     display: flex;
     align-items: center;
+    gap: 50px
   }
 
   .menu-item {
@@ -46,60 +47,6 @@
 
   .menu-item:hover {
     color: #fff;
-  }
-
-  .search-bar {
-    display: flex;
-    align-items: center;
-  }
-
-  .search-bar input[type="text"] {
-    width: 150px;
-    padding: 8px 20px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    background-color: #140a0a;
-    color: #ebeeec;
-    outline: none;
-  }
-
-  .search-bar input[type="text"]::placeholder {
-    color: #262825;
-  }
-
-  #searchButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
-  }
-
-  #searchButton img {
-    width: 20px;
-    height: 20px;
-    filter: invert(100%);
-  }
-
-  .cart-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #1b1c1a;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .cart-icon img {
-    width: 26px;
-    height: 24px;
-  }
-
-  .cart-icon:hover {
-    background-color: #252623;
   }
 
   @media (max-width: 768px) {
@@ -145,24 +92,12 @@
   <div class="menu">
     <a href="/Homepage" class="menu-item">HOME</a>
     <a href="/Recipe" class="menu-item">RECIPE</a>
+    <!-- Letakkan logo di antara menu-item -->
+    <a href="/Signup" class="logo">
+      <img src="src\Logo.png" alt="Logo">
+    </a>
     <a href="/Shop" class="menu-item">SHOP</a>
-    <a href="/News" class="menu-item">NEWS</a>
     <a href="/Insight" class="menu-item">INSIGHT</a>
-  </div>
-
-  <a href="/Signup" class="logo">
-    <img src="src\Logo.png" alt="Logo">
-  </a>
-  
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Search..." onkeypress="search(event)">
-    <button type="button" id="searchButton">
-      <img src="src\Search.png" alt="Search">
-    </button>
-  </div>
-
-  <div class="cart-icon" onclick="toggleCart()">
-    <img src="src\Cart.png" alt="">
   </div>
   
   <div class="menu-toggle">
@@ -171,26 +106,8 @@
 </div>
 
 <script>
-  function toggleCart() {
-    var cartIcon = document.querySelector('.cart-icon');
-    cartIcon.classList.toggle('active');
-  }
-
   document.querySelector('.menu-toggle').addEventListener('click', function () {
     document.querySelector('.menu').classList.toggle('active');
     document.querySelector('.hamburger').classList.toggle('active');
   });
-
-  function search(event) {
-    if (event.key === 'Enter') {
-      var searchValue = document.getElementById("searchInput").value.toLowerCase().trim();
-      var element = document.getElementById(searchValue);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        alert("No matching ID found.");
-      }
-      document.getElementById("searchInput").value = "";
-    }
-  }
 </script>
