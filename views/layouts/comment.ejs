@@ -1,0 +1,192 @@
+
+<!-- CSS -->
+<style>
+    /* COMMENT */
+.comments-section {
+    margin: 30px;
+}
+
+.comments-section h2{
+    text-align: center;
+    color:#8fae51;
+}
+
+#comment-form {
+    margin-top: 10px;
+}
+
+#comment-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+#comment-form button {
+    padding: 8px 15px;
+    background-color: #8fae51;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.comment {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #000000;
+    border-left: 6px solid #8fae51;
+    position: relative; 
+    color: #8fae51;
+}
+
+.comment button {
+    position: absolute; 
+    top: 5px;
+    right: 5px; 
+    padding: 5px; 
+    background-color: #8fae51;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+</style>
+
+<!-- HTML -->
+<div class="comments-section">
+    <h2>COMMENTS</h2>
+    <div id="comments-list">
+        <!-- Komentar akan ditambahkan di sini menggunakan JavaScript -->
+    </div>
+    <div id="comment-form">
+        <input type="text" id="comment-input" placeholder="Type your comment here...">
+        <button onclick="addComment()">Add Comment</button>
+    </div>
+</div>
+
+<!-- JAVA SCRIPT -->
+<script>
+    // COMMENT
+    var negativeWords = ["fuck", "shit", "damn", "bitch", "asshole", "motherfucker", "cunt", "bastard", "dick", "cock",
+    "kontol", "babi", "bangsat", "goblok", "anjing", "tolol", "asu", "kampang", "setan", "bego", "ngentot"];
+
+    // Fungsi untuk menyimpan komentar ke dalam Local Storage
+    function saveComments() {
+        var comments = document.getElementsByClassName("comment");
+        var commentsArray = [];
+        for (var i = 0; i < comments.length; i++) {
+            commentsArray.push(comments[i].innerText);
+        }
+        localStorage.setItem("comments", JSON.stringify(commentsArray));
+    }
+
+    // Fungsi untuk memuat komentar dari Local Storage saat halaman dimuat
+    function loadComments() {
+        var commentsArray = JSON.parse(localStorage.getItem("comments"));
+        if (commentsArray) {
+            var commentList = document.getElementById("comments-list");
+            commentList.innerHTML = ""; // Kosongkan daftar komentar sebelum memuat dari Local Storage
+            for (var i = 0; i < commentsArray.length; i++) {
+                var commentDiv = document.createElement("div");
+                commentDiv.className = "comment";
+                commentDiv.innerText = commentsArray[i];
+                // Tambahkan tombol Hapus untuk setiap komentar
+                var deleteButton = document.createElement("button");
+                deleteButton.innerText = "Delete";
+                deleteButton.onclick = function() {
+                    deleteComment(this.parentNode);
+                };
+                commentDiv.appendChild(deleteButton);
+                commentList.appendChild(commentDiv);
+            }
+        }
+    }
+
+    // Fungsi Untuk Memfilter komen
+    function filterComment(comment) {
+        var words = comment.split(" "); // Pisahkan komentar menjadi array kata-kata
+        for (var i = 0; i < words.length; i++) {
+            // Periksa setiap kata dalam komentar
+            if (negativeWords.includes(words[i])) {
+                return false; // Jika ada kata negatif, kembalikan false
+            }
+        }
+        return true; // Jika tidak ada kata negatif, kembalikan true
+    }
+
+    // Fungsi untuk menambahkan komentar
+    function addComment() {
+        var commentInput = document.getElementById("comment-input").value;
+        if (commentInput !== "") {
+            if (commentInput.length > 200) {
+                alert("Your comment exceeds the maximum character limit of 200.");
+                return;
+            }
+
+            // Filter out comments containing negative words
+            if (!filterComment(commentInput)) {
+                alert("Your comment contains inappropriate language.");
+                return;
+            }
+
+            // Add the comment to local storage
+            var comments = JSON.parse(localStorage.getItem("comments")) || [];
+            comments.push(commentInput);
+            localStorage.setItem("comments", JSON.stringify(comments));
+
+            // Re-render the comment list
+            renderComments();
+
+            document.getElementById("comment-input").value = "";
+        } else {
+            alert("Please enter a comment!");
+        }
+    }
+
+    // Fungsi untuk menangani inputan ketika tombol "Enter" ditekan
+    function handleKeyPress(event) {
+        if (event.keyCode === 13) { // 13 adalah kode untuk tombol "Enter"
+            event.preventDefault(); // Mencegah perilaku default tombol "Enter"
+            addComment(); // Panggil fungsi addComment() untuk menambahkan komentar
+        }
+    }
+
+    // Fungsi untuk menghapus komentar
+    function deleteComment(commentIndex) {
+        var comments = JSON.parse(localStorage.getItem("comments"));
+        comments.splice(commentIndex, 1);
+        localStorage.setItem("comments", JSON.stringify(comments));
+        renderComments();
+    }
+
+    // Fungsi untuk merender daftar komentar
+    function renderComments() {
+        var commentList = document.getElementById("comments-list");
+        commentList.innerHTML = ""; // Bersihkan daftar komentar sebelum membangun ulang
+
+        var comments = JSON.parse(localStorage.getItem("comments")) || [];
+        comments.forEach(function(comment, index) {
+            var commentDiv = document.createElement("div");
+            commentDiv.className = "comment";
+            commentDiv.innerText = comment;
+
+            // Tambahkan tombol delete
+            var deleteButton = document.createElement("button");
+            deleteButton.innerText = "Delete";
+            deleteButton.onclick = function() {
+                deleteComment(index);
+            };
+            commentDiv.appendChild(deleteButton);
+
+            commentList.appendChild(commentDiv);
+        });
+    }
+
+    // Panggil renderComments saat halaman dimuat ulang
+    window.onload = function() {
+        renderComments();
+        // Tambahkan event listener untuk menangani inputan tombol "Enter"
+        document.getElementById("comment-input").addEventListener("keypress", handleKeyPress);
+    };
+</script>

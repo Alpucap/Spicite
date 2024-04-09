@@ -94,6 +94,11 @@ app.get('/Insight', (req, res) => {
   res.render('Insight', { title: 'Insight' });
 });
 
+//Menu Recipe
+app.get('/Recipe_1', (req, res) => {
+  res.render('Recipe_1', { title: 'Menu Recipe' });
+});
+
 //static
 app.use(express.static("public"));
 
