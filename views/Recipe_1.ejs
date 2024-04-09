@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_1.css">
+    <script src="JS\Recipe_1.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <h1>RENDANG</h1>
+        <a href="https://www.google.com/maps/place/Minangkabau,+Kec.+Sungayang,+Kabupaten+Tanah+Datar,+Sumatera+Barat/@-0.8428272,100.646318,9z/data=!4m6!3m5!1s0x2fd532c48b96e3af:0x7424ded8393a3548!8m2!3d-0.4193741!4d100.6027654!16s%2Fg%2F122mq_rz?entry=ttu"><p>🚩 Minangkabau, Sumatra Barat</p></a>
+        <div class="Recipe-items">
+            <img src="src\Shop\Authentic Food\Rendang.jpg" alt="">
+            <p class="caption">Src: https://www.masakapahariini.com/resep/resep-rendang-daging-sapi/</p>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>1 kg</b> <a href="/Shop"><span>Beef</span></a>, topside or silverside, diced about 3 cm on a side</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>2 stem</b> <a href="/Shop"><span>Lemon grass</span></a>, bruised, cut into two pieces</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>1 pcs</b> <a href="/Shop"><span>Fresh turmeric leaf</span></a> (if any)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>2 tbsp</b> <a href="/Shop"><span>Tamarind water</span></a> (1 tsp tamarind pulp soak in 2 tbsp water)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>5 pcs</b> <a href="/Shop"><span>Kaffir-lime leaves</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>2 liters</b> <a href="/Shop"><span>Thick coconut milk</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>2 tsp</b> <a href="/Shop"><span>Salt or to taste</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><b>250 g</b> <a href="/Shop"><span>Large red chilies</span></a>, de-seeded, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>10 pcs</b> <a href="/Shop"><span>Shallots</span></a>, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>5 cloves</b> <a href="/Shop"><span>Garlic</span></a>, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>25 g</b> <a href="/Shop"><span>Galangal</span></a>, peeled and chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>25 g</b> <a href="/Shop"><span>Ginger</span></a>, peeled, chopped</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Prepare all the ingredients.</li>
+                    <li>In a large pot, combine the diced beef, bruised lemon grass, turmeric leaf, tamarind water, kaffir-lime leaves, thick coconut milk, salt, large red chilies, shallots, garlic, galangal, and ginger.</li>
+                    <li>Bring the mixture to a boil over medium heat, then reduce the heat to low. Let it simmer uncovered, stirring occasionally, until the beef is tender and the sauce has thickened, about 3-4 hours.</li>
+                    <li>Once the rendang is thick and the sauce has reduced, continue to cook over low heat, stirring frequently to prevent burning, until the mixture is dark brown and caramelized.</li>
+                    <li>Remove from heat and let it cool slightly before serving. Enjoy your homemade rendang!</li>
+                </ol>
+            </div>
+        </div>
+        <div class="Source">
+            Source: https://recipesindonesia.com/indonesian-beef-recipes/beef-rendang/
+        </div>
+    </div>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

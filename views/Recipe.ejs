@@ -42,7 +42,7 @@
         <!-- THE RECIPE-->
         <div class="Recipe-Items">
           <!-- RECIPE 1 -->
-          <a href="#">
+          <a href="/Recipe_1">
             <div class="Recipe-Item">
               <img src="src\Shop\Cumin.png" alt="">
               <div class="Recipe-Content">
@@ -260,16 +260,7 @@
     
 
     <!-- COMMENT -->
-    <div class="comments-section">
-      <h2>COMMENTS</h2>
-      <div id="comments-list">
-          <!-- Komentar akan ditambahkan di sini menggunakan JavaScript -->
-      </div>
-      <div id="comment-form">
-          <input type="text" id="comment-input" placeholder="Type your comment here...">
-          <button onclick="addComment()">Add Comment</button>
-      </div>
-    </div>
+    <%- include('layouts/comment.ejs') %>
 
     <!-- FOOTER -->
     <%- include('layouts/footer.ejs') %>
