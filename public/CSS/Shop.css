@@ -18,32 +18,18 @@ body{
     margin: 0;
     padding: 0;
     height: 100%;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
 }
+::-webkit-scrollbar {
+    width: 0px; 
+    display: none; 
+}
+
 a{
     color: #ebeeec;
     text-decoration: none;
     font-family: 'Montserrat', sans-serif;
-}
-
-/* SCROLL BAR */
-::-webkit-scrollbar {
-    width: 7px; 
-    transition: width 0.2s linear; 
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #8fae51; 
-    border-radius: 2px;
-    transition: background-color 0.2s linear; 
-}
-
-::-webkit-scrollbar-track {
-    background-color: #140a0a;
-    transition: background-color 0.2s linear; 
-}
-
-body.no-scroll ::-webkit-scrollbar {
-    width: 0;
 }
 
 /* SHOP CARD */
@@ -137,6 +123,8 @@ body.no-scroll ::-webkit-scrollbar {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    width: auto;
+    justify-content:center;
 }
 
 .search-container input[type=text] {
@@ -164,19 +152,25 @@ body.no-scroll ::-webkit-scrollbar {
     margin-left: 10px; /* Menambahkan margin kiri agar tidak rapat dengan input */
 }
 
+.search-container button:hover {
+    background-color: #253222; 
+}
 #cart-button {
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
+    border: 1px solid #ebeeec;
+    background-color: #374c33; 
+    color: #ebeeec;
 }
 
 #cart-button:hover {
-    background-color: #45a049;
+    background-color: #253222; 
 }
 
 .sort-options {
     margin-bottom: 20px;
     color: #ebeeec;
+    align-items: center;
+    display: flex;
+    justify-content:center;
 }
 
 .sort-options button {
@@ -185,4 +179,8 @@ body.no-scroll ::-webkit-scrollbar {
     background-color: #374c33;
     border-radius: 5px;
     border: 1px solid #ebeeec;
+}
+
+.sort-options button:hover {
+    background-color: #253222; 
 }
