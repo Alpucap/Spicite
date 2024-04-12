@@ -4,119 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Register Account</title>
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #2d3230;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .container {
-    width: 300px;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  .container h2 {
-    text-align: center;
-  }
-  .form-group {
-    margin-bottom: 15px;
-  }
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-  }
-  .btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4caf50;
-    color: #fff; /* Set text color to white */
-    cursor: pointer;
-}
-
-.btn:hover {
-    background-color: #45a049;
-}
-</style>
+<link rel="stylesheet" href="/CSS/Signup.css">
 </head>
 <body>
-<div class="container">
-  <h2>Register Account</h2>
-  <form id="registerForm">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name2" name2="name" required>
-    </div>
-    <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-    <div class="form-group">
-      <input type="submit" value="Register">
+  <div class="trail"></div>
+  <div class="container">
+    <h2>Register Account</h2>
+    <form id="registerForm" action="/submit-register" method="POST">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
       </div>
-  </form>
-</div>
-
-<script>
-  document.getElementById('registerForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-
-    // Get form values
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-
-    // Here you can perform further validation or send the data to the server
-    // Send form data to server
-  fetch('/submit-form', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ name, email, password }),
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    return response.text();
-})
-.then(data => {
-    console.log(data);
-    alert('Pesan terkirim!');
-    document.getElementById('contact-form').reset();
-})
-.catch(error => {
-    console.error('There was a problem with your fetch operation:', error);
-    alert('Gagal mengirim pesan!');
-});
-
-    // For this example, let's just log the values to the console
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
-  });
-</script>
-
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <div class="register-button">
+          <input type="submit" value="Register">
+        </div>
+      </div>
+    </form>
+    <div class="button-group">
+      <a href="#" onclick="goBack()" class="back-button"><<</a>
+      <a href="/signin" class="signin-button">Already have an account?</a>
+    </div>
+    <div class="forgot-password"> <!-- Forgot Password di bawah Sign In dan Back -->
+      <a href="/forgotpassword">Forgot Password?</a>
+    </div>
+  </div>
+  <script src="/JS/Signup.js"></script>
 </body>
 </html>

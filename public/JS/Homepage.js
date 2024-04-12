@@ -1,37 +1,4 @@
-//Carousel
-function carousel() {
-    const carousel = document.querySelector('.carousel');
-    const carouselInner = document.querySelector('.carousel-inner');
-    const items = Array.from(document.querySelectorAll('.carousel-item'));
-    const itemWidth = carousel.clientWidth;
 
-    let currentIndex = 0;
-    let interval;
-
-    function moveCarousel() {
-        carouselInner.style.transition = 'transform 0.5s ease'; 
-        carouselInner.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
-    }
-
-    function startCarousel() {
-        interval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % items.length;
-            moveCarousel();
-        }, 3000);
-    }
-
-    function stopCarousel() {
-        clearInterval(interval);
-    }
-
-    carousel.addEventListener('mouseenter', stopCarousel);
-    carousel.addEventListener('mouseleave', startCarousel);
-
-    moveCarousel();
-    startCarousel();
-}
-
-carousel();
 
 
 // INTRO ANIMATION

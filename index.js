@@ -4,6 +4,7 @@ const app = express();
 const port = 3000;
 const path = require("path");
 
+// MONGODB
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/account', {
     useNewUrlParser: true,
@@ -15,13 +16,14 @@ db.once('open', function () {
     console.log('Connected to MongoDB');
 });
 
+
+// INSIGHT
 // Memasukkan data insight
 const FormDataSchema = new mongoose.Schema({
   name: String,
   email: String,
   message: String
 }, { collection: 'insightUser' }); // Specify collection name
-
 
 // Create a model
 const FormData = mongoose.model('FormData', FormDataSchema);
@@ -30,7 +32,6 @@ const FormData = mongoose.model('FormData', FormDataSchema);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Route to handle form submission
 app.post('/submit-form', async (req, res) => {
     try {
         const { name, email, message } = req.body;
@@ -44,17 +45,16 @@ app.post('/submit-form', async (req, res) => {
     }
 });
 
-// Memasukkan data register
+
+//SIGNUP
 const RegisterDataSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String
 }, { collection: 'dataAkun' }); // Specify collection name
 
-// Create a model for Register data
 const RegisterData = mongoose.model('RegisterData', RegisterDataSchema);
 
-// Route to handle register form submission
 app.post('/submit-register', async (req, res) => {
   try {
       const { name, email, password } = req.body;
@@ -66,11 +66,6 @@ app.post('/submit-register', async (req, res) => {
       console.error(err);
       res.status(500).send('Internal Server Error');
   }
-});
-
-// Menampilkan halaman pendaftaran
-app.get('/Signup', (req, res) => {
-  res.render('Signup', { title: 'Signup' });
 });
 
 // Render homepage
@@ -98,6 +93,12 @@ app.get('/Insight', (req, res) => {
 app.get('/Recipe_1', (req, res) => {
   res.render('Recipe_1', { title: 'Menu Recipe' });
 });
+
+//Signup
+app.get('/Signup', (req, res) => {
+  res.render('Signup', { title: 'Signup' });
+});
+
 
 //static
 app.use(express.static("public"));
