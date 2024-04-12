@@ -1,6 +1,5 @@
 
 
-
 // INTRO ANIMATION
 document.addEventListener('DOMContentLoaded', function() {
     var introItems = document.querySelectorAll('.Intro-items');
