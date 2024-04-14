@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <link rel="stylesheet" href="CSS\Recipe_1.css">
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
     <script src="JS\Recipe_1.js"></script>
     <link rel="icon" type="image/x-icon" href="src\Logo.png">
 </head>
@@ -14,11 +14,33 @@
 
     <!-- RECIPE -->
     <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\Rendang.png" alt="">
         <h1>RENDANG</h1>
-        <a href="https://www.google.com/maps/place/Minangkabau,+Kec.+Sungayang,+Kabupaten+Tanah+Datar,+Sumatera+Barat/@-0.8428272,100.646318,9z/data=!4m6!3m5!1s0x2fd532c48b96e3af:0x7424ded8393a3548!8m2!3d-0.4193741!4d100.6027654!16s%2Fg%2F122mq_rz?entry=ttu"><p>🚩 Minangkabau, Sumatra Barat</p></a>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Minangkabau,+Kec.+Sungayang,+Kabupaten+Tanah+Datar,+Sumatera+Barat/@-0.8428272,100.646318,9z/data=!4m6!3m5!1s0x2fd532c48b96e3af:0x7424ded8393a3548!8m2!3d-0.4193741!4d100.6027654!16s%2Fg%2F122mq_rz?entry=ttu">
+                Minangkabau, Sumatra Barat 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://recipesindonesia.com/indonesian-beef-recipes/beef-rendang/">
+            By: recipesindonesia.com
+            </a>
+        </div>
+        
         <div class="Recipe-items">
-            <img src="src\Shop\Authentic Food\Rendang.jpg" alt="">
-            <p class="caption">Src: https://www.masakapahariini.com/resep/resep-rendang-daging-sapi/</p>
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>
+                    Rendang, a culinary treasure hailing from Indonesia's Minangkabau heritage, epitomizes the artistry and 
+                    depth of Indonesian cuisine. Slow-cooked to perfection, tender morsels of beef, chicken, or other proteins 
+                    are enveloped in a symphony of coconut milk and an aromatic blend of spices including lemongrass, galangal, 
+                    ginger, and chili peppers. As it simmers, the flavors meld and intensify, resulting in a dish of unparalleled 
+                    richness and complexity. Beyond its culinary prowess, rendang holds deep cultural significance, often gracing 
+                    the tables of special occasions and celebrations, symbolizing community, tradition, and hospitality. 
+                    Recognized by UNESCO as an intangible cultural heritage, rendang stands as a testament to Indonesia's culinary 
+                    heritage, captivating palates worldwide with its irresistible blend of flavors and timeless appeal.
+                </p>
+            </div>
             <div class="Ingredients">
                 <h3>Ingredients</h3>
                 <ul class="checkbox-list">
@@ -83,10 +105,9 @@
                 </ol>
             </div>
         </div>
-        <div class="Source">
-            Source: https://recipesindonesia.com/indonesian-beef-recipes/beef-rendang/
-        </div>
     </div>
+    <!-- COMMENT -->
+    <%- include('layouts/comment.ejs') %>
     <!-- FOOTER -->
     <%- include('layouts/footer.ejs') %>
 

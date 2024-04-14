@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\Pendap.png" alt="">
+        <h1>PENDAP</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps?sca_esv=9e7c10552b936d23&sca_upv=1&output=search&q=bengkulu&source=lnms&entry=mc&ved=1t:200715&ictx=111">
+                Bengkulu Selatan, Bengkulu 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://sajiansedap.grid.id/read/10756682/ini-dia-resep-pendap-olahan-ikan-lezat-khas-bengkulu?page=all">
+            By: sajiansedap.grid.id
+            </a>
+        </div>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                    Pendap is a traditional Indonesian dish originating from the Minangkabau culture of West Sumatra. 
+                    It is a flavorful beef dish cooked with a variety of spices, creating a rich and aromatic broth. 
+                    The dish typically includes ingredients such as beef, coconut milk, turmeric, lemongrass, galangal, 
+                    and kaffir lime leaves. The beef is simmered until tender in the fragrant coconut milk broth, absorbing 
+                    the flavors of the spices. Pendap is known for its bold and complex flavors, making it a beloved dish in 
+                    Indonesian cuisine, often served with steamed rice or as part of a larger spread of Minangkabau dishes.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>5 ekor</b><a href="/Shop"><span> Ikan Kembung</span></a>, dicuci bersih</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>1 batang</b><a href="/Shop"><span> Daun Bawang</span></a>, dipotong 1/2 cm</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>2 tangkai</b><a href="/Shop"><span> Daun Seledri</span></a>, diiris kasar</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>2 cm</b><a href="/Shop"><span> Lengkuas</span></a>, dimemarkan</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>2 batang</b><a href="/Shop"><span> Serai</span></a>, dimemarkan</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>4 buah</b><a href="/Shop"><span> Asam Kandis</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>5 lembar</b><a href="/Shop"><span> Daun Mangkokan</span></a>, diiris kasar</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><b>100 gram</b><a href="/Shop"><span> Kelapa Parut</span></a> kasar, disangrai</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>1 sendok teh</b><a href="/Shop"><span> Garam</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>3/4 sendok teh</b><a href="/Shop"><span> Gula Pasir</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>500 ml</b><a href="/Shop"><span> Santan</span></a> dari 1/2 butir kelapa</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>2 sendok makan</b><a href="/Shop"><span> Minyak</span></a> untuk menumis</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient13">
+                        <label for="ingredient13"><b>5 lembar</b><a href="/Shop"><span> Daun Pisang</span></a> untuk membungkus</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient14">
+                        <label for="ingredient14"><b>10 butir</b><a href="/Shop"><span> Bawang Merah</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient15">
+                        <label for="ingredient15"><b>4 siung</b><a href="/Shop"><span> Bawang Putih</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient16">
+                        <label for="ingredient16"><b>6 butir</b><a href="/Shop"><span> Kemiri</span></a>, sangrai</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient17">
+                        <label for="ingredient17"><b>6 buah</b><a href="/Shop"><span> Cabai Merah</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient18">
+                        <label for="ingredient18"><b>2 cm</b><a href="/Shop"><span> Jahe</span></a></label>
+                    </li>                
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Prepare the banana leaves by rinsing and lightly rubbing them with 1/2 teaspoon of salt. Set aside.</li>
+                    <li>Coat the mackerel with half of the spice paste and 1 teaspoon of salt. Wrap it in banana leaves and steam for 30 minutes until cooked.</li>
+                    <li>Unwrap the banana leaves and place the mackerel on a serving plate. Set aside.</li>
+                    <li>Heat oil in a pan. Sauté the remaining spice paste until fragrant.</li>
+                    <li>Add the green onions, celery, galangal, lemongrass, tamarind, and mangosteen leaves. Cook until wilted.</li>
+                    <li>Stir in the grated coconut. Mix well.</li>
+                    <li>Pour in the coconut milk, salt, ground pepper, and sugar. Cook until thickened.</li>
+                    <li>Pour the sauce over the mackerel.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- COMMENT -->
+    <%- include('layouts/comment.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

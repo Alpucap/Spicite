@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\NasiLiwet.png" alt="">
+        <h1>NASI LIWET</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Jawa+Barat/@-6.86331,106.2854038,8z/data=!3m1!4b1!4m6!3m5!1s0x2e68e6398252477f:0xbc18a454fc8e9d7e!8m2!3d-7.090911!4d107.668887!16zL20vMDF0bXRn?entry=ttu">
+                Jawa Barat, Indonesia 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://cookpad.com/id/resep/2750108-nasi-liwet-ricecooker">
+            By: cookpad.com
+            </a>
+        </div>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                    Nasi Liwet is a beloved Indonesian dish originating from the Sundanese region of West Java. 
+                    This flavorful rice dish is cooked with coconut milk, shallots, garlic, and a blend of aromatic 
+                    spices such as lemongrass, bay leaves, and galangal, imparting it with a rich and fragrant taste. 
+                    Often served with various side dishes such as fried chicken, tempeh, or tofu, as well as fresh 
+                    vegetables and sambal, Nasi Liwet offers a complete and satisfying meal that tantalizes the taste 
+                    buds with its harmonious blend of flavors. Enjoyed during special occasions or as a comforting 
+                    everyday meal, Nasi Liwet is a culinary delight that reflects the diverse and vibrant food culture 
+                    of Indonesia.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>4 cups</b><a href="/Shop"><span> Rice</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>2 stalks</b><a href="/Shop"><span> Lemongrass</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>2 leaves</b><a href="/Shop"><span> Bay Leaves</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>5 shallots</b><a href="/Shop"><span> Shallots</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>3 cloves</b><a href="/Shop"><span> Garlic</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>1 handful</b><a href="/Shop"><span> Anchovies</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>2 large</b><a href="/Shop"><span> Red Chili Peppers</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><a href="/Shop"><span> Salt</span></a>, to taste</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><a href="/Shop"><span> Powdered Broth</span></a>, to taste</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Rinse the rice thoroughly, then place it in the rice cooker.</li>
+                    <li>Fry the anchovies until golden brown, then set aside.</li>
+                    <li>Slice the onions thinly and chop the large red chili.</li>
+                    <li>Saute the onions and red chili until fragrant. Add lemongrass (bruised) and bay leaves.</li>
+                    <li>Add the fried anchovies, sauté briefly, then transfer the mixture into the rinsed rice.</li>
+                    <li>Add water according to the usual rice cooking ratio. Adjust slightly if necessary.</li>
+                    <li>Season with salt and chicken stock powder, stir, and taste.</li>
+                    <li>If it's to your liking, press the "cook" button on the rice cooker.</li>
+                    <li>Once cooked, stir the rice to distribute the flavors evenly before serving.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- COMMENT -->
+    <%- include('layouts/comment.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>
