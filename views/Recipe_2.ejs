@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\NasiGoreng.png" alt="">
+        <h1>NASI GORENG</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Jakarta,+Daerah+Khusus+Ibukota+Jakarta/@-6.2293796,106.6647031,11z/data=!3m1!4b1!4m6!3m5!1s0x2e69f3e945e34b9d:0x5371bf0fdad786a2!8m2!3d-6.1944491!4d106.8229198!16zL20vMDQ0cnY?hl=id&entry=ttu">
+                DKI Jakarta, Indonesia 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://recipesindonesia.com/indonesian-rice-noodle-recipes/nasi-goreng/">
+            By: recipesindonesia.com
+            </a>
+        </div>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>
+                    Nasi Goreng, a beloved Indonesian dish, embodies a harmonious blend of flavors and textures. 
+                    This fragrant fried rice dish is a culinary masterpiece, typically prepared with pre-cooked rice 
+                    stir-fried with a medley of ingredients such as chicken, vegetables, and a rich array of spices and 
+                    seasonings. The dish is elevated by the aromatic paste, often crafted from a mixture of shallots, garlic, 
+                    and chilies, creating a complex depth of flavor. Kecap Manis, a sweet soy sauce, lends a touch of sweetness, 
+                    while tomato sauce adds a hint of tanginess. Served with a garnish of fresh cucumber, tomato slices, and 
+                    crispy kerupuk udang (shrimp crackers), Nasi Goreng is not just a meal; it's a cultural experience, 
+                    delighting palates with each savory bite and inviting diners into the heart of Indonesian cuisine.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>500 g</b> <a href="/Shop"><span>Precooked Rice</span></a>, cooled down</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>150 g</b> <a href="/Shop"><span>Chicken Fillet</span></a>, cut in cubes</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>2 pc</b> <a href="/Shop"><span>Egg</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><a href="/Shop"><span>Vegetables</span></a> if preferred (e.g., grated cabbage, carrot)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>1 pc</b> <a href="/Shop"><span>Spring Onion</span></a>, finely sliced</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>2 tsp</b> <a href="/Shop"><span>Indonesian Sweet Soya Sauce</span></a> / Kecap Manis</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>1 tsp</b> <a href="/Shop"><span>Tomato Sauce</span></a> or <a href="/Shop"><span>Tomato Puree</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><b>1 tsp</b> <a href="/Shop"><span>Salt</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>3 pc</b> <a href="/Shop"><span>Large Red Chillies</span></a>, de-seeded, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>5 pc</b> <a href="/Shop"><span>Small Red Chillies</span></a> / Bird Chillies (optional)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>5 pc</b> <a href="/Shop"><span>Shallots</span></a>, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>2 cloves</b> <a href="/Shop"><span>Garlic</span></a>, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient13">
+                        <label for="ingredient13"><b>¼ tsp</b> <a href="/Shop"><span>Roasted Dried Shrimp Paste</span></a> / Terasi (optional)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient14">
+                        <label for="ingredient14"><b>1 pc</b> <a href="/Shop"><span>Tomato</span></a>, sliced</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient15">
+                        <label for="ingredient15"><a href="/Shop"><span>Cucumber</span></a>, sliced</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient16">
+                        <label for="ingredient16"><a href="/Shop"><span>Kerupuk Udang</span></a> / Shrimp Chips</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient17">
+                        <label for="ingredient17"><a href="/Shop"><span>Fried Shallots</span></a> / Onion</label>
+                    </li>                    
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Put all ingredients for the paste in a blender or food processor and blend until smooth. (If necessary, add a little bit of oil to help the blending process).</li>
+                    <li>Heat 2 tbsp oil in a wok or big saucepan. (Don't add oil if already added in the blender). Stir fry the paste all the time until you can smell a good aroma/fragrance.</li>
+                    <li>Stir fry the spices.</li>
+                    <li>Add the chicken, stir to mix. Proceed until the chicken is well cooked.</li>
+                    <li>Add the grated vegetables if used. Stir to cook.</li>
+                    <li>Adjust the heat to medium. Add the cooked rice. Stir to mix.</li>
+                    <li>Add kecap manis, tomato sauce & spring onion. Add salt to taste.</li>
+                    <li>Stir to mix and lift.</li>
+                    <li>Fry the eggs into "sunny side up" form. You can also fry as an omelet and then slice it thinly.</li>
+                    <li>Serve Nasi Goreng immediately. Garnish with sliced tomato, cucumber, and kerupuk udang (shrimp crackers).</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- COMMENT -->
+    <%- include('layouts/comment.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

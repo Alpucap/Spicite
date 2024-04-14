@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\Klepon.png" alt="">
+        <h1>KLEPON</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Pasuruan,+Kota+Pasuruan,+Jawa+Timur/@-7.6513922,112.8844951,14z/data=!3m1!4b1!4m6!3m5!1s0x2dd7c5e1a5fb57df:0xbe8c958dde768096!8m2!3d-7.6469193!4d112.8999225!16zL20vMDdocDYy?entry=ttu">
+                Pasuruan, Jawa Timur 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="http://www.belindo.com/indonesia/indonesian-recipes/desserts-and-sweets/klepon-sweet-indonesian-rice-balls/192">
+            By: belindo.com
+            </a>
+        </div>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                    Klepon is a traditional Indonesian sweet snack originating from Java, made from glutinous rice flour dough 
+                    filled with palm sugar and coated with grated coconut. These bite-sized green balls are boiled until they 
+                    float, indicating they are cooked, then rolled in coconut flakes. Once bitten into, the palm sugar filling
+                    oozes out, providing a delightful burst of sweetness that contrasts beautifully with the chewy texture of 
+                    the rice cake. Klepon is a popular treat enjoyed as a snack or dessert, appreciated for its unique 
+                    combination of flavors and textures, making it a beloved part of Indonesian culinary culture.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>1½ cups</b><a href="/Shop"><span> Glutinous Rice Powder</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>¾ cup</b><a href="/Shop"><span> Lukewarm Water</span></a> (optionally coconut milk)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>2-3 drops</b><a href="/Shop"><span> Green Food Coloring or Pandan Paste</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>8 tsp.</b><a href="/Shop"><span> Grated Coconut Sugar/Java Dark Brown Sugar/Gula Jawa/Palm Sugar</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>1 cup</b><a href="/Shop"><span> Fresh-Grated Coconut</span></a>, mixed with <b>½ tsp.</b> Salt</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Mix the glutinous rice powder with lukewarm water and green food coloring until it forms a firm but flexible dough.</li>
+                    <li>Pull off one full teaspoon of the dough and shape it into a ball approximately 2½ cm (1 inch) in diameter.</li>
+                    <li>Press a finger into the center of the ball to make a hole, then add approximately ½ tsp. of grated sugar. Seal the hole and roll the ball back into shape with the palms of your hands.</li>
+                    <li>Repeat the process for all the dough, shaping them into balls and setting them aside.</li>
+                    <li>Fill a pot halfway with water and bring it to a boil.</li>
+                    <li>Drop the balls into the boiling water. Remove them with a spoon once they float to the water's surface, then roll them in grated coconut.</li>
+                    <li>Serve the balls at room temperature.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- COMMENT -->
+    <%- include('layouts/comment.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

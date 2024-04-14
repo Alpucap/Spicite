@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\BabiGuling.png" alt="">
+        <h1>BABI GULING</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Bali/@-8.4532613,113.7519707,8z/data=!3m1!4b1!4m6!3m5!1s0x2dd141d3e8100fa1:0x24910fb14b24e690!8m2!3d-8.4095178!4d115.188916!16s%2Fg%2F121hxh1j?entry=ttu">
+                Bali, Indonesia 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://www.indofoodstore.com/babi-guling-indonesian-ingredients-and-video.aspx">
+            By: indofoodstore.com
+            </a>
+        </div>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                    Babi Guling is a traditional Balinese dish renowned for its succulent roasted pork. 
+                    Prepared by seasoning a whole pig with a blend of local spices like turmeric, garlic, 
+                    ginger, and lemongrass, it's then slow-roasted over open flames or in a pit until the skin 
+                    becomes crispy and golden, while the meat inside remains tender and flavorful. Served with 
+                    accompaniments such as steamed rice, lawar (a Balinese vegetable salad), and sambal matah 
+                    (a spicy chili relish), Babi Guling offers a symphony of textures and flavors that exemplify 
+                    the vibrant culinary heritage of Bali.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>2,5 kg</b><a href="/Shop"><span> Potongan Perut Babi</span></a> (kulitnya)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>1½ sdm</b><a href="/Shop"><span> Garam</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>5 lembar</b><a href="/Shop"><span> Daun Jeruk Purut</span></a>, diparut</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>2 lembar</b><a href="/Shop"><span> Daun Salam Kering</span></a>, haluskan (opsional)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>50 gram</b><a href="/Shop"><span> Kunyit Segar</span></a>, diparut halus (atau 1 sdm kunyit kering giling) dicampur dengan 125ml air, disaring, padatannya dibuang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>80 gram</b><a href="/Shop"><span> Kunyit Segar</span></a>, cincang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>12</b><a href="/Shop"><span> Cabai Rawit</span></a>, cincang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><b>8 siung</b><a href="/Shop"><span> Bawang Merah Emas</span></a>, cincang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>5 siung</b><a href="/Shop"><span> Bawang Putih Besar</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>2 batang</b><a href="/Shop"><span> Serai</span></a> ukuran besar, (bagian putihnya saja), cincang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>10 gram</b><a href="/Shop"><span> Jahe</span></a>, cincang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>2 sdm</b><a href="/Shop"><span> Biji Ketumbar</span></a>, haluskan</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient13">
+                        <label for="ingredient13"><b>2 sdm</b><a href="/Shop"><span> Minyak Sayur</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient14">
+                        <label for="ingredient14"><b>1 sdm</b><a href="/Shop"><span> Merica Hitam</span></a>, haluskan</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient15">
+                        <label for="ingredient15"><b>1 sdm</b><a href="/Shop"><span> Lengkuas</span></a> cincang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient16">
+                        <label for="ingredient16"><b>1 sdt</b><a href="/Shop"><span> Kencur Bubuk</span></a></label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Lumuri kulit dan daging perut babi dengan garam, sisihkan.</li>
+                    <li>Proses bahan untuk pasta bumbu dan 1 sdt garam laut halus dalam food processor hingga berbentuk pasta halus.</li>
+                    <li>Panaskan oven hingga 200°C.</li>
+                    <li>Letakkan kulit babi menghadap ke bawah di atas permukaan kerja. Oleskan pasta bumbu, taburkan daun jeruk dan daun salam di salah satu sisinya yang panjang, lalu gulung hingga membentuk silinder panjang.</li>
+                    <li>Aman dengan tusuk sate atau ikat secara berkala dengan tali dapur. Olesi kulitnya dengan jus kunyit dan biarkan meresap di tempat sejuk yang berangin untuk mengeringkan kulit selama 30 menit.</li>
+                    <li>Tempatkan daging babi di rak dalam loyang dan panggang sampai kulitnya pecah-pecah selama 30 menit.</li>
+                    <li>Kurangi oven menjadi 175°C dan olesi sesekali dengan jus panci sampai jusnya jernih ketika bagian daging babi yang paling tebal ditusuk dengan tusuk sate selama satu jam 15 menit.</li>
+                    <li>Keluarkan dari oven dan diamkan, biarkan lemaknya mengendap selama sekitar 10 menit.</li>
+                    <li>Keluarkan tusuk sate atau ikatan tali dan potong dagingnya.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- COMMENT -->
+    <%- include('layouts/comment.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

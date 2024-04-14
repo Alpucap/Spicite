@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\Gudeg.png" alt="">
+        <h1>GUDEG JOGJA</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Yogyakarta,+Kota+Yogyakarta,+Daerah+Istimewa+Yogyakarta/@-7.894737,110.4435083,11z/data=!4m6!3m5!1s0x2e7a5787bd5b6bc5:0x21723fd4d3684f71!8m2!3d-7.8013672!4d110.3647568!16zL20vMGRnNnl4?hl=id&entry=ttu">
+                Daerah Istimewa Yogyakarta, Indonesia 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://tasty-indonesian-food.com/indonesian-food-recipes/tahu-tempe-vegetables/gudeg/">
+            By: tastyindonesianfood.com
+            </a>
+        </div>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                Gudeg Jogja is a traditional Javanese dish originating from Yogyakarta, Indonesia, renowned for 
+                its rich and complex flavors. Prepared by simmering young jackfruit with palm sugar, coconut milk, and 
+                an array of aromatic spices such as bay leaves and galangal, gudeg offers a harmonious blend of sweet and 
+                savory notes. Often served alongside steamed rice, opor ayam (chicken in coconut milk), tofu and tempeh bacem 
+                (sweet soy-marinated tofu and tempeh), sambal goreng krecek (spicy beef skin stew), and sambal, gudeg Jogja is 
+                a culinary delight that captures the essence of Javanese cuisine and the cultural heritage of Yogyakarta.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>1 canned</b> <a href="/shop"><span>young jackfruit</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>5</b> <a href="/shop"><span>boiled eggs</span></a>, peeled</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>50 g</b> <a href="/shop"><span>palm sugar</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>2 or 3</b> <a href="/shop"><span>black tea bags</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>100 g</b> <a href="/shop"><span>brown soybeans</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>5</b> <a href="/shop"><span>Salaam (Indian Bay Leaves) leaves</span></a> (or substitutes with bay leaves)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>2 cm</b> <a href="/shop"><span>fresh galangal</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><b>300 ml</b> <a href="/shop"><span>coconut milk</span></a> thick or <b>250 ml</b> <a href="/shop"><span>coconut water</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>300 ml</b> <a href="/shop"><span>water</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>6</b> <a href="/shop"><span>shallots</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>4 cloves</b> <a href="/shop"><span>garlic</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>1 tablespoon</b> <a href="/shop"><span>coriander</span></a>, pan-broil</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient13">
+                        <label for="ingredient13"><b>3</b> <a href="/shop"><span>candle nuts</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient14">
+                        <label for="ingredient14"><b>1 1/2 teaspoons</b> <a href="/shop"><span>salt</span></a> to taste</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Grind or blend the spice paste.</li>
+                    <li>Boil the brown soybeans until tender; set aside.</li>
+                    <li>Cook the young jackfruit in 300 ml water with the black tea until the water turns brown.</li>
+                    <li>Remove the tea bags from the broth and add the spice paste, boiled eggs, palm sugar, salaam leaves, and galangal. Cook until fragrant.</li>
+                    <li>Stir in the coconut milk, boiled brown soybeans, and salt. Cook until the sauce thickens.</li>
+                    <li>Serve the gudeg with steamed rice, opor ayam, tahu bacem, tempe bacem, sambal goreng krecek, and sambal.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- COMMENT -->
+    <%- include('layouts/comment.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

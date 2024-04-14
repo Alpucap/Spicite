@@ -87,8 +87,6 @@ a{
     right: 10px;
 }
   
-  
-
 /* RECIPE LIST */
 .RecipeList {
     position: flex;
@@ -110,7 +108,7 @@ a{
 }
 
 .Recipe-News-Items {
-    background-color: #374c33;
+    background-color: #374c33 ;
     margin-right: 25px;
     flex: 1;
     min-width: 200px;
@@ -129,7 +127,7 @@ a{
     margin-left: 5px;
     display: flex;
     align-items: center; 
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .Recipe-News-Items-Content-1 p,
@@ -174,13 +172,14 @@ a{
     align-items: center;
     justify-content: space-between;
     text-align: center;
-    background-color: #8fae51;
+    background-color: #4c5250;
     padding: 20px;
     border-radius: 10px;
     gap: 20px;
     opacity: 0;
     transform: translateX(-10px);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    height: 150px;
 }
 
 .Recipe-Item.visible {
@@ -188,12 +187,30 @@ a{
     transform: translateX(20px);
 }
 
+.Recipe-Item p{
+    margin: 0;
+    font-size: 16px;
+    color: #96a09d;
+}
+.Recipe-Item img{
+    width: 150px;
+    height: 100px;
+    max-height: 100px; 
+    border-radius: 5px;
+}
 
+.Recipe-Item .Recipe-Content-Subtitle{
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ebeeec;
+    margin-bottom: 2px;
+}
 .Recipe-Items {
     display: flex;
     justify-content: left;
     flex-wrap: wrap; 
-    max-width: 900px;
+    width: 900px;
     gap: 25px; 
     margin-left: 10px;
 }
@@ -202,13 +219,6 @@ a{
     text-align: left; 
 }
 
-.author {
-    margin-top: 10px; /* Add some space between the Recipe and author */
-}
-
-.Recipe-Item img {
-    max-height: 100px; /* Set maximum height for the image */
-}
 
 .Recipe-Items a{
     display: block;
