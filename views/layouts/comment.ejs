@@ -1,62 +1,65 @@
 
 <!-- CSS -->
 <style>
-.comments-section {
-    margin: 30px;
-}
+    .comments-section {
+        margin: 30px;
+    }
 
-.comments-section h2{
-    text-align: center;
-    color:#8fae51;
-}
+    .comments-section h2 {
+        text-align: center;
+        color: #8fae51;
+    }
 
-#comment-form {
-    margin-top: 10px;
-}
+    #comment-form {
+        margin-top: 10px;
+    }
 
-#comment-input {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 8px;
-    border-radius: 5px;
-}
+    #comment-input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+    }
 
-#comment-form button {
-    padding: 8px 15px;
-    background-color: #8fae51;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
+    #comment-form button {
+        padding: 8px 15px;
+        background-color: #8fae51;
+        color: #ebeeec;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 
-.comment {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #000000;
-    border-left: 6px solid #8fae51;
-    position: relative; 
-    color: #8fae51;
-}
-
-.comment button {
-    position: absolute; 
-    top: 5px;
-    right: 5px; 
-    padding: 5px; 
-    background-color: #8fae51;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
+    .comment {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #000000;
+        border-left: 6px solid #8fae51;
+        position: relative;
+        color: #8fae51;
+    }
+    
+    .comment-button {
+        padding: 5px;
+        background-color: #8fae51;
+        color: #ebeeec;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: 5px; 
+        float: right; /* Align button to the right */
+    }
+    
+    .comment-button:hover {
+        background-color: #748e42;
+    }
 </style>
 
 <!-- HTML -->
 <div class="comments-section">
     <h2>COMMENTS</h2>
     <div id="comments-list">
-        <!-- Komentar akan ditambahkan di sini menggunakan JavaScript -->
+        <!-- Comments will be added here using JavaScript -->
     </div>
     <div id="comment-form">
         <input type="text" id="comment-input" placeholder="Type your comment here...">
@@ -159,6 +162,25 @@
         renderComments();
     }
 
+    // Fungsi untuk mengedit komentar
+    function editComment(index, commentTextElement) {
+        var newComment = prompt("Edit your comment:", commentTextElement.innerText);
+        if (newComment !== null) {
+            // Filter out comments containing negative words
+            if (!filterComment(newComment)) {
+                alert("Your edited comment contains inappropriate language.");
+                return;
+            }
+    
+            // Update the comment in the local storage array
+            var comments = JSON.parse(localStorage.getItem("comments")) || [];
+            comments[index] = newComment;
+            localStorage.setItem("comments", JSON.stringify(comments));
+            // Update the displayed comment text
+            commentTextElement.innerText = newComment;
+        }
+    }
+
     // Fungsi untuk merender daftar komentar
     function renderComments() {
         var commentList = document.getElementById("comments-list");
@@ -168,13 +190,26 @@
         comments.forEach(function(comment, index) {
             var commentDiv = document.createElement("div");
             commentDiv.className = "comment";
-            commentDiv.innerText = comment;
 
-            // Tambahkan tombol delete
+            var commentText = document.createElement("span");
+            commentText.innerText = comment;
+            commentDiv.appendChild(commentText);
+
+            // Tombol edit
+            var editButton = document.createElement("button");
+            editButton.innerText = "Edit";
+            editButton.className = "comment-button"; // Tambahkan kelas .comment-button
+            editButton.onclick = function() {
+                editComment(index, commentText);
+            };
+            commentDiv.appendChild(editButton);
+
+            // Tombol delete
             var deleteButton = document.createElement("button");
             deleteButton.innerText = "Delete";
+            deleteButton.className = "comment-button"; // Tambahkan kelas .comment-button
             deleteButton.onclick = function() {
-                deleteComment(index);
+                deleteComment(index); // Mengirimkan indeks komentar langsung
             };
             commentDiv.appendChild(deleteButton);
 
@@ -188,4 +223,5 @@
         // Tambahkan event listener untuk menangani inputan tombol "Enter"
         document.getElementById("comment-input").addEventListener("keypress", handleKeyPress);
     };
+    
 </script>

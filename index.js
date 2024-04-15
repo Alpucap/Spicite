@@ -71,42 +71,42 @@ app.post('/submit-register', async (req, res) => {
 });
 
 //LOGIN
-app.post('/submit-login', async (req, res) => {
-    let client;
+app.post('/Homepage', async (req, res) => {
+  let client;
 
-    try {
-        // Extract username and password from the request
-        const { name, password } = req.body;
+  try {
+      // Extract username and password from the request
+      const { name, password } = req.body;
 
-        // Connect to MongoDB
-        client = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
-        
-        // Access the 'dataAkun' collection in the 'account' database
-        const db = client.db(dbName);
-        const collection = db.collection('dataAkun');
+      // Connect to MongoDB
+      client = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+      
+      // Access the 'dataAkun' collection in the 'account' database
+      const db = client.db(dbName);
+      const collection = db.collection('dataAkun');
 
-        // Find the user based on the provided username and password
-        const user = await collection.findOne({ name: name, password: password });
+      // Find the user based on the provided username and password
+      const user = await collection.findOne({ name: name, password: password });
 
-        // If the user is not found or the password is incorrect
-        if (!user) {
-            console.log('Invalid username or password');
-            return res.status(401).send('Invalid username or password');
-        }
+      // If the user is not found or the password is incorrect
+      if (!user) {
+          return res.status(401).send('Invalid username or password');
+      }
 
-        // If the username and password match, login is successful
-        console.log('Login successful');
-        res.send('Login successful');
-    } catch (error) {
-        console.error('Error during login:', error);
-        res.status(500).send('Internal Server Error');
-    } finally {
-        // Make sure to close the MongoDB connection when done
-        if (client) {
-            client.close();
-        }
-    }
+      // If the username and password match, login is successful
+      res.redirect('/Homepage');
+  } catch (error) {
+      console.error('Error during login:', error);
+      res.status(500).send('Internal Server Error');
+  } finally {
+      // Make sure to close the MongoDB connection when done
+      if (client) {
+          client.close();
+      }
+  }
 });
+
+// Comment
 
 // Render homepage
 app.get('/', (req, res) => {
