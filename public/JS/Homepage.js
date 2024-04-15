@@ -36,9 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// QUOTES
+// FAQ
 document.addEventListener("DOMContentLoaded", function () {
-  const quoteitem = document.querySelectorAll('.Quote-Item');
+  const faqitem = document.querySelectorAll('.FAQ-Item');
 
   const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }, { threshold: 0.5 });
 
-  quoteitem.forEach(item => {
+  faqitem.forEach(item => {
       observer.observe(item);
   });
 });

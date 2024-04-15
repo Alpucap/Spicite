@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #140a0a, #000000);
+    color: #ebeeec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    display: none;
+}
+
+.container {
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.container h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ebeeec;
+    box-sizing: border-box;
+}
+
+.login-button {
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.login-button input[type="submit"] {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background-color: #140a0a;
+    cursor: pointer;
+    color: #ebeeec;
+    transition: box-shadow 0.3s ease, background-color 0.3s, color 0.3s;
+}
+
+.login-button input[type="submit"]:hover {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    color: #140a0a;
+    background-color: #ebeeec;
+}
+
+.signup-button,
+.forgot-password {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-button a,
+.forgot-password a {
+    display: inline-block;
+    color: #ebeeec;
+    text-decoration: none;
+    padding: 8px 16px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.signup-button a:hover,
+.forgot-password a:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* MOUSE TRAIL */
+.trail {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: trailAnimation 2s ease-out forwards;
+    background: radial-gradient(circle, #8fae512f 0%, #8fae5100 100%);
+    transform-origin: center;
+}
+
+@keyframes trailAnimation {
+    0% {
+        transform: scale(0.2) translate(-50%, -50%);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
