@@ -178,8 +178,17 @@ a{
     gap: 20px;
     opacity: 0;
     transform: translateX(-10px);
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, width 0.5s ease-in-out;
     height: 150px;
+    width: 900px;
+}
+
+.Recipe-Item:hover {
+    width: 920px;
+}
+
+.Recipe-Item:hover .Recipe-Content-Subtitle {
+    text-shadow: 0 0 1px #ebeeec, 0 0 2px #ebeeec, 0 0 3px #ebeeec;
 }
 
 .Recipe-Item.visible {
@@ -205,12 +214,14 @@ a{
     font-weight: bold;
     color: #ebeeec;
     margin-bottom: 2px;
+    transition: text-shadow 0.3s ease;;
 }
+
 .Recipe-Items {
     display: flex;
     justify-content: left;
     flex-wrap: wrap; 
-    width: 900px;
+    max-width: 910px;
     gap: 25px; 
     margin-left: 10px;
 }
