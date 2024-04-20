@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="CSS/Login.css">
-    <script src="JS/Login.js"></script>
-</head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Login.css">
+    <script src="JS\Login.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
 <body>
     <div class="container">
         <h2>Login</h2>
@@ -30,5 +31,7 @@
             <a href="/forgot-password">Forgot Password?</a>
         </div>
     </div>
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
 </body>
 </html>

@@ -105,3 +105,71 @@ $(document).ready(function(){
         return [bestProduct].concat(sortedProducts);
     }
 });
+
+
+//DROPDOWN
+// Fungsi untuk menampilkan/menyembunyikan dropdown
+function toggleDropdown() {
+document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Tutup dropdown saat pengguna mengklik di luar dropdown
+window.onclick = function(event) {
+    if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+        }
+    }
+}
+
+
+// MODAL
+
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// 
+$(document).ready(function(){
+    $('.modal-content a').click(function(){
+        // Remove active class and dot classes from all links
+        $('.modal-content a').removeClass('active sort-dot filter-dot');
+        // Add active class to the clicked link
+        $(this).addClass('active');
+        
+        // Check if the clicked link is for sorting or filtering
+        if ($(this).parent().index() < $('.modal-content p').length) {
+            // Sorting option
+            $(this).addClass('sort-dot');
+        } else {
+            // Filtering option
+            $(this).addClass('filter-dot');
+        }
+    });
+});

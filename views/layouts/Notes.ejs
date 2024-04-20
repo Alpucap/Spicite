@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-content {
+      background-color: #140a0a;
+      margin: 20% auto;
+      padding: 5px;
+      border: 1px solid #8fae51;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 5px;
+    }
+
+    .modal-content p{
+        color: #ebeeec;
+        text-align: center;
+        font-family: 'Cinzel Decorative', serif;
+    }
+
+    .button {
+      font-family: 'Cinzel Decorative', serif;
+      padding: 10px;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin: 10px;
+      border-radius: 5px;
+      background: #8fae51;
+      border: none;
+      text-align: center;
+      cursor: pointer;
+      transition: 0.4s;
+      color:#ebeeec;
+    }
+     
+    .button:hover {
+      box-shadow: 7px 5px 56px -14px #ebeeec;
+    }
+     
+    .button:active {
+      transform: scale(0.97);
+      box-shadow: 7px 5px 56px -10px #ebeeec;
+    }
+
+    .clear-button {
+        background-color: #8fae51;
+        color: #ffffff;
+        border: none;
+        padding: 5px 10px;
+        font-size: 11px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+    }
+      
+    .clear-button:hover {
+        background-color: #718941;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+    }
+
+    .close-button {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        transition: color 0.3s ease-in-out;
+        background-color: transparent;
+        border:none;
+    }
+    
+    .close-button:hover,
+    .close-button:focus {
+        color: #848383;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Tambahkan tombol -->
+  <button class="button">Notes</button>
+
+  <!-- Tambahkan modal -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+        <button class="close-button">&times;</button>
+        <p>NOTES</p>
+        <canvas id="canvas"></canvas>
+        <div class="button-container">
+            <button id="clearButton" class="clear-button">Erase All</button>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    // Ambil elemen-elemen yang diperlukan
+    var modal = document.getElementById("myModal");
+    var button = document.getElementsByClassName("button")[0];
+    var canvas = document.getElementById("canvas");
+    var clearButton = document.getElementById("clearButton");
+    var context = canvas.getContext("2d");
+    var isDrawing = false;
+
+    // Fungsi untuk memulai menggambar pada canvas
+    function startDrawing(event) {
+      isDrawing = true;
+      context.beginPath();
+      context.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+      context.strokeStyle = "#ebeeec";
+    }
+
+    // Fungsi untuk menggambar pada canvas
+    function draw(event) {
+      if (!isDrawing) return;
+      context.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+      context.stroke();
+    }
+
+    // Fungsi untuk menghentikan menggambar pada canvas
+    function stopDrawing() {
+      isDrawing = false;
+    }
+
+    // Fungsi untuk menghapus gambar pada canvas
+    function clearCanvas() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Event listener untuk tombol membuka modal
+    button.addEventListener("click", function() {
+      modal.style.display = "block";
+    });
+
+    // Event listener untuk tombol menutup modal
+    window.addEventListener("click", function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Event listener untuk menggambar pada canvas
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("mouseout", stopDrawing);
+
+    var closeButton = document.getElementsByClassName("close-button")[0];
+    closeButton.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    // Event listener untuk tombol menghapus gambar
+    clearButton.addEventListener("click", clearCanvas);
+  </script>
+</body>
+</html>

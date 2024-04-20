@@ -165,22 +165,68 @@ a{
     background-color: #253222; 
 }
 
-.sort-options {
-    margin-bottom: 20px;
-    color: #ebeeec;
-    align-items: center;
-    display: flex;
-    justify-content:center;
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.801); 
+    padding-top: 60px;
 }
 
-.sort-options button {
-    margin-right: 10px;
-    color: #ebeeec;
-    background-color: #374c33;
-    border-radius: 5px;
-    border: 1px solid #ebeeec;
+/* Modal content */
+.modal-content {
+    background-color: #140a0a;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #8fae51;
+    width: 80%;
+    color:#45a049;
 }
 
-.sort-options button:hover {
-    background-color: #253222; 
+.modal-content a {
+    display: block; 
+    margin-bottom: 5px; 
+}
+
+/* Close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.close:hover,
+.close:focus {
+    color: #848383;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.active {
+    position: relative; /* Ensure relative positioning for the parent link */
+    padding-right: 10px; /* Add some space on the right side of the link */
+}
+
+.active::after {
+    content: ""; /* Empty content */
+    position: absolute; /* Position the dot */
+    top: 50%; /* Align to the middle vertically */
+    right: 0; /* Align to the right side */
+    transform: translateY(-50%); /* Adjust vertical position */
+    width: 8px; /* Width of the dot */
+    height: 8px; /* Height of the dot */
+    background-color: #45a049; /* Green color */
+    border-radius: 50%; /* Rounded shape */
+}
+
+.modal-content p {
+    margin-top: 15px; /* Add some space between sorting and filtering */
 }
