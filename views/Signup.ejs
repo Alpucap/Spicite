@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Register Account</title>
-<link rel="stylesheet" href="/CSS/Signup.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <script src="JS\Signup.js"></script>
+  <link rel="icon" type="image/x-icon" href="src\Logo.png">
+  <link rel="stylesheet" href="/CSS/Signup.css">
 </head>
 <body>
   <div class="trail"></div>
@@ -38,5 +40,7 @@
     </div>
   </div>
   <script src="/JS/Signup.js"></script>
+  <!-- Loading  -->
+  <%- include('layouts/loading.ejs') %>
 </body>
 </html>

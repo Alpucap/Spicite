@@ -19,14 +19,27 @@
             <input type="text" id="search-bar" placeholder="Search products...">
             <button id="search-button">Search</button>
             <button id="cart-button">Cart</button>
+
+            <!-- MODAL -->
+            <button id="myBtn">&#9660;</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p>Sorting</p>
+                    <a href="#" id="sort-alpha">A~Z</a>
+                    <a href="#" id="sort-original">Oldest</a>
+                    <a href="#" id="sort-newest">New Products</a>
+                    <a href="#" id="sort-price">Price</a>
+
+                    <p>Filter</p>
+                    <a href="#" id="sort-ongkir">Free Shipping</a>
+                </div>
+            </div>
         </div>
-        <div class="sort-options">
-            <button id="sort-alpha">A~Z</button>
-            <button id="sort-original">Oldest</button>
-            <button id="sort-newest">New Products</button>
-            <button id="sort-price">Price</button>
-            <button id="sort-ongkir">Free Shipping</button>
-        </div>
+          
         <div class="shop-card">
             <!--PRODUCT1-->
             <div class="product">
@@ -199,6 +212,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="JS/Shop.js"></script>
     
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
     <!-- FOOTER -->
     <%- include('layouts/footer.ejs') %>
 </body>

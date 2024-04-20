@@ -132,4 +132,29 @@
     document.querySelector('.menu').classList.toggle('active');
     document.querySelector('.hamburger').classList.toggle('active');
   });
+
+  var isLoggedIn = false;
+
+  document.querySelector('.logo').addEventListener('click', function(event) {
+    // Cegah default behavior dari link
+    event.preventDefault();
+
+    // Mengakses endpoint '/check-login' untuk mendapatkan nilai isLoggedIn
+    fetch('/check-login')
+        .then(response => response.json())
+        .then(data => {
+            if (data.isLoggedIn) {
+                // Redirect ke halaman dashboard
+                window.location.href = "/Dashboard";
+            } else {
+                // Redirect ke halaman login
+                window.location.href = "/Login";
+            }
+        })
+        .catch(error => {
+            console.error('Error checking login status:', error);
+            // Redirect ke halaman login jika terjadi error
+            window.location.href = "/Login";
+        });
+  });
 </script>

@@ -35,6 +35,9 @@ a{
 /* RECIPE */
 span{
     color:#8fae51;
+    background-color: transparent;
+    border-radius: 3px;
+    transition: color 0.3s ease, background-color 0.2s ease;
 }
 
 span:hover{

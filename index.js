@@ -6,6 +6,7 @@ const path = require("path");
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 const dbName = 'account';
+const bcrypt = require('bcrypt');
 
 // MONGODB
 // Connect to MongoDB
@@ -53,15 +54,17 @@ const RegisterDataSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String
-}, { collection: 'dataAkun' }); // Specify collection name
+}, { collection: 'dataAkun' }); 
 
 const RegisterData = mongoose.model('RegisterData', RegisterDataSchema);
 
 app.post('/submit-register', async (req, res) => {
   try {
       const { name, email, password } = req.body;
-      // Create a new document in MongoDB for Register data
-      const registerData = new RegisterData({ name, email, password });
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 10); // 10 adalah cost factor
+      // Create a new document in MongoDB for Register data with hashed password
+      const registerData = new RegisterData({ name, email, password: hashedPassword });
       await registerData.save();
       res.status(201).send('Register data saved successfully');
   } catch (err) {
@@ -71,6 +74,8 @@ app.post('/submit-register', async (req, res) => {
 });
 
 //LOGIN
+let isLoggedIn = false;
+
 app.post('/Homepage', async (req, res) => {
   let client;
 
@@ -85,16 +90,24 @@ app.post('/Homepage', async (req, res) => {
       const db = client.db(dbName);
       const collection = db.collection('dataAkun');
 
-      // Find the user based on the provided username and password
-      const user = await collection.findOne({ name: name, password: password });
+      // Find the user based on the provided username
+      const user = await collection.findOne({ name: name });
 
-      // If the user is not found or the password is incorrect
+      // If the user is not found
       if (!user) {
           return res.status(401).send('Invalid username or password');
       }
 
-      // If the username and password match, login is successful
-      res.redirect('/Homepage');
+      // Compare the provided password with the hashed password stored in the database
+      const passwordMatch = await bcrypt.compare(password, user.password);
+
+      // If the passwords match, login is successful
+      if (passwordMatch) {
+          isLoggedIn = true;
+          res.redirect('/Homepage');
+      } else {
+          res.status(401).send('Invalid username or password');
+      }
   } catch (error) {
       console.error('Error during login:', error);
       res.status(500).send('Internal Server Error');
@@ -106,7 +119,16 @@ app.post('/Homepage', async (req, res) => {
   }
 });
 
-// Comment
+//Check Login
+app.get('/check-login', (req, res) => {
+  res.json({ isLoggedIn });
+});
+
+app.post('/logout', (req, res) => {
+  res.redirect('/Homepage');
+  isLoggedIn = false;
+  res.json({ success: true });
+});
 
 // Render homepage
 app.get('/', (req, res) => {
@@ -127,6 +149,10 @@ app.get('/Shop', (req, res) => {
 
 app.get('/Insight', (req, res) => {
   res.render('Insight', { title: 'Insight' });
+});
+
+app.get('/Dashboard', (req, res) => {
+  res.render('Dashboard', { title: 'Dashboard' });
 });
 
 //Menu Recipe
@@ -175,15 +201,21 @@ app.get('/Login', (req, res) => {
   res.render('Login', { title: 'Signup' });
 });
 
+//NOTES
+app.get('/Notes', (req, res) => {
+  res.render('Notes', { title: 'Notes' });
+});
+
+app.get('/Example', (req, res) => {
+  res.render('Example', { title: 'Example' });
+});
 //static
 app.use(express.static("public"));
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 app.set("view engine", "ejs");
 
-
+// LISTENING PORT
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

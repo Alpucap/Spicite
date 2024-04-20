@@ -1,5 +1,5 @@
 
-
+// MOUSE TRAIL
 document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('mousemove', function(e) {
     const trail = document.createElement('div');
