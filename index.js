@@ -201,14 +201,7 @@ app.get('/Login', (req, res) => {
   res.render('Login', { title: 'Signup' });
 });
 
-//NOTES
-app.get('/Notes', (req, res) => {
-  res.render('Notes', { title: 'Notes' });
-});
 
-app.get('/Example', (req, res) => {
-  res.render('Example', { title: 'Example' });
-});
 //static
 app.use(express.static("public"));
 
