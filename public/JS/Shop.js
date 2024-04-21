@@ -128,43 +128,37 @@ window.onclick = function(event) {
 }
 
 
-// MODAL
+// MODAL Sorting
+var sortingModal = document.getElementById("sortingModal"); // Perhatikan perubahan nama variabel
+var sortingOpenButton = document.getElementById("sortingOpenButton"); // Sesuaikan dengan ID tombol yang membuka modal sorting
+var sortingCloseButton = document.getElementsByClassName("sortingClose")[0]; // Sesuaikan dengan kelas elemen close
 
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+// Saat pengguna mengklik tombol untuk membuka modal sorting
+sortingOpenButton.onclick = function() {
+  sortingModal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+// Saat pengguna mengklik tombol close pada modal sorting
+sortingCloseButton.onclick = function() {
+  sortingModal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+// Saat pengguna mengklik di luar modal sorting, tutup modal tersebut
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == sortingModal) {
+    sortingModal.style.display = "none";
   }
 }
 
-// 
 $(document).ready(function(){
-    $('.modal-content a').click(function(){
+    $('.sorting-modal-content a').click(function(){
         // Remove active class and dot classes from all links
-        $('.modal-content a').removeClass('active sort-dot filter-dot');
+        $('.sorting-modal-content a').removeClass('active sort-dot filter-dot');
         // Add active class to the clicked link
         $(this).addClass('active');
         
         // Check if the clicked link is for sorting or filtering
-        if ($(this).parent().index() < $('.modal-content p').length) {
+        if ($(this).parent().index() < $('.sorting-modal-content p').length) {
             // Sorting option
             $(this).addClass('sort-dot');
         } else {
@@ -173,3 +167,50 @@ $(document).ready(function(){
         }
     });
 });
+
+
+// MODAL add to cart
+var cartModal = document.getElementById("cartModal"); // Ganti nama variabel
+var addToCartButtons = document.getElementsByClassName("add-to-cart");
+var closeButtons = document.querySelectorAll("#cartModal .cartClose"); // Mengambil semua elemen dengan kelas close di dalam cartModal
+
+for (var i = 0; i < addToCartButtons.length; i++) {
+  addToCartButtons[i].onclick = function() {
+    cartModal.style.display = "block";
+  }
+}
+
+// Tambahkan event listener untuk setiap tombol close di dalam modal
+for (var i = 0; i < closeButtons.length; i++) {
+  closeButtons[i].onclick = function() {
+    cartModal.style.display = "none";
+  }
+}
+
+window.onclick = function(event) {
+  if (event.target == cartModal) {
+    cartModal.style.display = "none";
+  }
+}
+
+document.getElementById("cartForm").onsubmit = function(event) {
+  event.preventDefault();
+  var quantity = document.getElementById("quantityInput").value;
+  var size = document.getElementById("sizeSelect").value;
+  var insurance = document.getElementById("insuranceCheckbox").checked;
+  var totalPrice = calculateTotalPrice(quantity, insurance);
+  console.log("Quantity:", quantity);
+  console.log("Size:", size);
+  console.log("Insurance:", insurance);
+  console.log("Total Price:", totalPrice);
+  cartModal.style.display = "none";
+}
+
+function calculateTotalPrice(quantity, insurance) {
+  var basePrice = 3.69; // Harga dasar botol
+  var totalPrice = quantity * basePrice; // Total harga tanpa asuransi
+  if (insurance) {
+    totalPrice += 0.5; // Tambahkan biaya asuransi jika dipilih
+  }
+  return totalPrice;
+}

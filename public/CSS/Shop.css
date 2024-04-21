@@ -165,8 +165,8 @@ a{
     background-color: #253222; 
 }
 
-
-.modal {
+/* Modal Sorting */
+#sortingModal {
     display: none;
     position: fixed; 
     z-index: 1;
@@ -175,27 +175,25 @@ a{
     width: 100%; 
     height: 100%; 
     overflow: auto; 
-    background-color: rgba(0, 0, 0, 0.801); 
+    background-color: transparent; 
     padding-top: 60px;
 }
 
-/* Modal content */
-.modal-content {
+.sorting-modal-content {
     background-color: #140a0a;
     margin: auto;
     padding: 20px;
     border: 1px solid #8fae51;
-    width: 80%;
+    width: 20%;
     color:#45a049;
 }
 
-.modal-content a {
+.sorting-modal-content a {
     display: block; 
     margin-bottom: 5px; 
 }
 
-/* Close button */
-.close {
+.sortingClose {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -203,30 +201,94 @@ a{
     transition: color 0.3s ease-in-out;
 }
 
-.close:hover,
-.close:focus {
+.sortingClose:hover,
+.sortingClose:focus {
     color: #848383;
     text-decoration: none;
     cursor: pointer;
 }
 
 .active {
-    position: relative; /* Ensure relative positioning for the parent link */
-    padding-right: 10px; /* Add some space on the right side of the link */
+    position: relative; 
+    padding-right: 10px; 
 }
 
 .active::after {
-    content: ""; /* Empty content */
-    position: absolute; /* Position the dot */
-    top: 50%; /* Align to the middle vertically */
-    right: 0; /* Align to the right side */
-    transform: translateY(-50%); /* Adjust vertical position */
-    width: 8px; /* Width of the dot */
-    height: 8px; /* Height of the dot */
-    background-color: #45a049; /* Green color */
-    border-radius: 50%; /* Rounded shape */
+    content: ""; 
+    position: absolute; 
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%); 
+    width: 8px; 
+    height: 8px; 
+    background-color: #45a049; 
+    border-radius: 50%;
 }
 
-.modal-content p {
-    margin-top: 15px; /* Add some space between sorting and filtering */
+.sorting-modal-content p {
+    margin-top: 15px;
+}
+
+/* Modal add to cart*/
+#cartModal {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: transparent; 
+    padding-top: 60px;
+}
+  
+.modals-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #140a0a;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #8fae51;
+    width: 20%;
+    color:#45a049;
+}
+
+.cartClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.cartClose:hover,
+.cartClose:focus {
+    color: #848383;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="number"],
+input[type="text"] {
+    width: 100%;
+    padding: 5px;
+}
+
+span {
+    margin-left: 5px;
+}
+
+select {
+    width: 100%;
+    padding: 5px;
 }
