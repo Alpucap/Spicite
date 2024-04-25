@@ -1,54 +1,186 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard</title>
-    <style>
-        /* CSS untuk modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile Page</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #140a0a;
+    }
 
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
+    .profile-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-    </style>
+    .profile-header canvas {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 5px solid #ebeeec;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header h1 {
+        margin: 10px 0;
+        color: #ebeeec;
+        font-family: 'Cinzel Decorative', serif;
+    }
+
+    .profile-header p {
+        margin: 10px 0;
+        color: #ebeeec;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+
+    .delete-btn {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+    }
+      
+    .delete-btn input[type="button"] {
+        background-color: #ff6347; /* Merah untuk warna yang menunjukkan penghapusan */
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+      
+    .delete-btn input[type="button"]:hover {
+        background-color: #cc4c3b; /* Warna yang lebih gelap saat tombol dihover */
+    }
+
+    .logout-btn {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .logout-btn input[type="submit"] {
+        background-color: #8fae51;
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .logout-btn input[type="submit"]:hover {
+        background-color: #8fae51;
+    }
+</style>
 </head>
 <body>
-    <h1>Welcome to the Dashboard</h1>
 
-    <!-- Logout button -->
-    <form id="logout-form" action="/logout" method="POST">
-        <input type="submit" value="Logout">
-    </form>
+<div class="container">
+    <div class="profile-header">
+        <canvas id="profileCanvas" alt="Profile Picture"></canvas>
+        <h1><%= name %></h1>
+        <p><%= email %></p>
+    </div>
+    <div class="logout-btn">
+        <form id="logout-form" action="/logout" method="POST">
+            <input type="submit" value="Logout">
+        </form>
+    </div>
+    <div class="delete-btn">
+        <input type="button" value="Delete Account" onclick="deleteAccount()">
+    </div>
+</div>
 
-    <script>
+<script>
+function setCookie(name, value, days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
 
-    </script>
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    var canvas = document.getElementById("profileCanvas");
+    var ctx = canvas.getContext("2d");
+    var name = "<%= name %>";
+    var initials = name.match(/\b\w/g) || [];
+    initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase();
+    
+    // Get stored background color from cookie
+    var storedColor = getCookie('profileBackgroundColor');
+    var backgroundColor = storedColor || '#' + Math.floor(Math.random() * 16777215).toString(16);
+
+    // Save background color to cookie
+    setCookie('profileBackgroundColor', backgroundColor, 7);
+
+    canvas.width = 150;
+    canvas.height = 150;
+    
+    ctx.fillStyle = backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.font = "bold 60px 'Montserrat', sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#fff";
+    ctx.fillText(initials, canvas.width / 2, canvas.height / 1.5);
+});
+function deleteAccount() {
+    if (confirm("Are you sure you want to delete your account?")) {
+        // Kirim permintaan DELETE ke endpoint backend
+        fetch('/delete-account', {
+            method: 'DELETE',
+            credentials: 'same-origin' // Jika menggunakan cookies untuk otentikasi
+        })
+        .then(response => {
+            if (response.ok) {
+                // Redirect pengguna ke halaman lain atau lakukan tindakan sesuai
+                window.location.href = '/Homepage';
+            } else {
+                throw new Error('Failed to delete account');
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            alert('Failed to delete account');
+        });
+    }
+}
+</script>
+
 </body>
 </html>
