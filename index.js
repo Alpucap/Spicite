@@ -7,6 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 const dbName = 'account';
 const bcrypt = require('bcrypt');
+const session = require('express-session');
 
 // MONGODB
 // Connect to MongoDB
@@ -23,6 +24,13 @@ db.once('open', function () {
 // Middleware to parse JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Session
+app.use(session({
+  secret: '4fT6J#p!R@h3S$9g', // Ganti dengan kunci rahasia yang kuat
+  resave: false,
+  saveUninitialized: false
+}));
 
 // INSIGHT
 // Memasukkan data insight
@@ -66,7 +74,7 @@ app.post('/submit-register', async (req, res) => {
       // Create a new document in MongoDB for Register data with hashed password
       const registerData = new RegisterData({ name, email, password: hashedPassword });
       await registerData.save();
-      res.status(201).send('Register data saved successfully');
+      res.redirect('/Login'); // Arahkan pengguna ke halaman login setelah pendaftaran berhasil
   } catch (err) {
       console.error(err);
       res.status(500).send('Internal Server Error');
@@ -104,6 +112,7 @@ app.post('/Homepage', async (req, res) => {
       // If the passwords match, login is successful
       if (passwordMatch) {
           isLoggedIn = true;
+          req.session.user = { name: name, email: user.email };
           res.redirect('/Homepage');
       } else {
           res.status(401).send('Invalid username or password');
@@ -118,6 +127,30 @@ app.post('/Homepage', async (req, res) => {
       }
   }
 });
+
+
+// Delete akun
+app.delete('/delete-account', async (req, res) => {
+  try {
+    // Dapatkan nama pengguna dan email dari sesi atau permintaan
+    const { name, email } = req.session.user;
+    // Hapus akun dari basis data MongoDB berdasarkan nama pengguna (name) dan alamat email (email)
+    const deletedUser = await RegisterData.findOneAndDelete({ name: name, email: email });
+
+    // Hapus juga sesi pengguna
+    req.session.destroy();
+
+    if (deletedUser) {
+      res.redirect('/');
+    } else {
+      res.status(404).json({ success: false, error: "User not found" });
+    }
+  } catch (error) {
+    console.error('Error deleting account:', error); // Tambahkan ini untuk mencetak kesalahan ke konsol server
+    res.status(500).json({ success: false, error: "An error occurred while deleting the account" });
+  }
+});
+
 
 //Check Login
 app.get('/check-login', (req, res) => {
@@ -152,7 +185,16 @@ app.get('/Insight', (req, res) => {
 });
 
 app.get('/Dashboard', (req, res) => {
-  res.render('Dashboard', { title: 'Dashboard' });
+  // Periksa apakah ada sesi pengguna yang login
+  if (!req.session.user) {
+    return res.redirect('/Login'); // Redirect ke halaman login jika tidak ada sesi pengguna
+  }
+
+  // Dapatkan informasi pengguna dari sesi
+  const { name, email } = req.session.user;
+
+  // Render dashboard dengan informasi pengguna
+  res.render('Dashboard', { title: 'Dashboard', name, email });
 });
 
 //Menu Recipe
@@ -198,7 +240,7 @@ app.get('/Signup', (req, res) => {
   res.render('Signup', { title: 'Signup' });
 });
 app.get('/Login', (req, res) => {
-  res.render('Login', { title: 'Signup' });
+  res.render('Login', { title: 'Login' });
 });
 
 

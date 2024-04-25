@@ -18,6 +18,7 @@ $(document).ready(function(){
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
         $(".shop-card").empty().append(sortedProducts);
+        addAddToCartListeners();
     }
 
     function sortByPrice() {
@@ -34,6 +35,7 @@ $(document).ready(function(){
             }
         });
         $(".shop-card").empty().append(sortedProducts);
+        addAddToCartListeners();
     }
 
     function sortByOngkir() {
@@ -43,10 +45,12 @@ $(document).ready(function(){
             return hasOngkirA === hasOngkirB ? 0 : hasOngkirA ? -1 : 1;
         });
         $(".shop-card").empty().append(sortedProducts);
+        addAddToCartListeners();
     }
 
     function sortOriginal() {
         $(".shop-card").empty().append(originalOrder);
+        addAddToCartListeners();
     }
 
     function sortNewest() {
@@ -62,6 +66,16 @@ $(document).ready(function(){
         }
     
         $(".shop-card").empty().append(sortedProducts);
+        addAddToCartListeners();
+    }
+
+    function addAddToCartListeners() {
+        var addToCartButtons = document.getElementsByClassName("add-to-cart");
+        for (var i = 0; i < addToCartButtons.length; i++) {
+          addToCartButtons[i].onclick = function() {
+            cartModal.style.display = "block";
+          };
+        }
     }
 
     $("#sort-alpha").on("click", function() {
@@ -104,6 +118,7 @@ $(document).ready(function(){
         var sortedProducts = otherProducts.toArray().sort(compareFunction);
         return [bestProduct].concat(sortedProducts);
     }
+
 });
 
 
