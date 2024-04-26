@@ -73,6 +73,69 @@
         background-color: #cc4c3b; /* Warna yang lebih gelap saat tombol dihover */
     }
 
+    .update-btn {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .update-btn input[type="button"] {
+        background-color: #8fae51; /* Merah untuk warna yang menunjukkan penghapusan */
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+      
+    .update-btn input[type="button"]:hover {
+        background-color: #8fae51; /* Warna yang lebih gelap saat tombol dihover */
+    }
+
+    #update-form {
+        display: none;
+        margin-top: 20px;
+    }
+
+    #update-profile-form {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #update-profile-form label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    #update-profile-form input[type="text"],
+    #update-profile-form input[type="email"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    #update-profile-form input[type="button"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    #update-profile-form input[type="button"]:hover {
+        background-color: #45a049;
+    }
+
+
     .logout-btn {
         display: block;
         margin-top: 20px;
@@ -92,15 +155,47 @@
     .logout-btn input[type="submit"]:hover {
         background-color: #8fae51;
     }
+
+    .back-button{
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #ebeeec;
+        border-radius: 5px;
+        width: auto;
+        text-align: center;
+        border: 1px solid #2d3230; 
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s, color 0.3s, border 0.3s; 
+    }
+
+    .back-button:hover{
+        transform: scale(1.05); 
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+        border: 1px solid transparent; 
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
+    <a href="#" onclick="goBack()" class="back-button"><<</a>
     <div class="profile-header">
         <canvas id="profileCanvas" alt="Profile Picture"></canvas>
         <h1><%= name %></h1>
         <p><%= email %></p>
+    </div>
+    <div class="update-btn">
+        <input type="button" value="Update" onclick="toggleUpdateForm()">
+    </div>
+    
+    <div id="update-form" style="display: none;">
+        <form id="update-profile-form">
+            <label for="newName">Nama:</label>
+            <input type="text" id="newName" name="newName"><br><br>
+            <label for="newEmail">Email:</label>
+            <input type="email" id="newEmail" name="newEmail"><br><br>
+            <input type="button" value="Submit" onclick="updateProfile()">
+        </form>
     </div>
     <div class="logout-btn">
         <form id="logout-form" action="/logout" method="POST">
@@ -113,6 +208,65 @@
 </div>
 
 <script>
+
+//BACK
+function goBack() {
+    window.history.back();
+}
+
+function toggleUpdateForm() {
+    var form = document.getElementById("update-form");
+    if (form.style.display === "none") {
+        form.style.display = "block";
+    } else {
+        form.style.display = "none";
+    }
+}
+
+function updateProfile() {
+    var newName = document.getElementById("newName").value;
+    var newEmail = document.getElementById("newEmail").value;
+
+    if (newName && newEmail) {
+        if (confirm("Are you sure you want to update your profile?")) {
+            // Kirim permintaan pembaruan profil ke server
+            fetch('/update-profile', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ newName: newName, newEmail: newEmail }),
+                credentials: 'same-origin'
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Jika pembaruan berhasil, perbarui UI
+                    updateUI(newName, newEmail);
+                } else {
+                    throw new Error('Failed to update profile');
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                alert('Failed to update profile');
+            });
+        }
+    } else {
+        alert("Please provide both a new name and email");
+    }
+}
+
+// Fungsi untuk memperbarui UI dengan data profil yang baru
+function updateUI(newName, newEmail) {
+    // Perbarui elemen HTML yang menampilkan nama dan email
+    document.getElementById("name").innerText = newName;
+    document.getElementById("email").innerText = newEmail;
+
+    // Sembunyikan formulir pembaruan
+    document.getElementById("update-form").style.display = "none";
+}
+
+//
 function setCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -134,6 +288,7 @@ function getCookie(name) {
     return null;
 }
 
+//Random Profile Picture
 document.addEventListener("DOMContentLoaded", function() {
     var canvas = document.getElementById("profileCanvas");
     var ctx = canvas.getContext("2d");
@@ -159,6 +314,8 @@ document.addEventListener("DOMContentLoaded", function() {
     ctx.fillStyle = "#fff";
     ctx.fillText(initials, canvas.width / 2, canvas.height / 1.5);
 });
+
+//Delete Account
 function deleteAccount() {
     if (confirm("Are you sure you want to delete your account?")) {
         // Kirim permintaan DELETE ke endpoint backend
