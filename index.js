@@ -128,6 +128,28 @@ app.post('/Homepage', async (req, res) => {
   }
 });
 
+// Update akun
+app.put('/update-profile', async (req, res) => {
+  try {
+      const { newName, newEmail } = req.body;
+      const { name, email } = req.session.user; // Retrieve name and email from session
+
+      // Update profile in MongoDB
+      const updatedAccount = await RegisterData.findOneAndUpdate({ name: name, email: email }, { name: newName, email: newEmail }, { new: true });
+
+      if (updatedAccount) {
+          req.session.user = { name: newName, email: newEmail };
+          req.session.destroy();
+          res.status(200).send('Profile updated successfully');
+      } else {
+          res.status(404).send('User not found');
+      }
+  } catch (err) {
+      console.error(err);
+      res.status(500).send('Failed to update profile');
+  }
+});
+
 
 // Delete akun
 app.delete('/delete-account', async (req, res) => {
@@ -157,10 +179,88 @@ app.get('/check-login', (req, res) => {
   res.json({ isLoggedIn });
 });
 
+// Logout
 app.post('/logout', (req, res) => {
   res.redirect('/Homepage');
   isLoggedIn = false;
   res.json({ success: true });
+});
+
+
+//Comment
+const commentSchema = new mongoose.Schema({
+  username: String,
+  comment: String
+});
+
+// Model komentar
+const Comment = mongoose.model('Comment', commentSchema, 'dataComment');
+
+// Endpoint untuk menambahkan komentar baru
+app.post('/add-comment', async (req, res) => {
+  try {
+      const { username, comment } = req.body;
+      const newComment = new Comment({ username, comment });
+      await newComment.save();
+      res.status(201).send('Comment added successfully');
+  } catch (error) {
+      console.error('Error adding comment:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+// Endpoint untuk mengambil semua komentar
+app.get('/get-comments', async (req, res) => {
+  try {
+      const comments = await Comment.find();
+      res.json(comments);
+  } catch (error) {
+      console.error('Error fetching comments:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+// Endpoint untuk menghapus komentar berdasarkan ID
+app.delete('/delete-comment/:id', async (req, res) => {
+  try {
+      const id = req.params.id;
+      const deletedComment = await Comment.findByIdAndDelete(id);
+      if (deletedComment) {
+          res.status(200).send('Comment deleted successfully');
+      } else {
+          res.status(404).send('Comment not found');
+      }
+  } catch (error) {
+      console.error('Error deleting comment:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+app.put('/edit-comment/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const { comment } = req.body;
+    const updatedComment = await Comment.findByIdAndUpdate(id, { comment }, { new: true });
+    if (updatedComment) {
+      res.status(200).send('Comment updated successfully');
+    } else {
+      res.status(404).send('Comment not found');
+    }
+  } catch (error) {
+    console.error('Error updating comment:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/search-comments', async (req, res) => {
+  try {
+    const { searchText } = req.query;
+    const comments = await Comment.find({ comment: { $regex: searchText, $options: 'i' } });
+    res.json(comments);
+  } catch (error) {
+    console.error('Error searching comments:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 // Render homepage
