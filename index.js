@@ -27,35 +27,22 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session
 app.use(session({
-  secret: '4fT6J#p!R@h3S$9g', // Ganti dengan kunci rahasia yang kuat
+  secret: '4fT6J#p!R@h3S$9g', 
   resave: false,
   saveUninitialized: false
 }));
 
-// INSIGHT
-// Memasukkan data insight
-const FormDataSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  message: String
-}, { collection: 'insightUser' }); // Specify collection name
-
-// Create a model
-const FormData = mongoose.model('FormData', FormDataSchema);
-
-app.post('/submit-form', async (req, res) => {
-    try {
-        const { name, email, message } = req.body;
-        // Create a new document in MongoDB
-        const formData = new FormData({ name, email, message });
-        await formData.save();
-        res.status(201).send('Form data saved successfully');
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Internal Server Error');
-    }
-});
-
+//Authorization
+const checkAuth = (req, res, next) => {
+  // Periksa apakah ada sesi pengguna yang tersimpan dan nama pengguna di dalamnya
+  if (req.session.user && req.session.user.name) {
+    // Lanjutkan ke middleware berikutnya jika pengguna telah login
+    next();
+  } else {
+    // Jika tidak, kirim respons "Unauthorized"
+    res.redirect('/Login');
+  }
+};
 
 //SIGNUP
 const RegisterDataSchema = new mongoose.Schema({
@@ -129,7 +116,7 @@ app.post('/Homepage', async (req, res) => {
 });
 
 // Update akun
-app.put('/update-profile', async (req, res) => {
+app.put('/update-profile', checkAuth, async (req, res) => {
   try {
       const { newName, newEmail } = req.body;
       const { name, email } = req.session.user; // Retrieve name and email from session
@@ -152,7 +139,7 @@ app.put('/update-profile', async (req, res) => {
 
 
 // Delete akun
-app.delete('/delete-account', async (req, res) => {
+app.delete('/delete-account', checkAuth, async (req, res) => {
   try {
     // Dapatkan nama pengguna dan email dari sesi atau permintaan
     const { name, email } = req.session.user;
@@ -180,7 +167,7 @@ app.get('/check-login', (req, res) => {
 });
 
 // Logout
-app.post('/logout', (req, res) => {
+app.post('/logout', checkAuth, (req, res) => {
   res.redirect('/Homepage');
   isLoggedIn = false;
   res.json({ success: true });
@@ -197,7 +184,7 @@ const commentSchema = new mongoose.Schema({
 const Comment = mongoose.model('Comment', commentSchema, 'dataComment');
 
 // Endpoint untuk menambahkan komentar baru
-app.post('/add-comment', async (req, res) => {
+app.post('/add-comment', checkAuth, async (req, res) => {
   try {
       const { username, comment } = req.body;
       const newComment = new Comment({ username, comment });
@@ -210,7 +197,7 @@ app.post('/add-comment', async (req, res) => {
 });
 
 // Endpoint untuk mengambil semua komentar
-app.get('/get-comments', async (req, res) => {
+app.get('/get-comments', checkAuth, async (req, res) => {
   try {
       const comments = await Comment.find();
       res.json(comments);
@@ -221,7 +208,7 @@ app.get('/get-comments', async (req, res) => {
 });
 
 // Endpoint untuk menghapus komentar berdasarkan ID
-app.delete('/delete-comment/:id', async (req, res) => {
+app.delete('/delete-comment/:id', checkAuth, async (req, res) => {
   try {
       const id = req.params.id;
       const deletedComment = await Comment.findByIdAndDelete(id);
@@ -263,6 +250,69 @@ app.get('/search-comments', async (req, res) => {
   }
 });
 
+// INSIGHT
+const insightSchema = new mongoose.Schema({
+  name: String,
+  timestamp: { type: Date, default: Date.now },
+  criticism: String,
+  suggestions: String
+});
+
+const Insight = mongoose.model('Insight', insightSchema, 'insightUser');
+
+app.post('/submit-form', checkAuth, async (req, res) => {
+  try {
+    // Pastikan ada sesi pengguna yang login
+    if (!req.session.user || !req.session.user.name) {
+      return res.status(401).send('Unauthorized'); // Tidak ada pengguna yang terautentikasi
+    }
+    
+    const { criticism, suggestions } = req.body;
+    const username = req.session.user.name; // Ambil nama pengguna dari sesi
+
+    // Buat instance model MongoDB menggunakan data yang diterima dan nama pengguna dari sesi
+    const newInsight = new Insight({
+      name: username,
+      criticism: criticism,
+      suggestions: suggestions
+    });
+
+    // Simpan instance model ke basis data MongoDB
+    await newInsight.save();
+
+    // Beri respons bahwa data berhasil disimpan
+    res.status(201).send('Form data saved successfully');
+  } catch (error) {
+    // Tangani kesalahan jika terjadi
+    console.error('Error saving form data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/insightUser/:username', checkAuth, async (req, res) => {
+  try {
+    // Pastikan ada sesi pengguna yang login
+    if (!req.session.user || !req.session.user.name) {
+      return res.status(401).send('Unauthorized'); // Tidak ada pengguna yang terautentikasi
+    }
+    
+    // Ambil nama pengguna dari parameter URL
+    const username = req.params.username;
+
+    // Query data user berdasarkan nama pengguna dari parameter
+    const userData = await Insight.find({ name: username });
+
+    // Kirim data user sebagai respons
+    res.json(userData);
+  } catch (error) {
+    // Tangani kesalahan jika terjadi
+    console.error('Error fetching user data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
+// ENDPOINTS
 // Render homepage
 app.get('/', (req, res) => {
   res.render('Homepage', { title: 'Home' });

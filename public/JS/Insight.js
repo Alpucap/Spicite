@@ -1,31 +1,27 @@
-document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
+  // Tangkap formulir saat disubmit
+document.getElementById('contact-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); // Hindari perilaku bawaan pengiriman formulir
 
-  var name = document.getElementById('name').value;
-  var email = document.getElementById('email').value;
-  var message = document.getElementById('message').value;
-
-  // Send form data to server
-  fetch('/submit-form', {
+    // Kirim data formulir ke server menggunakan Fetch API
+    const form = event.target;
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
       method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ name, email, message }),
-  })
-  .then(response => {
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      return response.text();
-  })
-  .then(data => {
-      console.log(data);
-      alert('Pesan terkirim!');
-      document.getElementById('contact-form').reset();
-  })
-  .catch(error => {
-      console.error('There was a problem with your fetch operation:', error);
-      alert('Gagal mengirim pesan!');
-  });
+      body: formData
+    });
+
+    // Tampilkan pesan respons dari server
+    const responseMessage = document.getElementById('response-message');
+    if (response.ok) {
+      responseMessage.textContent = 'Form data saved successfully';
+      responseMessage.classList.add('success-message');
+    } else {
+      responseMessage.textContent = 'Failed to save form data';
+      responseMessage.classList.add('error-message');
+    }
+    
 });
+
+function redirectToHistory() {
+    window.location.href = "/history"; // Change "/history" to the actual URL of your history page
+}
