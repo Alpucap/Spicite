@@ -76,8 +76,8 @@ span:hover{
 .forms{
     align-items: center;
     width: 100%;
-    height: 550px;
-    margin-top: 250px;
+    height: auto;
+    margin-top: 100px;
     font-family: 'Montserrat', sans-serif;
     justify-content: center;
     position: relative; /* Ensure content stays above the video */
@@ -119,3 +119,32 @@ input[type="submit"]:hover {
     background-color: #839f4b;  
 }
 
+.button-container {
+    display: flex; /* Mengubah kontainer menjadi flexbox */
+    justify-content: center; /* Mengatur kontainer di tengah secara horizontal */
+    margin-top: 50px; /* Jarak dari atas */
+    margin-bottom: 50px;
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; } /* Mulai dengan kejelasan nol */
+    100% { opacity: 1; } /* Akhiri dengan kejelasan penuh */
+}
+
+/* Tombol Insight History */
+.linked-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent; /* Warna latar belakang tombol */
+    color: #fff; /* Warna teks tombol */
+    text-decoration: none; /* Menghilangkan garis bawah dari tautan */
+    border-radius: 5px; /* Membuat sudut tombol sedikit bulat */
+    border: none; /* Menghilangkan border */
+    cursor: pointer; /* Mengubah kursor menjadi tanda tangan saat mengarahkan ke tombol */
+    animation: fadeInText 0.5s ease-in-out; /* Terapkan animasi */
+}
+
+/* Tombol Insight History saat dihover */
+.linked-button:hover {
+    opacity: 0.8; /* Kurangi sedikit kejelasan saat dihover */
+}
