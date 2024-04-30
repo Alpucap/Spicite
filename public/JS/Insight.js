@@ -22,6 +22,26 @@ document.getElementById('contact-form').addEventListener('submit', async (event)
     
 });
 
-function redirectToHistory() {
-    window.location.href = "/history"; // Change "/history" to the actual URL of your history page
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const insightHistoryButton = document.querySelector('.linked-button');
+
+  insightHistoryButton.addEventListener('click', () => {
+      fetch('/check-login') // Permintaan ke server untuk memeriksa status login
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok');
+              }
+              return response.json();
+          })
+          .then(data => {
+              if (data.isLoggedIn) {
+                  // Pengguna sudah login, arahkan ke Insight History
+                  window.location.href = '/InsightHistory';
+              } else {
+                  // Pengguna belum login, arahkan ke halaman login
+                  window.location.href = '/Login';
+              }
+          })
+          .catch(error => console.error('Error checking login status:', error));
+  });
+});

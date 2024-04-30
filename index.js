@@ -223,7 +223,7 @@ app.delete('/delete-comment/:id', checkAuth, async (req, res) => {
   }
 });
 
-app.put('/edit-comment/:id', async (req, res) => {
+app.put('/edit-comment/:id', checkAuth, async (req, res) => {
   try {
     const id = req.params.id;
     const { comment } = req.body;
@@ -239,7 +239,7 @@ app.put('/edit-comment/:id', async (req, res) => {
   }
 });
 
-app.get('/search-comments', async (req, res) => {
+app.get('/search-comments', checkAuth, async (req, res) => {
   try {
     const { searchText } = req.query;
     const comments = await Comment.find({ comment: { $regex: searchText, $options: 'i' } });
@@ -289,28 +289,62 @@ app.post('/submit-form', checkAuth, async (req, res) => {
   }
 });
 
-app.get('/insightUser/:username', checkAuth, async (req, res) => {
+// Endpoint untuk mengambil riwayat Insight berdasarkan nama pengguna
+app.get('/insight-history', checkAuth, async (req, res) => {
   try {
-    // Pastikan ada sesi pengguna yang login
-    if (!req.session.user || !req.session.user.name) {
-      return res.status(401).send('Unauthorized'); // Tidak ada pengguna yang terautentikasi
-    }
-    
-    // Ambil nama pengguna dari parameter URL
-    const username = req.params.username;
+    const username = req.session.user.name; // Ambil nama pengguna dari sesi
 
-    // Query data user berdasarkan nama pengguna dari parameter
-    const userData = await Insight.find({ name: username });
+    // Temukan semua Insight yang sesuai dengan nama pengguna dari koleksi 'insightUser' di dalam database 'account'
+    // Diurutkan berdasarkan timestamp secara descending
+    const insightHistory = await Insight.find({ name: username }).sort({ timestamp: -1 });
 
-    // Kirim data user sebagai respons
-    res.json(userData);
+    // Kirim riwayat Insight yang diurutkan sebagai respons
+    res.json(insightHistory);
   } catch (error) {
-    // Tangani kesalahan jika terjadi
-    console.error('Error fetching user data:', error);
+    console.error('Error fetching insight history:', error);
     res.status(500).send('Internal Server Error');
   }
 });
 
+app.delete('/delete-insight/:id', checkAuth, async (req, res) => {
+  try {
+      const id = req.params.id;
+      // Hapus insight dari basis data MongoDB berdasarkan ID
+      const deletedInsight = await Insight.findByIdAndDelete(id);
+
+      if (deletedInsight) {
+          res.status(200).send('Insight deleted successfully');
+      } else {
+          res.status(404).send('Insight not found');
+      }
+  } catch (error) {
+      console.error('Error deleting insight:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
+
+app.put('/update-insight/:id', checkAuth, async (req, res) => {
+  try {
+      const id = req.params.id;
+      const { criticism, suggestions } = req.body;
+
+      // Temukan dan perbarui Insight berdasarkan ID
+      const updatedInsight = await Insight.findByIdAndUpdate(id, {
+          criticism,
+          suggestions,
+          timestamp: new Date() // Update timestamp ke waktu sekarang
+      }, { new: true });
+
+      if (updatedInsight) {
+          res.status(200).send('Insight updated successfully');
+      } else {
+          res.status(404).send('Insight not found');
+      }
+  } catch (error) {
+      console.error('Error updating insight:', error);
+      res.status(500).send('Internal Server Error');
+  }
+});
 
 // ENDPOINTS
 // Render homepage
@@ -333,7 +367,9 @@ app.get('/Shop', (req, res) => {
 app.get('/Insight', (req, res) => {
   res.render('Insight', { title: 'Insight' });
 });
-
+app.get('/InsightHistory', checkAuth, (req, res) => {
+  res.render('InsightHistory', { title: 'Insight History' });
+});
 app.get('/Dashboard', (req, res) => {
   // Periksa apakah ada sesi pengguna yang login
   if (!req.session.user) {
