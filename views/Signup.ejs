@@ -7,7 +7,7 @@
   <script src="JS/Signup.js"></script> <!-- Fix the path separator to use forward slash -->
   <link rel="icon" type="image/x-icon" href="src/Logo.png"> <!-- Fix the path separator to use forward slash -->
   <link rel="stylesheet" href="/CSS/Signup.css">
-  <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ld5Z8wpAAAAAJeEFL9lK3uOJ2Qa1M6tUrTobs2C"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
   <div class="trail"></div>
@@ -25,6 +25,10 @@
       <div class="form-group">
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="captcha">CAPTCHA:</label>
+        <div class="g-recaptcha" data-sitekey="6LesLc0pAAAAALwqcTtR_DVM4Lx1bAj2Ig9d0Zo6"></div>
       </div>
       <div class="form-group">
         <div class="register-button" >
