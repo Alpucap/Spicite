@@ -98,7 +98,8 @@ video {
 }
 
 .back-button {
-    display: inline-block;
+    display:inline-block;
+    position:fixed;
     padding: 10px 20px;
     background-color: rgba(235, 238, 236, 0); /* Latar belakang tombol transparan */
     color: #ebeeec; /* Warna teks tombol */

@@ -370,6 +370,9 @@ app.get('/Insight', (req, res) => {
 app.get('/InsightHistory', checkAuth, (req, res) => {
   res.render('InsightHistory', { title: 'Insight History' });
 });
+app.get('/Cart', (req, res) => {
+  res.render('Cart', { title: 'Insight' });
+});
 app.get('/Dashboard', (req, res) => {
   // Periksa apakah ada sesi pengguna yang login
   if (!req.session.user) {

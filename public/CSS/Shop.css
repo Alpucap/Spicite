@@ -39,11 +39,6 @@ a{
     padding: 20px;
 }
   
-.container h2 {
-    text-align: center;
-    color: #8fae51;
-}
-  
 .shop-card {
     display: flex;
     flex-wrap: wrap;
