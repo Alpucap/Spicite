@@ -18,9 +18,9 @@ $(document).ready(function(){
             return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
         });
         $(".shop-card").empty().append(sortedProducts);
-        addAddToCartListeners();
+        addAddToCartListeners(); // Reattach event listener
     }
-
+    
     function sortByPrice() {
         var sortedProducts = sortProducts(function(a, b) {
             var priceTextA = $(a).find("p").text().match(/\d+\.\d+/); 
@@ -35,7 +35,7 @@ $(document).ready(function(){
             }
         });
         $(".shop-card").empty().append(sortedProducts);
-        addAddToCartListeners();
+        addAddToCartListeners(); // Reattach event listener
     }
 
     function sortByOngkir() {

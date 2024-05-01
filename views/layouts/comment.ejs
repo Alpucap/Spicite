@@ -224,7 +224,7 @@
                 if (response.ok) {
                     return response.json(); // Mengembalikan respons JSON
                 } else {
-                    throw new Error('Failed to fetch comments');
+                    throw new Error('Please Login First!');
                 }
             })
             .then(comments => {
@@ -261,7 +261,7 @@
             })
             .catch(error => {
                 console.error(error);
-                alert('Failed to fetch comments');
+                alert('Please Login First!');
             });
         }
 

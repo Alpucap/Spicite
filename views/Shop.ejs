@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="CSS\Shop.css">
-    <script src="JS\Shop.js"></script>
     <link rel="icon" type="image/x-icon" href="src\Logo.png">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <!-- NAVBAR -->
@@ -14,11 +14,10 @@
 
     <!-- SHOP -->
     <div class="container">
-        <h2>SPICE SHOP</h2>
         <div class="search-container">
             <input type="text" id="search-bar" placeholder="Search products...">
             <button id="search-button">Search</button>
-            <button id="cart-button">Cart</button>
+            <button id="cart-button"><a href="/Cart">Cart</a></button>
 
             <!-- MODAL -->
             <button id="sortingOpenButton">&#9660;</button>
@@ -40,34 +39,6 @@
         </div>
           
         <div class="shop-card">
-            <!-- Modal add to cart -->
-            <div id="cartModal" class="modal"> 
-                <div class="modals-content">
-                    <span class="cartClose">&times;</span> 
-                    <h3>Add to Cart</h3>
-                    <form id="cartForm">
-                        <div class="form-group">
-                            <label for="quantity">Quantity:</label>
-                            <input type="number" id="quantityInput" name="quantity" min="1" value="1">
-                        </div>
-                        <div class="form-group">
-                            <label for="size">Size:</label>
-                            <select id="sizeSelect" name="size">
-                                <option value="S">Small</option>
-                                <option value="M">Medium</option>
-                                <option value="L">Large</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="insurance">Insurance:</label>
-                            <input type="checkbox" id="insuranceCheckbox" name="insurance" value="0.5">
-                            <span>Add Insurance (+$0.5)</span>
-                        </div>
-                        <a href="Cart.ejs"><button type="submit" >Add to Cart</button></a>
-                    </form>
-                </div>
-            </div>
-            
             <!--PRODUCT1-->
             <div class="product">
                 <img src="src/Shop/Blackpepper.png" alt="Black Pepper">
@@ -235,12 +206,39 @@
                 <button class="add-to-cart">Add to Cart</button>
             </div>
         </div>
+        <!-- Modal add to cart -->
+        <div id="cartModal" class="modal"> 
+            <div class="modals-content">
+                <span class="cartClose">&times;</span> 
+                <h3>Add to Cart</h3>
+                <form id="cartForm">
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantityInput" name="quantity" min="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Size:</label>
+                        <select id="sizeSelect" name="size">
+                            <option value="S">Small</option>
+                            <option value="M">Medium</option>
+                            <option value="L">Large</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="insurance">Insurance:</label>
+                        <input type="checkbox" id="insuranceCheckbox" name="insurance" value="0.5">
+                        <span>Add Insurance (+$0.5)</span>
+                    </div>
+                    <button type="submit" class="add-to-cart-button">Add to Cart</button>
+                </form>
+            </div>
+        </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="JS/Shop.js"></script>
     
     <!-- Loading  -->
     <%- include('layouts/loading.ejs') %>
     <!-- FOOTER -->
     <%- include('layouts/footer.ejs') %>
+
 </body>
