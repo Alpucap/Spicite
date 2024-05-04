@@ -1,5 +1,8 @@
 
 //SHOP
+
+
+
 $(document).ready(function(){
     var originalOrder = $(".product").toArray();
     
@@ -116,6 +119,17 @@ $(document).ready(function(){
 
 });
 
+//Toggle Active Shopping Cart
+document.addEventListener("DOMContentLoaded", function() {
+    const shoppingCart = document.querySelector('.shopping-cart');
+    const shoppingCartButton = document.querySelector('#shopping-cart-button');
+
+    shoppingCartButton.onclick = (e) => {
+        shoppingCart.classList.toggle('active');
+        e.preventDefault(); // Mencegah peristiwa default seperti pindah ke atas saat mengklik tautan
+    };
+});
+
 
 //DROPDOWN
 // Fungsi untuk menampilkan/menyembunyikan dropdown
@@ -177,7 +191,6 @@ $(document).ready(function(){
         }
     });
 });
-
 
 // MODAL add to cart
 var cartModal = document.getElementById("cartModal"); // Ganti nama variabel
