@@ -2,11 +2,10 @@ const express = require("express");
 const mongoose = require('mongoose');
 const app = express();
 const port = 3000;
-const path = require("path");
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
-const dbName = 'account';
-const bcrypt = require('bcrypt');
+const dbName = 'account'; //Database name
+const bcrypt = require('bcrypt'); //Hashing 
 const session = require('express-session');
 
 // MONGODB
@@ -45,13 +44,7 @@ const checkAuth = (req, res, next) => {
 };
 
 //SIGNUP
-const RegisterDataSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String
-}, { collection: 'dataAkun' }); 
-
-const RegisterData = mongoose.model('RegisterData', RegisterDataSchema);
+const RegisterData = require('./Model/SignupModel.js');
 
 app.post('/submit-register', async (req, res) => {
   try {
@@ -175,13 +168,7 @@ app.post('/logout', checkAuth, (req, res) => {
 
 
 //Comment
-const commentSchema = new mongoose.Schema({
-  username: String,
-  comment: String
-});
-
-// Model komentar
-const Comment = mongoose.model('Comment', commentSchema, 'dataComment');
+const Comment = require('./Model/CommentModel.js');
 
 // Endpoint untuk menambahkan komentar baru
 app.post('/add-comment', checkAuth, async (req, res) => {
@@ -251,14 +238,7 @@ app.get('/search-comments', checkAuth, async (req, res) => {
 });
 
 // INSIGHT
-const insightSchema = new mongoose.Schema({
-  name: String,
-  timestamp: { type: Date, default: Date.now },
-  criticism: String,
-  suggestions: String
-});
-
-const Insight = mongoose.model('Insight', insightSchema, 'insightUser');
+const Insight = require('./Model/InsightModel.js');
 
 app.post('/submit-form', checkAuth, async (req, res) => {
   try {
@@ -346,24 +326,48 @@ app.put('/update-insight/:id', checkAuth, async (req, res) => {
   }
 });
 
+
+// REVIEW
+const Review = require('./Model/ReviewModel.js');
+
+// Endpoint untuk menambahkan review baru ke dalam database
+app.post('/submit-review', checkAuth, async (req, res) => {
+  try {
+      const { foodName, rating, reviewText } = req.body;
+      const username = req.session.user.name; // Ambil nama pengguna dari sesi
+
+      // Membuat instance model Review baru
+      const newReview = new Review({
+          username: username,
+          foodName: foodName,
+          rating: rating,
+          reviewText: reviewText
+      });
+
+      // Menyimpan review ke dalam database
+      await newReview.save();
+
+      res.status(201).send('Review added successfully');
+  } catch (error) {
+      console.error('Error adding review:', error);
+      res.status(500).send('Failed to add review');
+  }
+});
+
 // ENDPOINTS
 // Render homepage
 app.get('/', (req, res) => {
   res.render('Homepage', { title: 'Home' });
 });
-
 app.get('/Homepage', (req, res) => {
   res.render('Homepage', { title: 'Home' });
 });
-
 app.get('/Recipe', (req, res) => {
   res.render('Recipe', { title: 'Recipe' });
 });
-
 app.get('/Shop', (req, res) => {
   res.render('Shop', { title: 'Shop' });
 });
-
 app.get('/Insight', (req, res) => {
   res.render('Insight', { title: 'Insight' });
 });
@@ -378,10 +382,8 @@ app.get('/Dashboard', (req, res) => {
   if (!req.session.user) {
     return res.redirect('/Login'); // Redirect ke halaman login jika tidak ada sesi pengguna
   }
-
   // Dapatkan informasi pengguna dari sesi
   const { name, email } = req.session.user;
-
   // Render dashboard dengan informasi pengguna
   res.render('Dashboard', { title: 'Dashboard', name, email });
 });
