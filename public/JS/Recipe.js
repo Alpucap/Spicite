@@ -37,11 +37,6 @@ function carousel() {
       moveCarousel();
     }
   
-    function moveToPrevSlide() {
-      currentIndex = (currentIndex - 1 + items.length) % items.length;
-      moveCarousel();
-    }
-  
     function handlePrevButtonClick() {
       currentIndex = (currentIndex - 1 + items.length) % items.length;
       moveCarousel();

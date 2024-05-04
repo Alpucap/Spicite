@@ -107,11 +107,6 @@ $(document).ready(function(){
         $(".shop-card").empty().append(filteredProducts);
     });
 
-    function getPrice(product) {
-        var priceText = $(product).find("p").text().replace(/[^\d.]/g, '');
-        return parseFloat(priceText);
-    }
-
     function sortProducts(compareFunction) {
         var bestProduct = $(".product").find(".bannerbest").parent();
         var otherProducts = $(".product").not(bestProduct);

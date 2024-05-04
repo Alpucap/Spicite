@@ -322,16 +322,16 @@ span {
 
 .FAQ-Items {
     display: flex;
-    justify-content: flex-start; 
-    align-items: flex-start; 
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-wrap: wrap;
     max-width: 800px;
     margin: 0 auto;
 }
-  
+    
 .FAQ-Items2 {
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
     max-width: 800px;
@@ -348,7 +348,7 @@ span {
     opacity: 0;
     transform: translateX(-20px);
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    margin-right: auto; 
+    margin-right: 15px;
 }
   
 .FAQ-Items2 .FAQ-Item {
@@ -361,7 +361,7 @@ span {
     opacity: 0;
     transform: translateX(20px); 
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    margin-left: auto; 
+    margin-left: 15px;
 }
   
 .FAQ-Item.visible {
@@ -372,7 +372,6 @@ span {
 .FAQ-Content {
     text-align: left;
 }
-  
   
 .Question {
     position: relative;
