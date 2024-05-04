@@ -1,4 +1,3 @@
-
 //SHOP
 
 
@@ -128,6 +127,13 @@ document.addEventListener("DOMContentLoaded", function() {
         shoppingCart.classList.toggle('active');
         e.preventDefault(); // Mencegah peristiwa default seperti pindah ke atas saat mengklik tautan
     };
+
+    // Menutup shopping cart saat mengklik di luar shopping cart
+    document.addEventListener("click", function(e) {
+        if (!shoppingCart.contains(e.target) && !shoppingCartButton.contains(e.target)) {
+            shoppingCart.classList.remove('active');
+        }
+    });
 });
 
 
@@ -169,10 +175,21 @@ sortingCloseButton.onclick = function() {
 
 // Saat pengguna mengklik di luar modal sorting, tutup modal tersebut
 window.onclick = function(event) {
-  if (event.target == sortingModal) {
-    sortingModal.style.display = "none";
+    if (event.target == sortingModal) {
+      sortingModal.style.display = "none";
+    }
+  
+    if (!event.target.matches('.dropbtn')) {
+      var dropdowns = document.getElementsByClassName("dropdown-content");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
   }
-}
 
 $(document).ready(function(){
     $('.sorting-modal-content a').click(function(){
@@ -188,52 +205,6 @@ $(document).ready(function(){
         } else {
             // Filtering option
             $(this).addClass('filter-dot');
-        }
-    });
+        }
+    });
 });
-
-// MODAL add to cart
-var cartModal = document.getElementById("cartModal"); // Ganti nama variabel
-var addToCartButtons = document.getElementsByClassName("add-to-cart");
-var closeButtons = document.querySelectorAll("#cartModal .cartClose"); // Mengambil semua elemen dengan kelas close di dalam cartModal
-
-for (var i = 0; i < addToCartButtons.length; i++) {
-  addToCartButtons[i].onclick = function() {
-    cartModal.style.display = "block";
-  }
-}
-
-// Tambahkan event listener untuk setiap tombol close di dalam modal
-for (var i = 0; i < closeButtons.length; i++) {
-  closeButtons[i].onclick = function() {
-    cartModal.style.display = "none";
-  }
-}
-
-window.onclick = function(event) {
-  if (event.target == cartModal) {
-    cartModal.style.display = "none";
-  }
-}
-
-document.getElementById("cartForm").onsubmit = function(event) {
-  event.preventDefault();
-  var quantity = document.getElementById("quantityInput").value;
-  var size = document.getElementById("sizeSelect").value;
-  var insurance = document.getElementById("insuranceCheckbox").checked;
-  var totalPrice = calculateTotalPrice(quantity, insurance);
-  console.log("Quantity:", quantity);
-  console.log("Size:", size);
-  console.log("Insurance:", insurance);
-  console.log("Total Price:", totalPrice);
-  cartModal.style.display = "none";
-}
-
-function calculateTotalPrice(quantity, insurance) {
-  var basePrice = 3.69; // Harga dasar botol
-  var totalPrice = quantity * basePrice; // Total harga tanpa asuransi
-  if (insurance) {
-    totalPrice += 0.5; // Tambahkan biaya asuransi jika dipilih
-  }
-  return totalPrice;
-}

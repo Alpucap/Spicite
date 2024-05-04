@@ -26,7 +26,6 @@ document.addEventListener('alpine:init', () => {
     }));
 
     Alpine.store('Cart', {
-
         items: [],
         total: 0,
         quantity: 0,
@@ -61,6 +60,7 @@ document.addEventListener('alpine:init', () => {
 
                 
             }
+            localStorage.setItem('cartItems', JSON.stringify(this.items));
 
         },
         remove(id){
@@ -90,7 +90,21 @@ document.addEventListener('alpine:init', () => {
                 this.total -= cartItem.price;
 
             }
-        }
+            localStorage.setItem('cartItems', JSON.stringify(this.items));
+        },
+        loadCart() {
+            // Retrieve cart items from localStorage
+            const storedItems = localStorage.getItem('cartItems');
+            if (storedItems) {
+                this.items = JSON.parse(storedItems);
+                // Recalculate the total and quantity based on the stored items
+                this.total = this.items.reduce((total, item) => total + item.total, 0);
+                this.quantity = this.items.reduce((quantity, item) => quantity + item.quantity, 0);
+            }
+        },
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        Alpine.store('Cart').loadCart();
     });
 });
 

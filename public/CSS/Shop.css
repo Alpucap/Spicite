@@ -174,29 +174,37 @@ a{
 }
 
 .shopping-cart {
-    position: absolute;
-    top: 26.5%;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
     right: -100%;
-    height: 121vh;
+    height: auto;
     width: 41.5rem;
     padding: 0 1.5rem;
-    background-color: gray;
+    background-color: #476241;
+    border: 2px solid #ebeeec;
+    border-radius: 5px;
     color: var(--primary);
     transition: 0.3s linear;
     z-index: 99999;
+    overflow-y: auto; /* Menetapkan overflow-y: auto; agar shopping cart dapat di-scroll */
 }
 
 .shopping-cart.active {
-    position: absolute;
-    top: 26.5%;
+    position: fixed;
+    top: 10%;
+    bottom: 10%;
     right: 0;
-    height: 250vh;
+    height: auto; /* Atau tinggi yang diinginkan ketika shopping cart aktif */
     width: 41.5rem;
     padding: 0 1.5rem;
-    background-color: gray;
+    background-color: #374c33;
+    border: 2px solid #ebeeec;
+    border-radius: 5px;
     color: var(--primary);
     transition: 0.3s linear;
     z-index: 99999;
+    overflow-y: auto; /* Menetapkan overflow-y: auto; agar shopping cart dapat di-scroll */
 }
 
 .shopping-cart .cart-item {
@@ -228,7 +236,7 @@ a{
     padding: 2px 5px;
     cursor: pointer;
     margin: 0 8px;
-    background-color: black;
+    background-color: #140a0a;
     color: white;
     font-weight: bold;
     font-size: 1.1rem;
@@ -368,5 +376,5 @@ span {
 
 select {
     width: 100%;
-    padding: 5px;
+   padding:5px;
 }
