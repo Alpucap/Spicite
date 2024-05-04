@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
     <link rel="stylesheet" href="CSS\Shop.css">
+    <script src="JS\Shop.js"></script>
     <link rel="icon" type="image/x-icon" href="src\Logo.png">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Alpine -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </head>
 <body>
     <!-- NAVBAR -->
@@ -14,13 +23,17 @@
 
     <!-- SHOP -->
     <div class="container">
-        <div class="search-container">
+        <h2>SPICE SHOP</h2>
+        <div class="search-container" x-data>
             <input type="text" id="search-bar" placeholder="Search products...">
             <button id="search-button">Search</button>
-            <button id="cart-button"><a href="/Cart">Cart</a></button>
 
-            <!-- MODAL -->
-            <button id="sortingOpenButton">&#9660;</button>
+            <!-- Shopping Cart Button -->
+           <button id="shopping-cart-button">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="quantity-badge" x-show="$store.Cart.quantity" x-text="$store.Cart.quantity"></span> 
+            Cart</button>
+
 
             <!-- Modal Sorting -->
             <div id="sortingModal" class="modal"> 
@@ -36,209 +49,62 @@
                     <a href="#" id="sort-ongkir">Free Shipping</a>
                 </div>
             </div>
+
+            <!--CART -->
+            <div class="shopping-cart">
+                <template x-for="(item, index) in $store.Cart.items" x-keys="index">
+                    <div class="cart-item">
+                    <img :src="`${item.img}`" :alt="item.name">
+                    <div class="item-detail">
+                        <h3 x-text="item.name"></h3>
+                        <div class="item-price">
+
+                            <span x-text="rupiah(item.price)"></span> &times;
+                            <button id="remove" @click="$store.Cart.remove(item.id)">&minus;</button>
+                            <span x-text="item.quantity"></span>
+                            <button id="add" @click="$store.Cart.add(item)">&plus;</button> &equals;
+                            <span x-text="rupiah(item.total)"></span>
+
+                        </div>
+                    </div>
+                    </div>
+                </template>
+
+                <h4 x-show="!$store.Cart.items.length" style="margin-top: 1rem">Cart Is Empty</h4>
+                <h4 x-show="$store.Cart.items.length">Total: <span x-text="rupiah($store.Cart.total)"></span></h4>
+
+                <button class="checkout-button" type="submit" x-show="$store.Cart.items.length">Checkout</button>
+
+
+            </div>
+
+            <!-- MODAL -->
+            <button id="sortingOpenButton">&#9660;</button>
+
         </div>
           
-        <div class="shop-card">
-            <!--PRODUCT1-->
-            <div class="product">
-                <img src="src/Shop/Blackpepper.png" alt="Black Pepper">
-                <h3>Black Pepper</h3>
-                <p class="desc">A spice known for its strong flavor and aroma.</p>
-                <p>$3.69/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT2-->
-            <div class="product">
-                <img src="src/Shop/Basil.png" alt="Basil">
-                <h3>Basil</h3>
-                <p class="desc">A fragrant herb commonly used in cooking.</p>
-                <p>$3.39/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT3-->
-            <div class="product">
-                <div class="bannerbest">Best Product</div>
-                <img src="src/Shop/Garlic.png" alt="Garlic">
-                <h3>Garlic</h3>
-                <p class="desc">A pungent bulb used to enhance flavor in dishes.</p>
-                <p>$2.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT4-->
-            <div class="product">
-                <div class="banner">Free Ongkir</div>
-                <img src="src/Shop/Oregano.png" alt="Oregano">
-                <h3>Oregano</h3>
-                <p class="desc">An aromatic herb often used in Italian cuisine.</p>
-                <p>$5.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT5-->
-            <div class="product">
-                <img src="src/Shop/Cumin.png" alt="Cumin">
-                <h3>Cumin</h3>
-                <p class="desc">A spice with a warm, earthy flavor.</p>
-                <p>$1.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT6-->
-            <div class="product">
-                <img src="src/Shop/Chili.png" alt="Chili">
-                <h3>Chili</h3>
-                <p class="desc">A spicy pepper used to add heat to dishes.</p>
-                <p>$2.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT7-->
-            <div class="product">
-                <div class="banner">Free Ongkir</div>
-                <img src="src/Shop/Cinnamon.png" alt="Cinnamon">
-                <h3>Cinnamon</h3>
-                <p class="desc">A sweet spice commonly used in baking.</p>
-                <p>$3.69/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT8-->
-            <div class="product">
-                <img src="src/Shop/Salt.png" alt="Salt">
-                <h3>Salt</h3>
-                <p class="desc">A common mineral used to season food.</p>
-                <p>$5.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT9-->
-            <div class="product">
-                <img src="src/Shop/Ginger.png" alt="Ginger">
-                <h3>Ginger</h3>
-                <p class="desc">A pungent root used in cooking and traditional medicine.</p>
-                <p>$2.69/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT10-->
-            <div class="product">
-                <div class="banner">Free Ongkir</div>
-                <img src="src/Bottle.png" alt="Bottle">
-                <h3>Bottle</h3>
-                <p class="desc">A container used for storing liquids.</p>
-                <p>$0.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT11-->
-            <div class="product">
-                <img src="src/Shop/mace.png" alt="Mace">
-                <h3>Mace</h3>
-                <p class="desc">A spice made from the outer covering of nutmeg seeds.</p>
-                <p>$7.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT12-->
-            <div class="product">
-                <div class="banner">Free Ongkir</div>
-                <img src="src/Shop/fenugreek.jpg" alt="Fenugreek">
-                <h3>Fenugreek</h3>
-                <p class="desc">A plant with small, golden seeds used as a spice.</p>
-                <p>$8.69/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT13-->
-            <div class="product">
-                <img src="src/Shop/Cloves.png" alt="Cloves">
-                <h3>Cloves</h3>
-                <p class="desc">Aromatic flower buds used as a spice.</p>
-                <p>$2.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT14-->
-            <div class="product">
-                <img src="src/Shop/Coriander.jpg" alt="Coriander">
-                <h3>Coriander</h3>
-                <p class="desc">An herb with citrusy, earthy flavor.</p>
-                <p>$2.69/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT15-->
-            <div class="product">
-                <div class="banner">Free Ongkir</div>
-                <img src="src/Shop/Golpar.jpg" alt="Golpar">
-                <h3>Golpar</h3>
-                <p class="desc">A spice made from the dried fruit of a plant native to Iran.</p>
-                <p>$6.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!--PRODUCT16-->
-            <div class="product">
-                <img src="src/Shop/CayennePepper.jpg" alt="Cayenne Pepper">
-                <h3>Cayenne Pepper</h3>
-                <p class="desc">Fiery spice from Iran, perfect for adding bold flavor.</p>
-                <p>$6.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!-- PRODUCT17 -->
-            <div class="product">
-                <img src="src/Shop/Nutmeg.jpg" alt="Nutmeg">
-                <h3>Nutmeg</h3>
-                <p class="desc">Spice from Indonesia.</p>
-                <p>$8.49/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!-- PRODUCT18 -->
-            <div class="product">
-                <img src="src/Shop/Rosemary.jpg" alt="Rosemary">
-                <h3>Rosemary</h3>
-                <p class="desc">Aromatic herb from the Mediterranean.</p>
-                <p>$5.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!-- PRODUCT19 -->
-            <div class="product">
-                <img src="src/Shop/Saffron.jpg" alt="Saffron">
-                <h3>Saffron</h3>
-                <p class="desc">Spice from Crocus sativus flower.</p>
-                <p>$19.99/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
-            <!-- PRODUCT20 -->
-            <div class="product">
-                <img src="src/Shop/Thyme.jpg" alt="Thyme">
-                <h3>Thyme</h3>
-                <p class="desc">Versatile herb with culinary uses.</p>
-                <p>$4.79/gram</p>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
+        <div class="shop-card" x-data="Products">
+           
+            <!--PRODUCTS-->
+            <template x-for="(item, index) in items" x-key="index">
+                <div class="product">
+                <img :src="`${item.img}`" :alt="item.name">
+                <h3 x-text="item.name"></h3>
+                <p class="desc" x-text="item.desc"></p>
+                <p x-text="rupiah(item.price)"></p>
+                <button class="add-to-cart" @click.prevent="$store.Cart.add(item)">Add to Cart</button>
+                </div>
+            </template>
+           
         </div>
-        <!-- Modal add to cart -->
-        <div id="cartModal" class="modal"> 
-            <div class="modals-content">
-                <span class="cartClose">&times;</span> 
-                <h3>Add to Cart</h3>
-                <form id="cartForm">
-                    <div class="form-group">
-                        <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantityInput" name="quantity" min="1" value="1">
-                    </div>
-                    <div class="form-group">
-                        <label for="size">Size:</label>
-                        <select id="sizeSelect" name="size">
-                            <option value="S">Small</option>
-                            <option value="M">Medium</option>
-                            <option value="L">Large</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="insurance">Insurance:</label>
-                        <input type="checkbox" id="insuranceCheckbox" name="insurance" value="0.5">
-                        <span>Add Insurance (+$0.5)</span>
-                    </div>
-                    <button type="submit" class="add-to-cart-button">Add to Cart</button>
-                </form>
-            </div>
-        </div>
+        
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="JS/Shop.js"></script>
+    <script src="JS/Alpine-Shop.js"></script>
     
     <!-- Loading  -->
     <%- include('layouts/loading.ejs') %>
     <!-- FOOTER -->
     <%- include('layouts/footer.ejs') %>
-
 </body>
