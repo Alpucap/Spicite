@@ -13,4 +13,4 @@ Novandry Aprilian (535220165)<br>
 1. Pemasangan Dependencies: Buat pemasangan dependensi yang diperlukan, masukkan perintah berikut di terminal: "npm install"<br>
 2. Mulai Website: Setelah pemasangan dependensi, mulai website local dengan memasukkan perintah berikut di terminal: "npm run start"<br>
 
-Anda dapat mengunduh laporan PDF dan PPT langsung dari folder yang disediakan.
+Anda dapat mengunduh laporan PDF dan PPT langsung dari file yang disediakan.
