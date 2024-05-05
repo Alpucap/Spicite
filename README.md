@@ -7,7 +7,7 @@ Novandry Aprilian (535220165)<br>
 
 ## Langkah-langkah Eksekusi Situs Website:<br>
 1. Pemasangan Dependencies: Buat pemasangan dependensi yang diperlukan, masukkan perintah berikut di terminal: "npm install"<br>
-2. Mulai Website: Setelah pemasangan dependensi, mulai APK dengan memasukkan perintah berikut di terminal: "npm run dev"<br>
+2. Mulai Website: Setelah pemasangan dependensi, mulai website local dengan memasukkan perintah berikut di terminal: "npm run start"<br>
 
 ## Tautan Presentasi Video dan Demonstrasi Program:<br>
 1. Tautan Presentasi Video: https://www.youtube.com/watch?v=glov3F73h3g<br>
