@@ -73,7 +73,8 @@
                 <h4 x-show="!$store.Cart.items.length" style="margin-top: 1rem">Cart Is Empty</h4>
                 <h4 x-show="$store.Cart.items.length">Total: <span x-text="rupiah($store.Cart.total)"></span></h4>
 
-                <button class="checkout-button" type="submit" x-show="$store.Cart.items.length">Checkout</button>
+                <!-- checkout button -->
+                <button  class="checkout-button" type="submit" x-show="$store.Cart.items.length">Checkout</button>
 
 
             </div>

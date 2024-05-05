@@ -56,9 +56,7 @@ document.addEventListener('alpine:init', () => {
                         return item;
 
                     }
-                });  
-
-                
+                });        
             }
             localStorage.setItem('cartItems', JSON.stringify(this.items));
 
@@ -101,11 +99,12 @@ document.addEventListener('alpine:init', () => {
                 this.total = this.items.reduce((total, item) => total + item.total, 0);
                 this.quantity = this.items.reduce((quantity, item) => quantity + item.quantity, 0);
             }
-        },
+        },  
     });
     document.addEventListener('DOMContentLoaded', function() {
         Alpine.store('Cart').loadCart();
     });
+
 });
 
 
@@ -117,3 +116,13 @@ const rupiah = (number) => {
         maximumFractionDigits: 0, // Agar tidak ada angka ,00 di belakang harga
     }).format(number);
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+    const checkoutButton = document.querySelector('.checkout-button');
+
+    checkoutButton.onclick = (e) => {
+
+        alert('Terimakasih telah belanja di web kami :)');
+        e.preventDefault();
+    };
+});
