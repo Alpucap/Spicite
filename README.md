@@ -1,6 +1,6 @@
 # Panduan Eksekusi Situs Website<br>
 
-## Penulis:
+## Penulis / Author:
 Henokh Mikhael Kristiantan (535220154)<br>
 Hans Christian Handoto (535220159)<br>
 Novandry Aprilian (535220165)<br>
