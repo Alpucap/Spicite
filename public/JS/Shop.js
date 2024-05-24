@@ -1,5 +1,11 @@
 //SHOP
+<<<<<<< HEAD
 //Product Sorting
+=======
+
+
+
+>>>>>>> origin/master
 $(document).ready(function(){
     var originalOrder = $(".product").toArray();
     

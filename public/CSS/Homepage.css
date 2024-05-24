@@ -54,6 +54,7 @@ a{
     letter-spacing: 30px;
     opacity: 0;
     animation: fadeIn 1.5s ease-in-out forwards;
+<<<<<<< HEAD
     transition: mix-blend-mode 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition */
 }
 
@@ -65,16 +66,32 @@ a{
         opacity: 0.5;
     }
     100% {
+=======
+    transition: mix-blend-mode 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+>>>>>>> origin/master
         opacity: 1;
     }
 }
 
 .text-overlay:hover {
     mix-blend-mode: color-dodge;
+<<<<<<< HEAD
     transition: mix-blend-mode 0.5s ease-in-out; /* Smooth transition */
 }
 
 
+=======
+    transition: mix-blend-mode 4s ease-in-out;
+}
+
+>>>>>>> origin/master
 .subtext-overlay {
     position: absolute;
     font-family: 'Montserrat', sans-serif;
@@ -211,8 +228,11 @@ span {
     padding-bottom: 20px;
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     margin-top: 50px;
     margin-bottom: 50px;
+=======
+>>>>>>> origin/master
 }
 
 .News .Title{
@@ -275,9 +295,16 @@ span {
 .Lainnya {
     position: absolute;
     width: 100px;
+<<<<<<< HEAD
     bottom: 0px; 
     left: 50%;
     transform: translateX(-50%);
+=======
+    top: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 40px;
+>>>>>>> origin/master
     border-radius: 5px;
     border: 2px solid #ebeeec;
     background-color: transparent;
@@ -326,7 +353,11 @@ span {
 }
 
 .FAQ-Items {
+<<<<<<< HEAD
     display:flex;
+=======
+    display: flex;
+>>>>>>> origin/master
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -351,7 +382,11 @@ span {
     padding: 10px;
     border-radius: 10px;
     opacity: 0;
+<<<<<<< HEAD
     transform: translateX(-40px); /* Ubah nilai transform untuk item FAQ di sebelah kiri */
+=======
+    transform: translateX(-20px);
+>>>>>>> origin/master
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     margin-right: 15px;
 }
@@ -364,7 +399,11 @@ span {
     padding: 10px;
     border-radius: 10px;
     opacity: 0;
+<<<<<<< HEAD
     transform: translateX(40px);  /* Ubah nilai transform untuk item FAQ di sebelah kanan */
+=======
+    transform: translateX(20px); 
+>>>>>>> origin/master
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
     margin-left: 15px;
 }

@@ -67,6 +67,7 @@ span{
 span:hover{
     color:#7b9546;
 }
+<<<<<<< HEAD
 
 .forms a{
     text-decoration: none;
@@ -76,6 +77,14 @@ span:hover{
     text-align: center;
 }
 
+=======
+.forms a{
+    text-decoration: none;
+}
+.forms h2{
+    text-align: center;
+}
+>>>>>>> origin/master
 .forms{
     align-items: center;
     width: 100%;

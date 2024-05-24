@@ -1,21 +1,36 @@
 const express = require("express");
 const mongoose = require('mongoose');
 const app = express();
+<<<<<<< HEAD
 const port = process.env.PORT || 3001;
 const MongoClient = require('mongodb').MongoClient;
 const url = "mongodb+srv://HansC:VkWyDVqKl5FtDv6s@spicite.kdgxsom.mongodb.net/?retryWrites=true&w=majority&appName=Spicite";
 const dbName = 'test'; //Database name
+=======
+const port = 3000;
+const MongoClient = require('mongodb').MongoClient;
+const url = 'mongodb://localhost:27017';
+const dbName = 'account'; //Database name
+>>>>>>> origin/master
 const bcrypt = require('bcrypt'); //Hashing 
 const session = require('express-session');
 
 // MONGODB
 // Connect to MongoDB
+<<<<<<< HEAD
 mongoose.connect(url, {
+=======
+mongoose.connect('mongodb://localhost:27017/account', {
+>>>>>>> origin/master
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 const db = mongoose.connection;
+<<<<<<< HEAD
 db.on('error', (error) => console.error('MongoDB connection error:', error));
+=======
+db.on('error', console.error.bind(console, 'connection error:'));
+>>>>>>> origin/master
 db.once('open', function () {
     console.log('Connected to MongoDB');
 });
@@ -49,6 +64,7 @@ const RegisterData = require('./Model/SignupModel.js');
 app.post('/submit-register', async (req, res) => {
   try {
       const { name, email, password } = req.body;
+<<<<<<< HEAD
       
       // Check if user already exists
       const existingUser = await RegisterData.findOne({ name });
@@ -68,6 +84,16 @@ app.post('/submit-register', async (req, res) => {
       res.redirect('/Login'); // Redirect user to login page after successful registration
   } catch (err) {
       console.error('Error during registration:', err);
+=======
+      // Hash password
+      const hashedPassword = await bcrypt.hash(password, 10); // 10 adalah cost factor
+      // Create a new document in MongoDB for Register data with hashed password
+      const registerData = new RegisterData({ name, email, password: hashedPassword });
+      await registerData.save();
+      res.redirect('/Login'); // Arahkan pengguna ke halaman login setelah pendaftaran berhasil
+  } catch (err) {
+      console.error(err);
+>>>>>>> origin/master
       res.status(500).send('Internal Server Error');
   }
 });
@@ -75,6 +101,7 @@ app.post('/submit-register', async (req, res) => {
 //LOGIN
 let isLoggedIn = false;
 
+<<<<<<< HEAD
 app.post('/login', async (req, res) => {
   let client;
   try {
@@ -87,17 +114,53 @@ app.post('/login', async (req, res) => {
           return res.send('<script>alert("Invalid username or password"); window.location.href="/login";</script>');
       }
       const passwordMatch = await bcrypt.compare(password, user.password);
+=======
+app.post('/Homepage', async (req, res) => {
+  let client;
+
+  try {
+      // Extract username and password from the request
+      const { name, password } = req.body;
+
+      // Connect to MongoDB
+      client = await MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true });
+      
+      // Access the 'dataAkun' collection in the 'account' database
+      const db = client.db(dbName);
+      const collection = db.collection('dataAkun');
+
+      // Find the user based on the provided username
+      const user = await collection.findOne({ name: name });
+
+      // If the user is not found
+      if (!user) {
+          return res.status(401).send('Invalid username or password');
+      }
+
+      // Compare the provided password with the hashed password stored in the database
+      const passwordMatch = await bcrypt.compare(password, user.password);
+
+      // If the passwords match, login is successful
+>>>>>>> origin/master
       if (passwordMatch) {
           isLoggedIn = true;
           req.session.user = { name: name, email: user.email };
           res.redirect('/Homepage');
       } else {
+<<<<<<< HEAD
           res.send('<script>alert("Invalid username or password"); window.location.href="/login";</script>');
+=======
+          res.status(401).send('Invalid username or password');
+>>>>>>> origin/master
       }
   } catch (error) {
       console.error('Error during login:', error);
       res.status(500).send('Internal Server Error');
   } finally {
+<<<<<<< HEAD
+=======
+      // Make sure to close the MongoDB connection when done
+>>>>>>> origin/master
       if (client) {
           client.close();
       }
@@ -144,7 +207,11 @@ app.delete('/delete-account', checkAuth, async (req, res) => {
       res.status(404).json({ success: false, error: "User not found" });
     }
   } catch (error) {
+<<<<<<< HEAD
     console.error('Error deleting account:', error); 
+=======
+    console.error('Error deleting account:', error); // Tambahkan ini untuk mencetak kesalahan ke konsol server
+>>>>>>> origin/master
     res.status(500).json({ success: false, error: "An error occurred while deleting the account" });
   }
 });
@@ -246,6 +313,10 @@ app.post('/submit-form', checkAuth, async (req, res) => {
     const { criticism, suggestions } = req.body;
     const username = req.session.user.name; // Ambil nama pengguna dari sesi
 
+<<<<<<< HEAD
+=======
+    // Buat instance model MongoDB menggunakan data yang diterima dan nama pengguna dari sesi
+>>>>>>> origin/master
     const newInsight = new Insight({
       name: username,
       criticism: criticism,
