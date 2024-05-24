@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+<<<<<<< HEAD
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+=======
+>>>>>>> origin/master
 
 * {
     box-sizing: border-box;
@@ -97,10 +101,13 @@ a{
     padding-bottom: 20px;
 }
 
+<<<<<<< HEAD
+=======
 .RecipeList h2 {
     text-align: center;
     color: #8fae51;
 }
+>>>>>>> origin/master
 .Recipe-News {
     display: flex;
     flex-wrap: wrap;
@@ -156,7 +163,11 @@ a{
     width: 300px; 
     height: auto;
     transition: transform 0.3s ease-in-out;
+<<<<<<< HEAD
+    border-radius: 5px;
+=======
     border-radius: 2px;
+>>>>>>> origin/master
 }
 
 .Recipe-News-Items-Content-1 img:hover,
@@ -238,6 +249,44 @@ a{
 
 
 
+<<<<<<< HEAD
+/* INFINITE */
+.Infinite{
+    margin: 0px;
+    margin-top: 50px;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    animation: slide 8s linear infinite;
+    font-family: 'Cinzel Decorative', sans-serif;
+}
+
+@keyframes slide {
+    0% { left: 100%; }
+    100% { left: -100%; }
+}
+
+/* Rail for the train */
+.rail{
+    margin-top: 0px;
+    height: 5px;
+    background-color: #96a09d;
+=======
 /* FOOTER */
 footer {
     background-color: #284b63;
@@ -341,6 +390,7 @@ footer.visible {
     text-align: center;
     margin-top: 20px;
     color: #ebeeec;
+>>>>>>> origin/master
 }
 
 

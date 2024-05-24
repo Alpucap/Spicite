@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/master
 // MOUSE TRAIL
 document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('mousemove', function(e) {
