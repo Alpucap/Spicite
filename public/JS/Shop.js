@@ -1,7 +1,5 @@
 //SHOP
-
-
-
+//Product Sorting
 $(document).ready(function(){
     var originalOrder = $(".product").toArray();
     

@@ -67,12 +67,15 @@ span{
 span:hover{
     color:#7b9546;
 }
+
 .forms a{
     text-decoration: none;
 }
+
 .forms h2{
     text-align: center;
 }
+
 .forms{
     align-items: center;
     width: 100%;
