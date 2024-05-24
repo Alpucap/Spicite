@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\GulaiIkanPatin.png" alt="">
+        <h1>GULAI IKAN PATIN</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Jambi,+Kota+Jambi,+Jambi/@-1.6102629,103.527126,12z/data=!3m1!4b1!4m6!3m5!1s0x2e25889ab3e2cd3b:0xd15a99c70ab2d90d!8m2!3d-1.6101229!4d103.6131203!16zL20vMGYyMmpn?hl=id&entry=ttu">
+                Jambi, Indonesia 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://www.orami.co.id/magazine/resep-gulai-ikan-patin">
+            By: orami.co.id
+            </a>
+        </div>
+        
+        <!-- NOTES -->
+        <%- include('layouts/Notes.ejs') %>
+
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                    Gulai Ikan Patin is a traditional Indonesian dish featuring catfish cooked in a rich and aromatic curry sauce.
+                    The catfish is typically simmered in a blend of spices such as turmeric, ginger, galangal, and 
+                    lemongrass, along with coconut milk for creaminess. The dish often includes ingredients like shallots, 
+                    garlic, kaffir lime leaves, and red chilies, imparting depth of flavor and a hint of heat. Gulai Ikan Patin 
+                    is known for its comforting and hearty nature, making it a favorite dish in Indonesian cuisine, especially 
+                    enjoyed with steamed rice.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>500g</b> <a href="/Shop"><span>catfish</span></a> cleaned and scaled</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>400ml</b> <a href="/Shop"><span>thin coconut milk</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>200ml</b> <a href="/Shop"><span>thick coconut milk</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>10</b> <a href="/Shop"><span>curly red chilies</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>10</b> <a href="/Shop"><span>shallots</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>5</b> <a href="/Shop"><span>garlic cloves</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>1 segment</b> <a href="/Shop"><span>ginger</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><b>1 segment</b> <a href="/Shop"><span>turmeric</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>1 segment</b> <a href="/Shop"><span>galangal</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>3</b> <a href="/Shop"><span>kaffir lime leaves</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>1</b> <a href="/Shop"><span>turmeric leaf</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>1 stalk</b> <a href="/Shop"><span>lemongrass</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient13">
+                        <label for="ingredient13"><b>3</b> <a href="/Shop"><span>wild starfruits</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient14">
+                        <label for="ingredient14"><a href="/Shop"><span>Oil</span></a> for sautéing</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient15">
+                        <label for="ingredient15"><a href="/Shop"><span>Salt</span></a> to taste</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient16">
+                        <label for="ingredient16"><a href="/Shop"><span>Seasoning</span></a> to taste</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Cut the catfish according to preference and set aside.</li>
+                    <li>Grind shallots, garlic, red chilies, ginger, and turmeric into a smooth paste. Crush the galangal and lemongrass.</li>
+                    <li>Heat oil in a pot and sauté the spice paste until fragrant. Add kaffir lime leaves, turmeric leaves, crushed lemongrass, galangal, and sliced wild starfruits. Stir-fry until the spices are well blended and fragrant.</li>
+                    <li>Add the catfish pieces and stir until coated with the spices.</li>
+                    <li>Pour in the thin coconut milk and cook over medium heat for about 5 minutes, stirring to prevent the coconut milk from curdling.</li>
+                    <li>Season with salt and seasoning according to taste. Gradually pour in the thick coconut milk while stirring continuously. Simmer until boiling and the catfish is fully cooked.</li>
+                    <li>Adjust the seasoning if needed. Serve hot with steamed rice.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- Rating the recipe -->
+    <%- include('layouts/rating_review.ejs') %>
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

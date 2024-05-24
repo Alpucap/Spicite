@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <script src="JS/Signup.js"></script> <!-- Fix the path separator to use forward slash -->
+  <link rel="icon" type="image/x-icon" href="src/Logo.png"> <!-- Fix the path separator to use forward slash -->
+  <link rel="stylesheet" href="/CSS/Signup.css">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+  <div class="trail"></div>
+  <div class="container">
+    <h2>Register Account</h2>
+    <form id="registerForm" action="/submit-register" method="POST" onsubmit="return validateForm()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="captcha">CAPTCHA:</label>
+        <div class="g-recaptcha" data-sitekey="6LesLc0pAAAAALwqcTtR_DVM4Lx1bAj2Ig9d0Zo6"></div>
+      </div>
+      <div class="form-group">
+        <div class="register-button" >
+          <input type="submit" value="Register">
+        </div>
+      </div>
+    </form>
+    <div class="button-group">
+      <a href="#" onclick="goBack()" class="back-button"><<</a>
+      <a href="/Login" class="signin-button">Already have an account?</a>
+    </div>
+    <div class="forgot-password"> 
+      <a href="/forgotpassword">Forgot Password?</a>
+    </div>
+  </div>
+  <script src="JS/Signup.js"></script> <!-- Fix the path separator to use forward slash -->
+  <!-- Loading  -->
+  <% include('layouts/loading.ejs') %>
+</body>
+</html>

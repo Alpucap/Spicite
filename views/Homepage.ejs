@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Homepage.css">
+    <script src="JS\Homepage.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+  
+    <!-- PREVIEW -->
+    <div class="container">
+      <video autoplay loop muted>
+          <source src="src/Video/Train.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+      <a href="/Shop">
+        <div class="text-overlay">
+          SPICITE
+          <div class="subtext-overlay">
+            BEST SITE TO FIND SPICES
+          </div>
+        </div>
+      </a>
+      
+    </div>
+
+    <!-- INTRO -->
+    <div class="Intro" id="intro">
+      <div class="Intro-items">
+        <img src="src\Shop\ShopRB\OreganoRB.png">
+        <div class="Point">
+          <h1>SPI<span>CITE</span></h1>
+          <p>Providing convenience for buyers to find the best quality spices. With <span>SPICITE</span>, 
+            sellers can simply reach their buyers, while buyers can quickly find and buy the spices they want.
+            With complete and intuitive features, <span>SPICITE</span> provides a pleasant online shopping experience 
+            and also ensures seller and buyer satisfaction.</p>
+          <a href="/Shop"><button>Find Spices . . .</button></a>
+        </div>
+      </div>
+    </div>
+    <script src="JS\Homepage.js"></script>
+    
+    <!-- SHOP PREVIEW -->
+    <%- include('layouts/previewshop.ejs') %>
+
+    <!-- NEWS -->
+    <div class="News" id="news">
+      <h2 class="Title">Check this out!</h2>
+      <a href="/Recipe"><button class="Lainnya"><p> Find More... </p></button></a>
+      <div class="News-Items">
+        <a href="https://blog.google/around-the-globe/google-asia/how-indonesia-helped-spice-world/">
+          <div class="News-Items-1">
+            <img src="src\News\News1.jpg" alt="">
+            <h3>How Indonesia Helped Spice up the World?</h3> 
+            <p>More than half of the world's spices originated from Indonesia. These spices not only flavor one of the world's most diverse cuisines — 
+              they also influenced the culinary world as we know it, changing tastes around the globe</p>
+            <h5>~ Google-asia</h5>
+          </div>
+        </a>
+        <a href="https://www.kompas.id/baca/english/2023/09/30/en-dari-nusantara-membumbui-dunia">
+          <div class="News-Items-2">
+            <img src="src\News\News2.jpg" alt="">
+            <h3>From the Archipelago to Spice Up the World</h3> 
+            <p>It is believed that the strategy of flooding the global market with Indonesian spices can accelerate 
+              efforts to introduce Indonesian culinary delights to the world.</p>
+            <h5>~ Kompas.id</h5>
+          </div>
+        </a>
+        <a href="https://en.antaranews.com/news/307251/spice-products-have-potential-to-boost-indonesia-new-zealand-trade-vp">
+          <div class="News-Items-2">
+            <img src="src\News\News3.jpg" alt="">
+            <h3>Spice products have potential to boost Indonesia-New Zealand trade: VP</h3> 
+            <p>Auckland, New Zealand (ANTARA) - Vice President Ma'ruf Amin, on Thursday, highlighted that animal and spice products 
+              have the potential to bolster bilateral trade between Indonesia and New Zealand.</p>
+            <h5>~ antaranews.com</h5>
+          </div>
+        </a>
+      </div>
+    </div>
+    <script src="JS\Homepage.js"></script>
+    
+    <!-- FAQ -->
+      <div class="FAQ" id="FAQ">
+        <h2>About Spicite</h2>
+        <div class="FAQ-Items">
+          <div class="FAQ-Item">
+            <p class="Question">What payment methods do you accept?</p>
+            <div class="FAQ-Content">
+              <p>We accept all major credit cards, including Visa, Mastercard, and American Express. Additionally, we also offer payment via PayPal for added convenience.</p>
+            </div>
+          </div>
+        </div>
+        <div class="FAQ-Items2">
+          <div class="FAQ-Item">
+            <p class="Question">Do you offer international shipping?</p>
+            <div class="FAQ-Content">
+              <p>Yes, we offer international shipping to select countries. Shipping rates and delivery times may vary depending on your location. Please refer to our shipping policy for more information.</p>
+            </div>
+          </div>
+        </div>
+        <div class="FAQ-Items">
+          <div class="FAQ-Item">
+            <p class="Question">How can I contact customer support?</p>
+            <div class="FAQ-Content">
+              <p>You can contact our customer support team via email at spicite@example.com or by phone at 1-800-123-4567.</p>
+            </div>
+          </div>
+        </div>
+        <div class="FAQ-Items2">
+          <div class="FAQ-Item">
+            <p class="Question">Do you have a physical store location?</p>
+            <div class="FAQ-Content">
+              <p>No, we are an online-only retailer and do not have a physical store location. However, you can shop our entire catalog conveniently from our website.</p>
+            </div>
+          </div>
+        </div>
+        <div class="FAQ-Items">
+          <div class="FAQ-Item">
+            <p class="Question">Can I cancel or modify my order after it has been placed?</p>
+            <div class="FAQ-Content">
+              <p>We strive to process orders as quickly as possible. If you need to cancel or modify your order, please contact us immediately. However, please note that once an order has been processed and dispatched, it may not be possible to make changes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
+    
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+</body>
+</html>

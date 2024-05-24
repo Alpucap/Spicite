@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+    color: #ebeeec;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    width: 0px; 
+    display: none; 
+}
+
+a{
+    color: #ebeeec;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+#video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: brightness(40%);
+}
+
+
+/* FORM */
+span{
+    color:#8fae51;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: larger;
+    margin-left: 5px;
+    cursor: pointer;
+}
+span:hover{
+    color:#7b9546;
+}
+.forms a{
+    text-decoration: none;
+}
+.forms h2{
+    text-align: center;
+}
+.forms{
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin-top: 100px;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    position: relative; /* Ensure content stays above the video */
+    z-index: 1;
+}
+form {
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin: 2px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ebeeec;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #8fae51;
+    color: #ebeeec;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #839f4b;  
+}
+
+.button-container {
+    display: flex; /* Mengubah kontainer menjadi flexbox */
+    justify-content: center; /* Mengatur kontainer di tengah secara horizontal */
+    margin-top: 50px; /* Jarak dari atas */
+    margin-bottom: 50px;
+}
+
+@keyframes fadeInText {
+    0% { opacity: 0; } /* Mulai dengan kejelasan nol */
+    100% { opacity: 1; } /* Akhiri dengan kejelasan penuh */
+}
+
+/* Tombol Insight History */
+.linked-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: transparent; /* Warna latar belakang tombol */
+    color: #fff; /* Warna teks tombol */
+    text-decoration: none; /* Menghilangkan garis bawah dari tautan */
+    border-radius: 5px; /* Membuat sudut tombol sedikit bulat */
+    border: none; /* Menghilangkan border */
+    cursor: pointer; /* Mengubah kursor menjadi tanda tangan saat mengarahkan ke tombol */
+    animation: fadeInText 0.5s ease-in-out; /* Terapkan animasi */
+}
+
+/* Tombol Insight History saat dihover */
+.linked-button:hover {
+    opacity: 0.8; /* Kurangi sedikit kejelasan saat dihover */
+}

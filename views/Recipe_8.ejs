@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\Gado-gado.png" alt="">
+        <h1>GADO-GADO</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Jakarta,+Daerah+Khusus+Ibukota+Jakarta/@-6.2293796,106.6647031,11z/data=!3m1!4b1!4m6!3m5!1s0x2e69f3e945e34b9d:0x5371bf0fdad786a2!8m2!3d-6.1944491!4d106.8229198!16zL20vMDQ0cnY?entry=ttu">
+                DKI Jakarta, Indonesia 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://cookpad.com/id/resep/15449995-gado-gado?ref=search&search_term=gado-gado">
+            By: cookpad.com
+            </a>
+        </div>
+        
+        <!-- NOTES -->
+        <%- include('layouts/Notes.ejs') %>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                    Gado-gado is a traditional Indonesian salad renowned for its vibrant flavors and colorful presentation. 
+                    This beloved dish features a delightful medley of blanched vegetables, such as potatoes, string beans, 
+                    and cabbage, combined with tofu, tempeh, and hard-boiled eggs, creating a satisfying array of textures. 
+                    The salad is then generously dressed with a creamy and aromatic peanut sauce, made from roasted peanuts, 
+                    garlic, chili, palm sugar, and tamarind juice, offering a perfect balance of sweetness, tanginess, and 
+                    spiciness. Gado-gado is often garnished with crispy fried shallots and emping crackers, adding a delightful 
+                    crunch to every bite. As a versatile and nutritious dish, gado-gado is enjoyed throughout Indonesia as a 
+                    hearty meal or appetizing snack, cherished for its rich flavors and wholesome ingredients.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>5 batang</b><a href="/Shop"><span> Kacang Panjang</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><span>Secukupnya</span><a href="/Shop"><span> Kol</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><span>Secukupnya</span><a href="/Shop"><span> Sawi Putih</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><span>Secukupnya</span><a href="/Shop"><span> Jagung Pipil</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>1 buah</b><a href="/Shop"><span> Wortel</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>1 buah</b><a href="/Shop"><span> Tomat</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>2 buah</b><a href="/Shop"><span> Tahu Kuning/Putih Goreng</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><a href="/Shop"><span>Lontong (optional)</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>Secukupnya</b><a href="/Shop"><span> Toge</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>1 ons</b><a href="/Shop"><span> Kacang Tanah</span></a>, untuk bumbu kacang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>2 ruas jari</b><a href="/Shop"><span> Kencur</span></a>, untuk bumbu kacang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>4 buah</b><a href="/Shop"><span> Cabe Rawit Merah</span></a>, untuk bumbu kacang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient13">
+                        <label for="ingredient13"><b>3 siung</b><a href="/Shop"><span> Bawang Merah</span></a>, untuk bumbu kacang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient14">
+                        <label for="ingredient14"><span>Secukupnya</span><a href="/Shop"><span> Gula Merah</span></a>, untuk bumbu kacang</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient15">
+                        <label for="ingredient15"><span>Secukupnya</span><a href="/Shop"><span> Garam dan Air Asam Jawa</span></a>, untuk bumbu kacang</label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Persiapkan semua bahan lalu potong sesuai selera</li>
+                    <li>Rebus satu persatu sayuran</li>
+                    <li>Untuk bahan bumbu kacang, sangrai semua kemudian ulek, tambahkan garam dan air asam jawa serta gula merah.</li>
+                    <li>Sajikan sesuai selera</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- Rating the recipe -->
+    <%- include('layouts/rating_review.ejs') %>
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

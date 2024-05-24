@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\Rawon.png" alt="">
+        <h1>RAWON</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Kabupaten+Ponorogo,+Jawa+Timur/@-7.9700842,110.9053946,10z/data=!3m1!4b1!4m6!3m5!1s0x2e790b859cfee851:0x3027a76e352bea0!8m2!3d-7.8650759!4d111.4696322!16zL20vMGdjN21w?hl=id&entry=ttu">
+                Ponorogo, Jawa Timur 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://recipesindonesia.com/indonesian-soup-recipes/black-beef-soup/">
+            By: recipesindonesia.com
+            </a>
+        </div>
+        
+        <!-- NOTES -->
+        <%- include('layouts/Notes.ejs') %>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                    Rawon is a rich and flavorful Indonesian beef soup, renowned for its dark color and intense taste. 
+                    Made with a blend of aromatic spices such as galangal, lemongrass, ginger, and candlenuts, Rawon boasts a 
+                    distinctively earthy and savory flavor profile. The key ingredient, beef, is simmered until tender in this 
+                    fragrant broth, infused with the deep hue of keluak nuts, which also adds a unique bitterness to the dish. 
+                    Rawon is typically served with rice, bean sprouts, and fried shallots, with shrimp crackers and a side of 
+                    "Sambal Rawon" for added spice. It's a beloved dish in Indonesian cuisine, cherished for its comforting warmth 
+                    and bold flavors.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>500g</b><a href="/Shop"><span> Beef</span></a>, brisket or silverside, diced</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>2</b><a href="/Shop"><span> Lemongrass stalks</span></a>, outer leaves removed, grated</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>2cm</b><a href="/Shop"><span> Galangal</span></a>, bruised</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>5</b><a href="/Shop"><span> Kaffir lime leaves</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>2</b><a href="/Shop"><span> Spring onions</span></a>, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><a href="/Shop"><span>Pepper</span></a> to taste</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><a href="/Shop"><span>Palm sugar</span></a> to taste</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><a href="/Shop"><span>Salt</span></a> to taste</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>2L</b><a href="/Shop"><span> Water</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>10</b><a href="/Shop"><span> Asian shallots</span></a> or French shallots, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>3</b><a href="/Shop"><span> Garlic cloves</span></a>, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>5</b><a href="/Shop"><span> Candle nuts</span></a>, roughly chopped or ground</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient13">
+                        <label for="ingredient13"><b>5</b><a href="/Shop"><span> Fresh keluak nuts</span></a> or 10g of dried keluak</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient14">
+                        <label for="ingredient14"><b>2cm</b><a href="/Shop"><span> Ginger</span></a>, chopped</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient15">
+                        <label for="ingredient15"><b>1cm</b><a href="/Shop"><span> Galangal</span></a>, small piece (fresh or dried)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient16">
+                        <label for="ingredient16"><b>1cm</b><a href="/Shop"><span> Fresh turmeric</span></a> or 1 tsp turmeric powder</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient17">
+                        <label for="ingredient17"><b>1/2 tsp</b><a href="/Shop"><span> Coriander powder</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient18">
+                        <label for="ingredient18"><b>1/2 tsp</b><a href="/Shop"><span> Cumin powder</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient19">
+                        <label for="ingredient19"><b>1/2 tsp</b><a href="/Shop"><span> Tamarind</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient20">
+                        <label for="ingredient20"><b>1/2 tsp</b><a href="/Shop"><span> Shrimp paste</span></a> (optional)</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient21">
+                        <label for="ingredient21"><a href="/Shop"><span>Bean sprouts</span></a> to taste</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient22">
+                        <label for="ingredient22"><a href="/Shop"><span>Fried shallots</span></a> to taste</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient23">
+                        <label for="ingredient23"><a href="/Shop"><span>Shrimp crackers</span></a> to taste</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient24">
+                        <label for="ingredient24"><a href="/Shop"><span>Shrimp paste chili sauce</span></a> to taste</label>
+                    </li>                    
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Blend all the pasta ingredients in a blender or food processor until smooth. Add a little oil if needed to aid the blending process.</li>
+                    <li>Boil 2 liters of water in a deep pot. Once boiling, reduce the heat to medium and add the beef. Cook until tender. If necessary, drain and discard any excess fat.</li>
+                    <li>Heat 2 tablespoons of oil in a skillet. Sauté the pasta, lemongrass, galangal, and kaffir lime leaves until the paste is cooked and fragrant.</li>
+                    <li>Transfer the pasta to the pot with the cooked beef. Add pepper, palm sugar, and salt. Adjust the seasoning.</li>
+                    <li>If the beef is cooked, add chopped spring onions.</li>
+                    <li>Prepare the soup in separate serving bowls, garnished with bean sprouts and fried shallots.</li>
+                    <li>Serve with shrimp crackers and "Sambal Rawon" if desired. Many Indonesians enjoy Rawon with boiled salted duck eggs as a condiment.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- Rating the recipe -->
+    <%- include('layouts/rating_review.ejs') %>
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

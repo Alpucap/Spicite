@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Carousel</title>
+    <style>
+        /* CSS */
+        .Carousel {
+            overflow: hidden;
+            width: 80%;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .Shop-Items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .Shop-Item {
+            text-align: center;
+            position: relative;
+        }
+
+        .Shop-Item img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 5px;
+            height: 200px;
+            border-radius: 5px;
+            border: 2px solid #8fae51;
+            transition: border-color 0.3s ease;
+        }
+
+        .Shop-Item:hover img {
+            border-color: #140a0a;
+        }
+
+        .Shop-Item h3 {
+            margin-top: 10px;
+            color: #ebeeec;
+            opacity: 0;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: opacity 0.3s ease;
+            background-color: #140a0a;
+            padding: 5px;
+            border-radius: 5px;
+            width: 80%;
+            font-size: 14px;
+            line-height: 1.4;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .Shop-Item:hover h3 {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .nav-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #fff;
+            cursor: pointer;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Carousel">
+        <div class="Shop-Items">
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Chili.png" alt="">
+                </a>
+                <h3>Chili Powder - a spice blend typically made from dried and ground chili peppers along with other ingredients like cumin, oregano, and garlic.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Basil.png" alt="">
+                </a>
+                <h3>Basil - a fragrant herb known for its bright green leaves and distinctive aroma.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Cinnamon.png" alt="">
+                </a>
+                <h3>Cinnamon - a sweet and warm spice obtained from the bark of cinnamon trees.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Blackpepper.png" alt="">
+                </a>
+                <h3>Black Pepper - a fragrant herb known for its bright green leaves and distinctive aroma.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Cumin.png" alt="">
+                </a>
+                <h3>Cumin - a sweet and warm spice obtained from the bark of cinnamon trees.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\fenugreek.jpg" alt="">
+                </a>
+                <h3>Fenugreek - a spice blend typically made from dried and ground chili peppers along with other ingredients like cumin, oregano, and garlic.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Garlic.png" alt="">
+                </a>
+                <h3>Garlic - a fragrant herb known for its bright green leaves and distinctive aroma.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Mace.png" alt="">
+                </a>
+                <h3>Mace - a sweet and warm spice obtained from the bark of cinnamon trees.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Rosemary.jpg" alt="">
+                </a>
+                <h3>Rosemary - a fragrant herb known for its bright green leaves and distinctive aroma.</h3>
+            </div>
+            <div class="Shop-Item">
+                <a href="/Shop">
+                    <img src="src\Shop\Thyme.jpg" alt="">
+                </a>
+                <h3>Thyme - a sweet and warm spice obtained from the bark of cinnamon trees.</h3>
+            </div>
+            <div class="Shop-Item">
+              <a href="/Shop">
+                  <img src="src\Shop\CayennePepper.jpg" alt="">
+              </a>
+              <h3>Cayenne Pepper - a fiery spice renowned for its intense heat and vibrant red color, adding a bold kick to dishes.</h3>
+          </div>
+          <div class="Shop-Item">
+              <a href="/Shop">
+                  <img src="src\Shop\Oregano.png" alt="">
+              </a>
+              <h3>Oregano - a versatile herb prized for its robust flavor and aromatic essence, elevating the taste of various cuisines.</h3>
+          </div>
+        </div>
+        <div class="navigation">
+            <button class="nav-btn" onclick="prevPreview()">&#10094;</button>
+            <button class="nav-btn" onclick="nextPreview()">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript
+        let previewIndex = 0;
+        const slides = document.querySelectorAll('.Shop-Items .Shop-Item');
+
+        function showPreview() {
+            slides.forEach((item, index) => {
+                if (index >= previewIndex * 3 && index < (previewIndex + 1) * 3) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function nextPreview() {
+            if (previewIndex < Math.ceil(slides.length / 3) - 1) {
+                previewIndex++;
+            } else {
+                previewIndex = 0;
+            }
+            showPreview();
+        }
+
+        function prevPreview() {
+            if (previewIndex > 0) {
+                previewIndex--;
+            } else {
+                previewIndex = Math.ceil(slides.length / 3) - 1;
+            }
+            showPreview();
+        }
+
+        showPreview();
+    </script>
+</body>
+
+</html>

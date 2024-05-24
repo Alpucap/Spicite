@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Shop.css">
+    <script src="JS\Shop.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Alpine -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- SHOP -->
+    <div class="container">
+        <h2>SPICE SHOP</h2>
+        <div class="search-container" x-data>
+            <input type="text" id="search-bar" placeholder="Search products...">
+            <button id="search-button">Search</button>
+
+            <!-- Shopping Cart Button -->
+           <button id="shopping-cart-button">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="quantity-badge" x-show="$store.Cart.quantity" x-text="$store.Cart.quantity"></span> 
+            Cart</button>
+
+
+            <!-- Modal Sorting -->
+            <div id="sortingModal" class="modal"> 
+                <div class="sorting-modal-content">
+                    <span class="sortingClose">&times;</span>
+                    <p>Sorting</p>
+                    <a href="#" id="sort-alpha">A~Z</a>
+                    <a href="#" id="sort-original">Oldest</a>
+                    <a href="#" id="sort-newest">New Products</a>
+                    <a href="#" id="sort-price">Price</a>
+
+                    <p>Filter</p>
+                    <a href="#" id="sort-ongkir">Free Shipping</a>
+                </div>
+            </div>
+
+            <!--CART -->
+            <div class="shopping-cart">
+                <template x-for="(item, index) in $store.Cart.items" x-keys="index">
+                    <div class="cart-item">
+                    <img :src="`${item.img}`" :alt="item.name">
+                    <div class="item-detail">
+                        <h3 x-text="item.name"></h3>
+                        <div class="item-price">
+
+                            <span x-text="rupiah(item.price)"></span> &times;
+                            <button id="remove" @click="$store.Cart.remove(item.id)">&minus;</button>
+                            <span x-text="item.quantity"></span>
+                            <button id="add" @click="$store.Cart.add(item)">&plus;</button> &equals;
+                            <span x-text="rupiah(item.total)"></span>
+
+                        </div>
+                    </div>
+                    </div>
+                </template>
+
+                <h4 x-show="!$store.Cart.items.length" style="margin-top: 1rem">Cart Is Empty</h4>
+                <h4 x-show="$store.Cart.items.length">Total: <span x-text="rupiah($store.Cart.total)"></span></h4>
+
+                <!-- checkout button -->
+                <button  class="checkout-button" type="submit" x-show="$store.Cart.items.length">Checkout</button>
+
+
+            </div>
+
+            <!-- MODAL -->
+            <button id="sortingOpenButton">&#9660;</button>
+
+        </div>
+          
+        <div class="shop-card" x-data="Products">
+           
+            <!--PRODUCTS-->
+            <template x-for="(item, index) in items" x-key="index">
+                <div class="product">
+                <img :src="`${item.img}`" :alt="item.name">
+                <h3 x-text="item.name"></h3>
+                <p class="desc" x-text="item.desc"></p>
+                <p x-text="rupiah(item.price)"></p>
+                <button class="add-to-cart" @click.prevent="$store.Cart.add(item)">Add to Cart</button>
+                </div>
+            </template>
+           
+        </div>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="JS/Shop.js"></script>
+    <script src="JS/Alpine-Shop.js"></script>
+    
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+</body>

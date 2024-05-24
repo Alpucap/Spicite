@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\InsightHistory.css">
+    <script src="JS\InsightHistory.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- Video Background -->
+    <div id="video-container">
+        <video autoplay loop muted>
+            <source src="src\Video\Mountain.mp4" type="video/mp4">
+            <!-- Add additional source elements for different video formats if needed -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="button-container">
+        <a href="javascript:history.back()" class="back-button">Back</a>
+    </div>
+
+    <div id="insight-history-container">
+        <!-- Riwayat Insight akan ditampilkan di sini -->
+    </div>
+
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        try {
+            const response = await fetch('/insight-history'); // Mengambil riwayat Insight dari server
+            const insightHistory = await response.json();
+
+            // Menampilkan riwayat Insight di UI
+            const insightHistoryContainer = document.getElementById('insight-history-container');
+            insightHistory.forEach(insight => {
+                const insightItem = document.createElement('div');
+                insightItem.classList.add('insight-item');
+                insightItem.setAttribute('data-insight-id', insight._id); // Add data attribute for insight ID
+                const timestamp = new Date(insight.timestamp);
+
+                // Mendapatkan jam, menit, dan detik
+                const hours = timestamp.getHours().toString().padStart(2, '0');
+                const minutes = timestamp.getMinutes().toString().padStart(2, '0');
+                const seconds = timestamp.getSeconds().toString().padStart(2, '0');
+
+                // Array nama bulan dalam bahasa Inggris
+                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                const month = monthNames[timestamp.getMonth()];
+
+                // Mendapatkan tanggal, bulan, dan tahun
+                const day = timestamp.getDate();
+                const year = timestamp.getFullYear();
+
+                const formattedDateTime = `| ${hours}:${minutes}:${seconds} || ${day} - ${month} - ${year} |`;
+                insightItem.innerHTML = `
+                    <h3>${formattedDateTime}</h3>
+                    <p><strong>Kritik:</strong> ${insight.criticism}</p>
+                    <p><strong>Saran:</strong> ${insight.suggestions}</p>
+                    <div class="button-container">
+                        <button class="delete-button" onclick="deleteInsight('${insight._id}')">Delete</button>
+                        <button class="update-button" onclick="showUpdateForm('${insight._id}', '${insight.criticism}', '${insight.suggestions}')">Update</button>
+                    </div>
+                `;
+                insightHistoryContainer.appendChild(insightItem);
+            });
+        } catch (error) {
+            console.error('Error fetching insight history:', error);
+            // Tangani kesalahan
+        }
+    });
+
+    async function deleteInsight(insightId) {
+        try {
+            const response = await fetch(`/delete-insight/${insightId}`, {
+                method: 'DELETE'
+            });
+
+            if (response.ok) {
+                const deletedItem = document.querySelector(`[data-insight-id="${insightId}"]`);
+                if (deletedItem) {
+                    deletedItem.remove();
+                } else {
+                    console.error('Error: Insight item not found in UI');
+                }
+            } else {
+                console.error('Error deleting insight:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error deleting insight:', error);
+        }
+    }
+
+    function showUpdateForm(insightId, criticism, suggestions) {
+        // Temukan elemen insight berdasarkan ID
+        const insightItem = document.querySelector(`[data-insight-id="${insightId}"]`);
+    
+        // Buat formulir update
+        const updateForm = document.createElement('form');
+        updateForm.innerHTML = `
+            <input type="text" name="updatedCriticism" value="${criticism}" placeholder="Updated Criticism">
+            <input type="text" name="updatedSuggestions" value="${suggestions}" placeholder="Updated Suggestions">
+            <button onclick="updateInsight('${insightId}')">Submit Update</button>
+        `;
+    
+        // Ganti isi insightItem dengan formulir update
+        insightItem.innerHTML = '';
+        insightItem.appendChild(updateForm);
+    }
+
+    async function updateInsight(insightId) {
+        const updatedCriticism = document.querySelector(`[data-insight-id="${insightId}"] input[name="updatedCriticism"]`).value;
+        const updatedSuggestions = document.querySelector(`[data-insight-id="${insightId}"] input[name="updatedSuggestions"]`).value;
+    
+        try {
+            const response = await fetch(`/update-insight/${insightId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ criticism: updatedCriticism, suggestions: updatedSuggestions })
+            });
+    
+            if (response.ok) {
+                // Reload halaman setelah berhasil diupdate
+                location.reload();
+            } else {
+                console.error('Error updating insight:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error updating insight:', error);
+        }
+    }
+    
+
+</script>

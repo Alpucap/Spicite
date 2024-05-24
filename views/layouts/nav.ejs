@@ -1,0 +1,160 @@
+<style>
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .navbar {
+    background-color: #1b1c1a;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+
+  .logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+
+  .menu-toggle {
+    display: none;
+    cursor: pointer;
+  }
+
+  .hamburger {
+    width: 25px;
+    height: 3px;
+    background-color: #ebeeec;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 50px
+  }
+
+  .menu-item {
+    margin: 0 15px;
+    color: #ebeeec;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s, transform 0.3s;
+  }
+  
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    bottom: -2px; 
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #8fae51;
+    transition: transform 0.3s, width 0.3s;
+    transform-origin: center;
+    transform: scaleX(0);
+  }
+  
+  .menu-item:hover {
+    color: #8fae51; 
+    transform: translateY(-3px); 
+  }
+  
+  .menu-item:hover::before {
+    transform: scaleX(1); 
+  }
+
+  @media (max-width: 768px) {
+    .menu-item {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+
+    .menu.active {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: #1b1c1a;
+    }
+
+    .menu.active .menu-item {
+      display: block;
+      padding: 10px 20px;
+      border-bottom: 1px solid #252623;
+    }
+
+    .hamburger.active .line1 {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active .line2 {
+      opacity: 0;
+    }
+
+    .hamburger.active .line3 {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+  }
+</style>
+
+<div class="navbar">
+  <div class="menu">
+    <a href="/Homepage" class="menu-item">HOME</a>
+    <a href="/Recipe" class="menu-item">RECIPE</a>
+    <!-- Letakkan logo di antara menu-item -->
+    <a href="/Signup" class="logo">
+      <img id="profilePic" src="src\Logo.png" alt="Logo">
+    </a>
+    <a href="/Shop" class="menu-item">SHOP</a>
+    <a href="/Insight" class="menu-item">INSIGHT</a>
+  </div>
+  
+  <div class="menu-toggle">
+    <div class="hamburger"></div>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.menu-toggle').addEventListener('click', function () {
+    document.querySelector('.menu').classList.toggle('active');
+    document.querySelector('.hamburger').classList.toggle('active');
+  });
+
+  var isLoggedIn = false;
+
+  document.querySelector('.logo').addEventListener('click', function(event) {
+    // Cegah default behavior dari link
+    event.preventDefault();
+
+    // Mengakses endpoint '/check-login' untuk mendapatkan nilai isLoggedIn
+    fetch('/check-login')
+        .then(response => response.json())
+        .then(data => {
+            if (data.isLoggedIn) {
+                // Redirect ke halaman dashboard
+                window.location.href = "/Dashboard";
+            } else {
+                // Redirect ke halaman login
+                window.location.href = "/Login";
+            }
+        })
+        .catch(error => {
+            console.error('Error checking login status:', error);
+            // Redirect ke halaman login jika terjadi error
+            window.location.href = "/Login";
+        });
+  });
+</script>

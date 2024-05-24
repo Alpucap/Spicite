@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Recipe_Food.css">
+    <script src="JS\Recipe_2.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- RECIPE -->
+    <div class="Recipe">
+        <img src="src\Shop\Authentic Food Banner\Miaceh.png" alt="">
+        <h1>MI ACEH</h1>
+        <div class="Origin">
+            <a href="https://www.google.com/maps/place/Aceh/@4.0420701,94.0061585,7z/data=!3m1!4b1!4m6!3m5!1s0x30399bdf507cc4bd:0x1039d80b220ca60!8m2!3d4.695135!4d96.7493993!16zL20vMDE2d2pf?entry=ttu">
+                DI Aceh, Indonesia 🚩
+            </a>
+        </div>
+        <div class="Source">
+            <a href="https://www.orami.co.id/magazine/resep-mie-aceh">
+            By: orami.co.id
+            </a>
+        </div>
+        
+        <!-- NOTES -->
+        <%- include('layouts/Notes.ejs') %>
+        
+        <div class="Recipe-items">
+            <div class="Facts">
+                <h3>What is?</h3>
+                <p>  
+                    Mi Aceh is a flavorful and spicy noodle dish originating from the Aceh province of Indonesia. 
+                    This aromatic dish features thick yellow noodles simmered in a rich and spicy broth infused with a
+                    blend of traditional Indonesian spices such as garlic, shallots, ginger, and turmeric. The broth is 
+                    typically made with a combination of beef, seafood, or both, creating a hearty and satisfying meal. 
+                    Often garnished with fresh herbs, such as cilantro and green onions, as well as lime wedges for a 
+                    burst of citrus freshness, Mi Aceh tantalizes the taste buds with its bold flavors and comforting 
+                    warmth, making it a beloved favorite among locals and food enthusiasts alike.
+                </p>
+            </div>
+            <div class="Ingredients">
+                <h3>Ingredients</h3>
+                <ul class="checkbox-list">
+                    <li>
+                        <input type="checkbox" id="ingredient1">
+                        <label for="ingredient1"><b>500 gr</b><a href="/Shop"><span> Mie Basah</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient2">
+                        <label for="ingredient2"><b>150 gr</b><a href="/Shop"><span> Udang Segar</span></a>, sudah dikupas dan dibuang kulitnya</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient3">
+                        <label for="ingredient3"><b>150 gr</b><a href="/Shop"><span> Daging</span></a> (sapi/kambing), direbus sebelumnya dan diiris kecil</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient4">
+                        <label for="ingredient4"><b>1 buah</b><a href="/Shop"><span> Tomat</span></a>, potong panjang berbentuk segitiga</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient5">
+                        <label for="ingredient5"><b>5 siung</b><a href="/Shop"><span> Bawang Merah</span></a>, iris tipis</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient6">
+                        <label for="ingredient6"><b>4 siung</b><a href="/Shop"><span> Bawang Putih</span></a>, iris tipis</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient7">
+                        <label for="ingredient7"><b>100 gr</b><a href="/Shop"><span> Kol Putih</span></a>, iris halus</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient8">
+                        <label for="ingredient8"><b>100 gr</b><a href="/Shop"><span> Toge Segar</span></a>, buang ekornya</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient9">
+                        <label for="ingredient9"><b>25 gr</b><a href="/Shop"><span> Daun Bawang</span></a>, iris halus</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient10">
+                        <label for="ingredient10"><b>10 gr</b><a href="/Shop"><span> Daun Seledri</span></a>, iris halus</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient11">
+                        <label for="ingredient11"><b>600 ml</b><a href="/Shop"><span> Kaldu Sapi</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient12">
+                        <label for="ingredient12"><b>2 sdm</b><a href="/Shop"><span> Kecap Manis</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient13">
+                        <label for="ingredient13"><b>2 sdm</b><a href="/Shop"><span> Kecap Asin</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient14">
+                        <label for="ingredient14"><b>4 sdm</b><a href="/Shop"><span> Minyak Goreng</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient15">
+                        <label for="ingredient15"><b>7 buah</b><a href="/Shop"><span> Cabai</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient16">
+                        <label for="ingredient16"><b>½ ruas</b><a href="/Shop"><span> Jahe</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient17">
+                        <label for="ingredient17"><b>3 buah</b><a href="/Shop"><span> Kemiri</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient18">
+                        <label for="ingredient18"><b>½ cm</b><a href="/Shop"><span> Kunyit</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient19">
+                        <label for="ingredient19"><b>1 sdm</b><a href="/Shop"><span> Merica Bubuk</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient20">
+                        <label for="ingredient20"><b>5 siung</b><a href="/Shop"><span> Bawang Putih</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient21">
+                        <label for="ingredient21"><b>¼ sdt</b><a href="/Shop"><span> Jinten</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient22">
+                        <label for="ingredient22"><b>¼ sdt</b><a href="/Shop"><span> Ketumbar</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient23">
+                        <label for="ingredient23"><b>3 butir</b><a href="/Shop"><span> Kapulaga</span></a></label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="ingredient24">
+                        <label for="ingredient24"><b>3 butir</b><a href="/Shop"><span> Adas Manis</span></a></label>
+                    </li>
+                </ul>
+            </div>
+            <div class="Instructions">
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Siapkan bahan-bahan bumbu halus, kemudian haluskan menggunakan ulekan atau blender.</li>
+                    <li>Siapkan wajan dan juga minyak kemudian panaskan di atas kompor.</li>
+                    <li>Masukan irisan bawang merah dan bawang putih ke dalam wajan yang telah panas kemudian tumis sebentar.</li>
+                    <li>Masukkan bumbu yang telah dihaluskan, kemudian tumis kembali hingga merata dan tercium wangi dari masakan.</li>
+                    <li>Siapkan daging dan udang yang telah dikupas kulitnya, kemudian masukan ke dalam tumisan. Aduk rata.</li>
+                    <li>Masukan air kaldu secara perlahan.</li>
+                    <li>Tambahkan kol, seledri, serta garam. Koreksi rasa. Masak hingga air kaldunya menyusut dan tidak terlalu banyak.</li>
+                    <li>Masukan tomat dan juga toge bersama dengan kecap manis dan kecap asin.</li>
+                    <li>Siapkan wadah yang cukup besar dengan air yang cukup panas.</li>
+                    <li>Masukan air panas ke dalam wadah tersebut bersama dengan mie basah.</li>
+                    <li>Tunggu hingga mie basah tersebut cukup matang, kemudian angkat dan tiriskan.</li>
+                    <li>Siapkan piring atau mangkok saji.</li>
+                    <li>Tempatkan mie yang telah matang di atas piring saji.</li>
+                    <li>Siram dengan kuah kaldu.</li>
+                    <li>Campurkan bumbu dan mie tersebut sampai merata dan tercampur dengan baik.</li>
+                    <li>Tata emping dan acar sebagai pemanis dan pelengkap.</li>
+                    <li>Sajikan selagi hangat.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <!-- Rating the recipe -->
+    <%- include('layouts/rating_review.ejs') %>
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+
+</body>

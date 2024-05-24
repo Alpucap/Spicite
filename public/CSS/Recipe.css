@@ -1,0 +1,315 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+body{
+    color: #ebeeec;
+    background-color: #140a0a;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+    width: 0px; 
+    display: none; 
+}
+
+a{
+    color: #ebeeec;
+    text-decoration: none;
+}
+
+/* INTRO */
+.carousel {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    margin-bottom: 0px;
+}
+  
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    transition: transform 0.3s ease;
+}
+  
+.carousel-item {
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+  
+.carousel-item img {
+    max-width: 100%;
+    width: 100%;
+    height: 500px;
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #140a0a;
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    color: #ebeeec;
+    cursor: pointer;
+    z-index: 1; 
+    border-radius: 5px;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+  
+/* RECIPE LIST */
+.RecipeList {
+    position: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.Recipe-News {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Recipe-News-Items {
+    background-color: #374c33 ;
+    margin-right: 25px;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    justify-content: center; 
+}
+
+.Recipe-News-Items-Content-1,
+.Recipe-News-Items-Content-2,
+.Recipe-News-Items-Content-3,
+.Recipe-News-Items-Content-4,
+.Recipe-News-Items-Content-5 {
+    width: auto;
+    max-width: 500px;
+    max-height: 500px;
+    margin-left: 5px;
+    display: flex;
+    align-items: center; 
+    margin-top: 15px;
+}
+
+.Recipe-News-Items-Content-1 p,
+.Recipe-News-Items-Content-2 p,
+.Recipe-News-Items-Content-3 p,
+.Recipe-News-Items-Content-4 p,
+.Recipe-News-Items-Content-5 p{
+    color:#8fae51;
+}
+
+.image-container {
+    flex-shrink: 0; 
+    margin-right: 20px; 
+}
+
+.text-container {
+    flex: 1;
+    text-align: justify;
+}
+
+.Recipe-News-Items-Content-1 img,
+.Recipe-News-Items-Content-2 img,
+.Recipe-News-Items-Content-3 img,
+.Recipe-News-Items-Content-4 img,
+.Recipe-News-Items-Content-5 img {
+    width: 300px; 
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 5px;
+}
+
+.Recipe-News-Items-Content-1 img:hover,
+.Recipe-News-Items-Content-2 img:hover,
+.Recipe-News-Items-Content-3 img:hover,
+.Recipe-News-Items-Content-4 img:hover,
+.Recipe-News-Items-Content-5 img:hover{
+    transform: scale(1.1);
+}
+
+.Recipe-Item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #4c5250;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, width 0.5s ease-in-out;
+    height: 150px;
+    width: 900px;
+}
+
+.Recipe-Item:hover {
+    width: 920px;
+}
+
+.Recipe-Item:hover .Recipe-Content-Subtitle {
+    text-shadow: 0 0 1px #ebeeec, 0 0 2px #ebeeec, 0 0 3px #ebeeec;
+}
+
+.Recipe-Item.visible {
+    opacity: 1;
+    transform: translateX(20px);
+}
+
+.Recipe-Item p{
+    margin: 0;
+    font-size: 16px;
+    color: #96a09d;
+}
+.Recipe-Item img{
+    width: 150px;
+    height: 100px;
+    max-height: 100px; 
+    border-radius: 5px;
+}
+
+.Recipe-Item .Recipe-Content-Subtitle{
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ebeeec;
+    margin-bottom: 2px;
+    transition: text-shadow 0.3s ease;;
+}
+
+.Recipe-Items {
+    display: flex;
+    justify-content: left;
+    flex-wrap: wrap; 
+    max-width: 910px;
+    gap: 25px; 
+    margin-left: 10px;
+}
+
+.Recipe-Content {
+    text-align: left; 
+}
+
+
+.Recipe-Items a{
+    display: block;
+    cursor: pointer;
+}
+
+
+
+/* INFINITE */
+.Infinite{
+    margin: 0px;
+    margin-top: 50px;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    animation: slide 8s linear infinite;
+    font-family: 'Cinzel Decorative', sans-serif;
+}
+
+@keyframes slide {
+    0% { left: 100%; }
+    100% { left: -100%; }
+}
+
+/* Rail for the train */
+.rail{
+    margin-top: 0px;
+    height: 5px;
+    background-color: #96a09d;
+}
+
+
+/*
+
+    MEDIA IF 768 PX
+
+*/
+
+@media (max-width: 768px) {
+    /* NAVBAR */
+    .menu-item {
+        margin: 0 50px;
+    }
+    /* FOOTER */
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}
+
+/*
+
+    MEDIA IF 640 PX
+
+*/
+
+@media (max-width: 640px) {
+    /* NAVBAR */
+    .menu-item {
+        margin: 0 10px;
+    }
+    /* FOOTER */
+    .footer-container {
+        flex-direction: column;
+    }
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="CSS\Insight.css">
+    <script src="JS\Insight.js"></script>
+    <link rel="icon" type="image/x-icon" href="src\Logo.png">
+</head>
+<body>
+    <!-- Video Background -->
+    <div id="video-container">
+        <video autoplay loop muted>
+            <source src="src\Video\Mountain.mp4" type="video/mp4">
+            <!-- Add additional source elements for different video formats if needed -->
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- NAVBAR -->
+    <%- include('layouts/nav.ejs') %>
+
+    <!-- FORM -->
+    <div class="forms">
+        <h2>Please Write Down Your <a href="https://en.wikipedia.org/wiki/Thought"><span>Thoughts!</span></a></h2>
+        <form id="contact-form" action="/submit-form" method="POST">
+            <div class="form-group">
+                <label for="criticism">Criticism:</label>
+                <textarea id="criticism" name="criticism" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="suggestions">Suggestions:</label>
+                <textarea id="suggestions" name="suggestions" required></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit Message" name="submitMessage">
+            </div>
+        </form>
+    </div>
+    <div class="button-container">
+        <a href="/InsightHistory" class="linked-button">Insight History</a>
+    </div>
+    <!-- Loading  -->
+    <%- include('layouts/loading.ejs') %>
+    
+    <!-- FOOTER -->
+    <%- include('layouts/footer.ejs') %>
+</body>
